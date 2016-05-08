@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,top=1cm,right=2cm,foot=0cm,bottom=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{arrayjob}
+
+\newcommand{\comment}[1]{}
+\newcommand{\blue}[1]{\textcolor{blue}{\Large \hspace{0.5cm} #1}}
+\newcounter{choiceCtr}[enumi]
+\newcommand{\choice}[1]{\addtocounter{choiceCtr}{1} \hspace{1.5cm} (\alph{choiceCtr}) #1}
+
+\newcounter{choiceCtr2}[enumi]
+\newcommand{\choiceroman}[1]{\addtocounter{choiceCtr2}{1} \hspace{0.2cm} (\roman{choiceCtr2}) #1}
+
+\newcommand{\answerbox}[4]{%
+\raisebox{-#3}{\framebox[#1][l]{\vphantom{\rule{0.01cm}{#2}} \raisebox{#3}{\blue{#4}}}} }
+\renewcommand{\arraystretch}{1.1}
+\setlength\parindent{0in}
+
+\newcommand{\examdate}{January 11, 2016}
+\newcommand{\course}{MATH 256}
+\newcommand{\event}{Tutorial 1 Worksheet}
+
+\newcounter{markcounter}
+\newcommand{\marklabel}{\addtocounter{markcounter}{1} \arabic{markcounter}}
+\newcommand{\markref}{\arabic{markcounter}}
+
+\newcommand\blfootnote[1]{
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}
+  \addtocounter{footnote}{-1}
+  \endgroup
+}
+
+%% USAGE: \marklabel \blfootnote{\markref: \answerbox{1cm}{0.8cm}{0.4cm}{}}
+
+%%
+%% Author: Dhananjay Bhaskar
+%% Last modified: January 9, 2016
+%%
+
+\begin{document}
+
+% Title
+\begin{center}
+\fbox{\fbox{\parbox{5.5in}{\centering\Large \textbf{\course\:\event}\\
+\examdate}}}
+\end{center}
+
+\vspace{0.5cm}
+\makebox[\textwidth]{\Large Name (please print) :\enspace\hrulefill}\medskip
+\vspace{0.5cm}
+\makebox[\textwidth]{\Large Student Number :\enspace\hrulefill}
+
+% Question 1
+\subsection*{Question 1}
+For each of the following differential equations, state whether it is an ODE or a PDE, state its order (if it¡¯s a PDE, give the order in each independent variable) and whether it is linear or nonlinear.
+\begin{enumerate}[(a)]
+  \item $t^3y''+y'=\sin(t)$ \hfill \answerbox{7cm}{0.8cm}{0.4cm}{}
+  \item $\frac{\partial^2 y}{\partial x^2} + x\frac{\partial y}{\partial t} = x^4$ \hfill \answerbox{7cm}{0.8cm}{0.4cm}{}
+  \item $e^xy+(\frac{dy}{dx})^2 = x\tan(x)$ \hfill \answerbox{7cm}{0.8cm}{0.4cm}{}
+\end{enumerate}
+
+\vspace{1cm}
+% Question 2
+\subsection*{Question 2}
+Suppose that $y(t)=2-t+Ce^{5t}$ is the general solution to some differential equation. Consider the initial condition $y(0)=A$.
+\begin{enumerate}[(a)]
+  \item For what values of $A$ does $\lim_{t\to+\infty}y(t) = \infty$? \hfill \answerbox{3cm}{0.8cm}{0.4cm}{}
+  \item For what values of $A$ does $\lim_{t\to+\infty}y(t) = -\infty$? \hfill \answerbox{3cm}{0.8cm}{0.4cm}{}
+  \item Are there any values of $A$ for which this limit is finite? \hfill \answerbox{3cm}{0.8cm}{0.4cm}{}
+  \item Sketch 3 members of this family of functions choosing values of A so that the behaviour of all types of solutions is demonstrated.
+\end{enumerate}
+
+\newpage
+\vspace{1cm}
+% Question 3
+\subsection*{Question 3}
+Find solutions to the following ordinary differential equations. Recall that you can always check that you got the correct solution by plugging it back in to the given differential equation. \\ \textbf{Sketch the solution to the initial-value problem in part (a).} \\
+\textbf{Show solution-checking process for the solution to the equation in part (c).}
+\begin{enumerate}[(a)]
+  \item $xy'+2y=x, \quad y(1)=0$
+  \vspace{6cm}
+  \item $xy'+2y=e^x$
+  \vspace{6cm}
+  \item $y'=e^{-y}(2x-4)$
+\end{enumerate}
+
+\end{document}

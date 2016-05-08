@@ -1,0 +1,15 @@
+\section{Challenges}
+
+A number of challenges were encountered during the course of this project. These include technical issues, uncertain execution environment and human factors (time required to go through ParamILS documentation and time spent debugging). Outstanding challenges are listed below:\\
+
+\begin{itemize}
+
+\item The MPSO algorithm is implemented as a MATLAB function. In order to invoke MATLAB functions from a Python wrapper script, MATLAB Engine API must be installed. This API is only available for MATLAB versions R2014b or later. In addition to finding a server with a recent version of MATLAB installed, it is not straightforward to install Python library without root access. A considerable amount of time was spent compiling and installing the Python API locally for a single user.
+
+\item While running ParamILS, we observed that MATLAB crashed occasionally (with no obvious correlation to input parameters) and produced a crash dump with registry and memory information. Unable to pinpoint a bug in the code, the following fix was adopted: The Python wrapper generates a temporary file name (based on timestamp) that is passed as argument to MATLAB function call. The MATLAB MPSO function creates this file, prints debugging information and result for ParamILS to the file handle. If the file is not created or the last line does not contain correctly formatted output, then the Python wrapper reports CRASHED to ParamILS. 
+
+\item {\it Unaccounted Cache Effects:} All computations were performed on a virtual machine which restricts (for security) the user from getting information about cache capacity and cache usage on the hypervisor. Since the hypervisor hosts other servers with active users, it is not possible to measure cache effects or rely on a consistent execution environment.
+
+\item While using ParamILS to configure for function evaluations, a high value of cutoff length is required to minimize the number of TIMEOUTS. This increases the overall running time. A run of ParamILS with tunerTimeout = 5 hrs lasts for 8 - 12 hours including bonus runs and validation. Given the limited time for this project, it was not possible to explore the configuration space thoroughly. Running time can be decreased by (a) increasing error tolerance or (b) reducing search space dimension. However, by increasing error tolerance we risk successfully terminating runs at local optima and results obtained by reducing dimensionality may not scale to higher dimensions.
+
+\end{itemize}

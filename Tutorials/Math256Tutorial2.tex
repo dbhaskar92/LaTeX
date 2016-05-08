@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,top=1cm,right=2cm,foot=0cm,bottom=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{arrayjob}
+
+\newcommand{\comment}[1]{}
+\newcommand{\blue}[1]{\textcolor{blue}{\Large \hspace{0.5cm} #1}}
+\newcounter{choiceCtr}[enumi]
+\newcommand{\choice}[1]{\addtocounter{choiceCtr}{1} \hspace{1.5cm} (\alph{choiceCtr}) #1}
+
+\newcounter{choiceCtr2}[enumi]
+\newcommand{\choiceroman}[1]{\addtocounter{choiceCtr2}{1} \hspace{0.2cm} (\roman{choiceCtr2}) #1}
+
+\newcommand{\answerbox}[4]{%
+\raisebox{-#3}{\framebox[#1][l]{\vphantom{\rule{0.01cm}{#2}} \raisebox{#3}{\blue{#4}}}} }
+\renewcommand{\arraystretch}{1.1}
+\setlength\parindent{0in}
+
+\newcommand{\examdate}{January 18, 2016}
+\newcommand{\course}{MATH 256}
+\newcommand{\event}{Tutorial 2 Worksheet}
+
+\newcounter{markcounter}
+\newcommand{\marklabel}{\addtocounter{markcounter}{1} \arabic{markcounter}}
+\newcommand{\markref}{\arabic{markcounter}}
+
+\newcommand\blfootnote[1]{
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}
+  \addtocounter{footnote}{-1}
+  \endgroup
+}
+
+%% USAGE: \marklabel \blfootnote{\markref: \answerbox{1cm}{0.8cm}{0.4cm}{}}
+
+%%
+%% Author: Dhananjay Bhaskar
+%% Last modified: January 15, 2016
+%%
+
+\begin{document}
+
+% Title
+\begin{center}
+\fbox{\fbox{\parbox{5.5in}{\centering\Large \textbf{\course\:\event}\\
+\examdate}}}
+\end{center}
+
+\vspace{0.5cm}
+\makebox[\textwidth]{\Large Name (please print) :\enspace\hrulefill}\medskip
+\vspace{0.5cm}
+\makebox[\textwidth]{\Large Student Number :\enspace\hrulefill}
+
+% Question 1
+
+\subsection*{Question 1}
+
+Are the following functions linearly independent or linearly dependent? Justify your claim. \\
+\textbf{If they are independent, use the Wronskian to show that.} \\
+\textbf{If they are not independent, give nonzero values of $c_1$, $c_2$, and $c_3$ such that:} \\
+$c_1 f(x) + c_2 g(x) + c_3 h(x) = 0$.
+
+\begin{enumerate}[(a)]
+  \item f(x) = $x$, g(x) = $x^2$ and h(x) = $x^3$
+  \vspace{7cm}
+  \item f(x) = log($x$), g(x) = log($x^2$) and h(x) = log($x^3$)
+\end{enumerate}
+
+\newpage
+\vspace{1cm}
+
+% Question 2
+
+\subsection*{Question 2}
+An atom of a radioactive substance typically decays into an atom of some other radioactive substance with its own decay constant. Suppose we have $50$ grams of pure Uranium-238 with a decay constant $m$. Each atom of Uranium-238 decays to a single atom of Thorium-234 which has a decay constant $n$. We have no Thorium-234 initially.
+
+\begin{enumerate}[(a)]
+  \item Write down the differential equations and initial conditions for the radioactive decay of Uranium-238 ($U(t)$) and production and decay of Thorium-234 ($T(t)$).
+  \vspace{3cm}
+  \item Solve the differential equations and initial conditions to find the amount of Thorium-234 after time $t$ in terms of $m$ and $n$. You should find that there are two cases that must be treated separately, $m \ne n$ and $m = n$.
+  \vspace{7.5cm}
+  \item \textbf{(Optional)} Notice that the solution in the case of $n = m$ ($T_{n = m}(t)$) does not have the same form as the solution in the case of $n \ne m$ ($T_{n \ne m}(t)$). Show that as $m$ approaches $n$, the function $T_{n \ne m}(t)$ approaches $T_{n = m}(t)$.
+\end{enumerate}
+
+
+\end{document}

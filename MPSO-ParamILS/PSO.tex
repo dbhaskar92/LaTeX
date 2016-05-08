@@ -1,0 +1,104 @@
+\section{Particle Swarm Optimization (PSO)}
+
+PSO is a population based method for solving global optimization problems. Each candidate solution to a problem is represented as a particle with position and velocity vectors. The particle moves around the search space according to its velocity and retains a memory of the best position it has encountered thus far. The best position is one that yields the highest value when evaluated with the objective function for a maximization problem or yields the lowest value for a minimization problem. Here we only consider minimization problems including ones with negative optimum. All maximization problems can be trivially transformed to minimization problems by taking the negative or reciprocal.\\
+
+PSO can be classified into global and local variants with respect to information exchange between particles. At each iteration of {\it global} PSO, the best position ever attained by all particles (infinite radius) in the swarm is communicated to all other particles. This emphasizes convergence over exploration of search space since all particles are attracted to the overall best position. In {\it local} PSO, each particle is assigned a neighborhood based its index in the swarm and the best position attained (until current iteration) by all particles within the neighborhood is communicated among them. This prevents the swarm from converging to a local optimum and emphasizes exploration of search space. The performance of the algorithm depends on its ability to perform a global search of the search space as well as more refined local search of promising regions that may contain the global optimum.\\
+
+Let us assume that the search space is $D$ dimensional. The position of the $i^{th}$ particle is represented by $X_{i} = (x_{i1},x_{i2},...,x_{iD})$ and the best particle of the swarm is denoted by index $g$. The best position ever attained by the $i^{th}$ particle is represented by $P_{i} = (p_{i1},p_{i2},...,p_{iD})$. The velocity vector of this particle is $V_{i} = (v_{i1},v_{i2},...,v_{iD})$. The initial position and velocity vectors are generated randomly in the search space. At each iteration the particles are manipulated according to the following equations:
+
+\bea{}
+V_{i}^{n+1} = \omega V_{i}^{n} + c_{1}r_{i1}^{n}(P_{i}^{n} - X_{i}^{n}) + c_{2}r_{i2}^{n}(P_{g_{i}}^{n} - X_{i}^{n})\\
+X_{i}^{n+1} = X_{i}^{n} + \chi V_{i}^{n+1}
+\eea{}
+
+where $i = 1,2,...,N$ and $N$ is the swarm size. Eq. $(1)$ is used to calculate the $i^{th}$ particle's new velocity at each iteration. The first term $\omega V_{i}^{n}$ takes into account the particle's previous velocity weighted by the inertia weight $\omega$. The inertia weight regulates the impact of the history of velocities on current velocity. Inertia weight can be set to a high initial value to encourage exploration and linearly decreased with the number of iterations or time (Shi and Eberhart, 1998).\\
+
+$P_{i}^{n} - X_{i}^{n}$ measures the difference between the $i^{th}$ particle's best overall position and its current position. Similarly, $P_{g_{i}}^{n} - X_{i}^{n}$ is the displacement between the neighborhood's best overall position and the particle's current position. $P_{g_{i}}$ is calculated by assuming that the particles lie on ring topology with a given radius. Thus, the best candidate solution is determined for each neighborhood and communicated to all particles comprising in that neighborhood. At each iteration, $P_{g_{i}}$ and $P_{i}$ are determined by evaluating the objective function, which maps the search space to a one-dimensional fitness value. The fitness value determines the optimality of the set of parameters.\\
+
+$r_{i1}$ and $r_{i2}$ are random vectors with components uniformly distributed in $[0,1]$ that make the algorithm stochastic. $c_{1}$ and $c_{2}$ are positive constants called {\it cognitive} and {\it social} parameter respectively. A large cognitive component and small social component at the beginning allows particles to move around the search space (exploration) instead of converging prematurely. A small cognitive component and a large social component during the latter stage allow the particles to converge (exploitation) to the global optimum (Ratnaweera et al., 2004). However, for fixed values of these parameters, a optimum balance between exploration and exploitation is required to achieve best performance.\\
+
+Eq. $(2)$ provides the new position of the $i^{th}$ particle by adding the velocity to the previous position. $\chi$, known as the constriction factor is derived analytically (Clerc and Kennedy, 2002):
+
+\bea{}
+\chi = \frac{2\kappa}{|2 - \varphi - \sqrt{\varphi^{2} - 4\varphi|}}
+\eea{}
+
+where $\varphi = c_{1} + c_{2}$. It provides a mechanism for controlling the magnitude of velocities of particles and is often used in place of $\omega$. Default values: $\omega = 1, \chi = 0.729$ and $c_{1} = c_{2} = 2.05$ (Clerc and Kennedy, 2002) are used in empirical analysis to keep results comparable to published data.\\
+
+A maximum allowed velocity $V_{max}$ is imposed in some implementations to keep the swarm cohesive. Therefore, if $v_{id}^{n} > V_{max}$ in Eq. $(1)$, then $v_{id}^{n+1} = V_{max}$ where $v_{id}^{n}$ is the $d^{th}$ component of the velocity of the $i^{th}$ particle at iteration $n$. In our implementation (see Figure 1), we use position clamping (i.e. $x_{id}^{n+1} = x_{min}$ if $x_{id}^{n} < x_{min}$ and $x_{id}^{n+1} = x_{max}$ if $x_{id}^{n} > x_{max}$), which is consistent with the algorithm used by Petalas et al. (2007).
+
+\section{Stochastic Local Search and Memetic PSO}  
+
+Evolutionary Algorithms (EAs) and implementations of PSO exhibit a well-known problem regarding their local search capabilities. These algorithms can find the region containing the global optimum fast, however, they cannot refine their search thereafter to produce a global optimum with high accuracy. Local search methods like hill climbing, conjugate gradient, branch and bound, etc. are optimization techniques that can be used to exploit the neighborhood of candidate solutions found by a metaheuristic algorithm. Memetic PSO (MPSO) algorithm is standard PSO algorithm with inbuilt local search. The local search procedure is called once in every {\it freq} iterations. Two local search schemes are implemented:
+
+\begin{itemize}
+
+\item[] {\bf Scheme 1:} Local search is applied on global best position $P_{g}$ of the swarm.
+
+\item[] {\bf Scheme 2:} For each best position $P_{i}$, a random number $r \in U[0,1]$ is generated and local search is performed on $P_{i}$ if $r < \epsilon$ ($\epsilon$ is a parameter) along with global best position $P_{g}$.
+
+\end{itemize}
+
+Random Walk with Direction Exploitation (RWDE) is the stochastic optimization method used to perform local search in our implementation. The iterative procedure generates a sequence of candidate optimum solutions by perturbing the existing solution in random directions with a given step size, $\lambda$. A maximum of $t_{max}$ iterations is performed and the step size is reduced by half whenever the random perturbation does not yield a better candidate solution.\\
+
+RWDE can be used when the objective function is discontinuous or non-differentiable. For the purpose of improving performance of standard PSO method, RWDE has proven to be sufficient and easy to implement (Petalas et al., 2007). The use of more sophisticated local search methods (Hoos and St{\"u}tzle, 2005) and their potential performance benefit should be investigated as part of future work.
+
+\newpage
+
+\begin{pseudocode}{MPSO}{F,N,D,\text{radius},\text{PRNG seed},\text{cutoff},f_{min},\text{tol},\chi,c_1,c_2,\text{...}\\
+												x_{min},x_{max},\text{freq},\epsilon,\lambda,t_{max},\text{scheme}}
+\MAIN
+F \GETS \text{objective function}, N \GETS \text{swarm size}, D \GETS \text{search space dimension}\\
+\text{radius} \GETS \text{neighborhood radius}\\
+\text{cutoff} \GETS \text{runtime or runlength cutoff}\\
+f_{min} \GETS \text{true minimum of objective function}\\
+\text{tol} \GETS \text{acceptable error tolerance}\\
+n \GETS 0\\
+\text{Initialize: }x_{id}^{n}\in[x_{min},x_{max}], V_{i}^{n}, P_{i}^{n} \GETS X_{i}^{n}, i=1,...,N\text{ and }d=1,...,D\\
+\text{Evaluate: } F(X_{i}^{n})\\
+\text{Determine best in neighborhood: } P_{g_{i}} \text{ within radius for } i=1,...,N\\
+\WHILE \text{(within cutoff) AND } |P_{g_{all}} - f_{min}| > \text{ tol} \DO
+\BEGIN
+	\text{Update Velocities: } V_{i}^{n+1} \text{ according to (1)}\\
+	\text{Update Positions: } X_{i}^{n+1} = X_{i}^{n} + \chi V_{i}^{n+1} \text{ according to (2)}\\
+	\text{Constrain each particle: } x_{id}^{n+1}\in[x_{min},x_{max}]\\
+	\text{Evaluate: } F(X_{i}^{n+1})\\
+	\IF F(X_{i}^{n+1}) < F(P_{i}^{n}) \THEN P_{i}^{n+1} \GETS X_{i}^{n+1}
+	\ELSE P_{i}^{n+1} \GETS P_{i}^{n}\\
+	\text{Update neighborhood best positions: } P_{g_{i}}\\
+	\IF \text{n } \% \text{ freq} == 0 \THEN
+	\BEGIN
+		\IF \text{scheme} == 1 \text{ OR } \text{scheme} == 2 \THEN
+		\BEGIN
+			y_q \GETS \CALL{RWDE}{F,D,\lambda,t_{max},P_{g_{all}}} \\
+			\IF F(y_q) < F(P_{g_{q}}) \THEN P_{g_{q}} \GETS y_q
+		\END \\
+		\ELSEIF \text{scheme} == 2 \THEN
+		\BEGIN
+			R \GETS N \text{ dimension random vector with each component} \in U[0,1]\\
+			\text{Select indexes } q \text{ such that } R_{q} < \epsilon \\
+			y_q \GETS \CALL{RWDE}{F,D,\lambda,t_{max},P_{q}} \\
+			\IF F(y_q) < F(P_{q}^{n+1}) \THEN P_{q}^{n+1} \GETS y_q
+		\END \\
+	\END \\
+	n \GETS n+1
+\END
+\ENDMAIN \\
+\\
+\PROCEDURE{RWDE}{F,D,\lambda,t_{max},X}
+t \GETS 0\\
+\WHILE t <= t_{max} \DO
+\BEGIN
+	t \GETS t+1\\
+	z \GETS \text{unit random vector of dimension D}\\
+	\IF F(X+\lambda*D) < F(X) \THEN X \GETS X+\lambda*D
+	\ELSE \lambda = \lambda / 2
+\END \\
+\RETURN{X}
+\ENDPROCEDURE
+\end{pseudocode}
+
+\vspace*{-1cm}
+\begin{center}
+Pseudo-code for the MPSO algorithm
+\end{center}

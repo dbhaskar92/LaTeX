@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+\pagestyle{plain}
+
+\usepackage{amsmath,amssymb,graphicx,latexsym}
+
+\usepackage{varwidth}
+\usepackage{fancybox}
+\usepackage{pseudocode}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{multirow}
+
+\setlength{\oddsidemargin}{0pt} \setlength{\textwidth}{16.5cm}
+\setlength{\topskip}{0pt} \setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt} \setlength{\textheight}{24cm}
+\setlength{\parindent}{5mm}
+
+\usepackage[bottom=0.8in,top=0.8in]{geometry}
+
+\def\L{\mathcal{L}}
+\def\I{\mathcal{I}}
+\def\T{\mathcal{T}}
+\def\la{\Lambda}
+\def\l{\lambda}
+\def\ld{\tilde{\lambda}}
+\def\C{\mathbb{C}}
+\def\dk{{\Delta K }}
+\def\dka{{\delta\kappa }}
+\def\dx{\Delta X }
+\def\f{\hat{f}}
+\def\g{\tilde{g}}
+\def\H{\tilde{H}}
+\def\S{\mathcal{S}}
+\def\K{\mathcal{K}}
+\def\bl{{\langle}}
+\def\br{{\rangle}}
+\def\eps{\epsilon}
+\def\lemok#1{lemma~\/{\rm \ref{lem:#1} }}
+\def\thmok#1{theorem~\/{\rm \ref{thm:#1} }}
+\def\tabok#1{Table~\/{\rm \ref{tab:#1} }}
+\def\figok#1{\/{\rm \ref{fig:#1} }}
+\def\assok#1{\/{\rm \ref{ass:#1} }}
+\def\eqnok#1{\/{\rm (\ref{eq:#1})}}
+\def\Eqnok#1{Equation~\ref{eq:#1}}
+\def\ex#1{Example~\ref{ex:#1}}
+\def\exok#1{\/{\rm (\ref{ex:#1})}}
+\newtheorem{theorem}{\bf Theorem}[section]
+\newtheorem{proposition}{\bf Proposition}[section]
+\newtheorem{lemma}{\bf Lemma}[section]
+\newtheorem{remark}{\bf Remark}[section]
+\newtheorem{assumption}{\bf Assumption}[section]
+\newtheorem{algorithm}{\bf Algorithm}[section]
+\newtheorem{example}{\bf Example}[section]
+\newtheorem{definition}{\bf Definition}[section]
+\newcommand{\nn}{\nonumber}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\def\begeq{\begin{equation}}
+\def\endeq{\end{equation}}
+\newcommand{\benu}{\begin{enumerate}}
+\newcommand{\eenu}{\end{enumerate}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ii}{\int_{0}^{\infty}}
+\newcommand{\Rnn}{\Re^{n\times n}}
+\newcommand{\Sn}{\,\mathcal{S}^n}
+\def\Re{{\rm I\kern-.17em R}}
+\def\Rpr{\Re^{p\times r}}
+\newcommand{\rb}{\raisebox{0.7ex}}
+\newcommand{\qed}{\hfill $\Box$}
+\newcommand*\vtick{\textsc{\char13}}
+
+\title{Design Optimization and Empirical Analysis of a Memetic PSO Algorithm}
+
+\author{Dhananjay Bhaskar\footnotemark[1]}
+
+\date{}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+\maketitle
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[1]{University of British Columbia, Vancouver, Canada (\tt{dbhaskar92@gmail.com})}
+
+ 
+\begin{abstract}
+Particle swarm optimization (PSO) is a population-based algorithm that is widely used in operations research alongside evolutionary algorithms and other metaheuristic approaches for solving challenging optimization problems. PSO is efficient and robust in solving nonlinear, non-differentiable, multimodal problems in practical settings despite lacking a solid mathematical foundation. Unlike Genetic Algorithms, PSO does not require complex encoding and decoding processes and genetic operators. After introducing PSO, this report describes the preliminary results obtained from automatic configuration of a memetic variant of PSO using ParamILS. Empirical analysis is used to show performance improvement on test instances after optimizing algorithm parameters for runtime and number of function evaluations based on a representative training set.
+\end{abstract}
+
+\vspace{4mm} \noindent{\bf Key words:} particle swarm optimization, algorithm configuration, memetic algorithms, stochastic local search
+
+\input{Intro}
+
+\input{PSO}
+
+\input{Bench}
+
+\input{Configure}
+
+\input{ResDiscuss}
+
+\input{Challenges}
+
+\input{BestPractice}
+
+\input{FutureWork}
+
+\section{Acknowledgment} The course material covered in CPSC 536H and the course textbook authored by Dr. Holger Hoos were very helpful in the preparation of this report.
+
+\begin{thebibliography}{20}
+
+\bibitem{1}
+Abido, M.A., 2002. Optimal design of power-system stabilizers using particle swarm optimization. IEEE Transactions on Energy Conversion 17, 406–413. %doi:10.1109/TEC.2002.801992
+
+\bibitem{2}
+Clerc, M., Kennedy, J., 2002. The particle swarm - explosion, stability, and convergence in a multidimensional complex space. IEEE Transactions on Evolutionary Computation 6, 58–73. %doi:10.1109/4235.985692
+
+\bibitem{3}
+Cockshott, A.R., Hartman, B.E., 2001. Improving the fermentation medium for Echinocandin B production part II: Particle swarm optimization. Process Biochemistry 36, 661–669. %doi:10.1016/S0032-9592(00)00261-2
+
+\bibitem{4}
+Dong, Y., Tang, J., Xu, B., Wang, D., 2005. An application of swarm optimization to nonlinear programming. Computers \& Mathematics with Applications 49, 1655–1668. %doi:10.1016/j.camwa.2005.02.006
+
+\bibitem{5}
+Eberhart, R.C., Kennedy, J., others, 1995. A new optimizer using particle swarm theory, in: Proceedings of the Sixth International Symposium on Micro Machine and Human Science. New York, NY, pp. 39–43.
+
+\bibitem{6}
+Hansen, N., Finck, S., Ros, R., Auger, A., 2009. Real-parameter black-box optimization benchmarking 2009: Noiseless functions definitions.
+
+\bibitem{7}
+Hoos, H.H., Stützle, T., 2005. Stochastic Local Search: Foundations and Applications. Morgan Kaufmann.
+
+\bibitem{8}
+Hutter, F., Hoos, H.H., Leyton-Brown, K., Stützle, T., 2009. ParamILS: an automatic algorithm configuration framework. Journal of Artificial Intelligence Research 36, 267–306.
+
+\bibitem{9}
+Kennedy, J., Eberhart, R.C., 1997. A discrete binary version of the particle swarm algorithm, in: Systems, Man, and Cybernetics, 1997. Computational Cybernetics and Simulation., 1997 IEEE International Conference on. IEEE, pp. 4104–4108.
+
+\bibitem{10}
+Laskari, E.C., Parsopoulos, K.E., Vrahatis, M.N., 2002. Particle swarm optimization for integer programming, in: Wcci. IEEE, pp. 1582–1587.
+
+\bibitem{11}
+L\'Ecuyer, P., C\^{o}t\'{e}, S., 1991. Implementing a random number package with splitting facilities. ACM Transactions on Mathematical Software (TOMS) 17, 98–111.
+
+\bibitem{12}
+Li, P., Duan, H., 2014. Bio-inspired Computation Algorithms, in: Bio-Inspired Computation in Unmanned Aerial Vehicles. Springer, pp. 35–69.
+
+\bibitem{13}
+Li, Y., Chen, X., 2006. A New Stochastic PSO Technique for Neural Network Training, in: Wang, J., Yi, Z., Zurada, J.M., Lu, B.-L., Yin, H. (Eds.), Advances in Neural Networks - ISNN 2006, Lecture Notes in Computer Science. Springer Berlin Heidelberg, pp. 564–569.
+
+\bibitem{14}
+Mersmann, O., Preuss, M., Trautmann, H., Bischl, B., Weihs, C., 2015. Analyzing the BBOB Results by Means of Benchmarking Concepts. Evolutionary Computation 23, 161–185. %doi:10.1162/EVCO_a_00134
+
+\bibitem{15}
+Petalas, Y.G., Parsopoulos, K.E., Vrahatis, M.N., 2007. Memetic particle swarm optimization. Annals of Operations Research 156, 99–127. %doi:10.1007/s10479-007-0224
+
+\bibitem{16}
+Ratnaweera, A., Halgamuge, S.K., Watson, H.C., 2004. Self-organizing hierarchical particle swarm optimizer with time-varying acceleration coefficients. IEEE Transactions on Evolutionary Computation 8, 240–255. %doi:10.1109/TEVC.2004.826071
+
+\bibitem{17}
+Salman, A., Ahmad, I., Al-Madani, S., 2002. Particle swarm optimization for task assignment problem. Microprocessors and Microsystems 26, 363–371. %doi:10.1016/S0141-9331(02)00053-4
+
+\bibitem{18}
+Shi, Y., Eberhart, R.C., 1998. Parameter selection in particle swarm optimization, in: Porto, V.W., Saravanan, N., Waagen, D., Eiben, A.E. (Eds.), Evolutionary Programming VII, Lecture Notes in Computer Science. Springer Berlin Heidelberg, pp. 591–600.
+
+\bibitem{19}
+Vilović, I., Burum, N., Milić, D., 2009. Using particle swarm optimization in training neural network for indoor field strength prediction, in: ELMAR, 2009. ELMAR’09. International Symposium. IEEE, pp. 275–278.
+
+\bibitem{20}
+Zang, M., Wang, M., Lai, X., He, H., 2012. Thermal layout optimization of stacked chips based on hybrid algorithm of simulated annealing and particle swarm, in: Computer Science and Network Technology (ICCSNT), 2012 2nd International Conference on. IEEE, pp. 1456–1460.
+
+%\iffalse
+%\fi
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,66 @@
+\section{Design Optimization}
+
+ParamILS is an automatic framework for identification of performance-optimizing parameter settings in a given target algorithm. ParamILS initializes its iterated local search (ILS) process using the default configuration and $r$ randomly generated configurations from the configuration space. The configuration space is a list of parameters and their values (including the default value) provided by the user. After evaluating the $r+1$ configurations, the best configuration is chosen as the starting point for ILS. ILS performs biased random walk over local optima in parameter configuration space. During ILS, to decide between two candidate configurations, the one with better performance is chosen with ties broken in favor of the configuration reached in the most recent local search phase. ParamILS also performs blocking on inputs, i.e. comparisons between configurations are based on performance measurements on the same set of inputs (Hutter et al., 2009).\\
+
+The methodology for performance assessment of a given configuration depends on the implementation of ParamILS. BasicILS uses fixed number of runs for each evaluation whereas FocusedILS performs {\it aggressive racing} by initially evaluating configurations using few target algorithm runs and subsequently performing additional runs to obtain increasingly precise performance estimates for promising configurations. We use FocusedILS implemented in Ruby by Chris Fawcett to configure MPSO (Algorithm 3.1) for runlength (number of objective function evaluations).
+
+\subsection{Configuration Space}
+
+Motivated by real-world optimization problems, function evaluations are typically one of the most computationally expensive elementary operations in the target algorithm. Our goal is to find a configuration that minimizes the number of function evaluations performed by the MPSO algorithm. For this experiment, we fix the following parameters: $N=60$ (swarm size), $D=5$ (search space dimension), $\text{freq}=10$ (frequency of local search), $\text{scheme}=2$ (local search scheme), $\epsilon=0.1$ (probability of selecting a candidate for RWDE) and $\kappa=1$ (used for calculating $\chi$). The configuration space consists of 5 parameters and 8100 possible configurations:
+
+\begin{center}
+\begin{tabular}{l}
+$c_1 \in \{1.950, 1.975, 2.0, 2.025, 2.05, 2.075, 2.1, 2.125, 2.15\}$ \\
+$c_2 \in \{1.950, 1.975, 2.0, 2.025, 2.05, 2.075, 2.1, 2.125, 2.15\}$ \\
+$\text{radius} \in \{1, 2, 3, 4, 5\}$ \\
+$t_{max} \in \{3, 5, 8, 10, 12\}$ \\
+$\lambda \in \{0.5, 0.8, 1.0, 1.2\}$ \\
+\end{tabular}
+\end{center}
+
+The cutoff length (max. number of function evaluations) is set at 400000. This value is chosen to prevent timeouts and allow meaningful comparisons between different configurations. Each timeout is penalized by 10 times the cutoff length in the overall objective for ParamILS. 
+
+\subsection{Execution Environment}
+
+All runs were carried out on a virtual x86\_64 Ubuntu 14.04.4 GNU/Linux server (Kernel version: 3.13.0). Note that the hypervisor also hosted other VMs with active users during the computation. The system has 16048 MB of available RAM and 8 processors. Cache size information is not available from the virtual machine. MATLAB version R2014b was used to run MPSO. MATLAB functions were called using the MATLAB Engine API from a Python wrapper (Python version 2.7.6) which is invoked from the ParamILS ruby script (Ruby version 1.9).
+
+\subsection{ParamILS Output}
+
+After running three parallel computations of ParamILS for 5 hours, we get results shown in Table 3: 
+
+\begin{center}
+\begin{table}[h!]
+\begin{tabular}{l*{8}{c}r}
+& & & & & & \multicolumn{2}{c}{\textbf{Training}} & \multicolumn{2}{c}{\textbf{Validation}}\\
+\hline
+& $c_1$ & $c_2$ & $t_{max}$ & radius & $\lambda$ & Runs & Fitness & Runs & Fitness\\
+\hline
+Default & 2.05 & 2.05 & 5 & 1 & 1.0 & 0 & 100000000 & 0 & 100000000 \\
+\textbf{Run 0} & 2.05 & 2.15 & 5 & 3 & 0.8 & 182 & 288188.65 & 100 & 532814.85 \\
+\textbf{Run 1} & 2.075 & 2.05 & 5 & 5 & 0.5 & 131 & 411549.58 & 100 & 609662.35 \\
+\textbf{Run 2} & 2.1 & 2.1 & 12 & 2 & 0.8 & 85 & 113951.43 & 100 & 215852.88
+\end{tabular}
+\caption{FocusedILS result for minimizing function evaluations}
+\label{tbl:Table 3}
+\end{table}
+\end{center}
+
+The fitness values are the overall objective (mean10, i.e. weighted mean of number of function evaluations with timeouts penalized by a factor of 10) achieved by the configurations. Clearly, the configuration corresponding to Run 2 achieves the lowest fitness, hence it performs best on our benchmark training set.
+
+%\subsection{Configuring for runtime}
+%\begin{center}
+%\begin{table}[h!]
+%\begin{tabular}{l*{8}{c}r}
+%& & & & & & \multicolumn{2}{c}{\textbf{Training}} & \multicolumn{2}{c}{\textbf{Validation}}\\
+%\hline
+%& $c_1$ & $c_2$ & $t_{max}$ & radius & $\lambda$ & Runs & Fitness & Runs & Fitness\\
+%\hline
+%Default & 2.05 & 2.05 & 5 & 1 & 1.0 & 0 & 100000000 & 0 & 100000000 \\
+%\textbf{Run 0} & 2.05 & 2.15 & 5 & 3 & 0.8 & 182 & 288188.65 & 100 & 532814.85 \\
+%\textbf{Run 1} & 2.075 & 2.05 & 5 & 5 & 0.5 & 131 & 411549.58 & 100 & 609662.35 \\
+%\textbf{Run 2} & 2.1 & 2.1 & 12 & 2 & 0.8 & 85 & 113951.43 & 100 & 215852.88
+%\end{tabular}
+%\caption{FocusedILS result for minimizing runtime}
+%\label{tbl:Table 4}
+%\end{table}
+%\end{center}

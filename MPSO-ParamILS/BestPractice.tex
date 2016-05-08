@@ -1,0 +1,14 @@
+\section{Best Practices}
+
+The following best practices were adopted to ensure transparency and reproducibility:
+
+\begin{itemize}
+
+\item ParamILS records seeds used for each run of the target algorithm. This seed is used to initialize the Mersenne Twister pseudo-random number generator (PRNG). The RNGLIB MATLAB library used for random number generation (L\'Ecuyer and C\^{o}t\'{e}, 1991) is provided along with the complete source code for MPSO. All code is freely available at: https://github.com/dbhaskar92/
+
+\item All design choices in the MPSO algorithm (including choice of local search method) are exposed to facilitate Programming by Optimization (PbO).
+
+\item Good coding practices were followed including frequent logging of debugging information and refactoring code to adhere to modular design principles inspired by the publicly available COmparing Continuous Optimizers (COCO) framework. Modular design facilitates use of MSPO as part of an algorithm portfolio and enables use of restart strategies.  
+
+\end{itemize}
+

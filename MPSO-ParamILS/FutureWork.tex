@@ -1,0 +1,26 @@
+\section{Future Work}
+
+Given the time limitations for this course project and the aforementioned challenges, it was not possible to carry out a comprehensive empirical study of the MPSO algorithm. However, several promising directions for future research that emerged during our investigation are listed below:\\
+
+\begin{enumerate}
+
+\item \textbf{Portfolio Construction:} Exploratory analysis shows evidence of complementarity between different configurations. For example, configurations that perform well on Weierstrass instances tend to perform poorly on Rastrigin instances. This property can be exploited by constructing an algorithm portfolio or algorithm selector.
+
+\item \textbf{Adaptive Capping:} ParamILS versions 2.2 and 2.3 implement a pruning criterion that often terminates runs before cutoff time when the result does not affect the overall trajectory. However, pruning only works for objective functions with non-negative values when optimizing for mean runtime performance. Implementing pruning criteria for optimizing runlength, solution quality, etc. will result in decreased overall running time. 
+
+\item \textbf{Programmatic specification of tuning parameters:} We configured MPSO to minimize runtime using a larger configuration space (39375 total possibilities) consisting of 6 parameters: \newline
+
+$N \in \{ 10, 15, 30, 45, 60, 90, 120 \}$ \quad [Default: $30$] \newline
+$\text{radius} \in \{ 1, 2, 3, 4, 5 \}$ \quad [Default: $1$] \newline
+$\text{freq} \in \{ 1, 2, 5, 10, 20, 50, 100, 200, 500 \}$ \quad [Default: $10$] \newline
+$\epsilon \in \{ 0.1, 0.25, 0.5, 0.75, 1 \}$ \quad [Default: $0.1$] \newline
+$t_{max} \in \{ 3, 5, 8, 10, 12 \}$ \quad [Default: $5$] \newline
+$\lambda \in \{ 0.5, 1.0, 4.0, 8.0, 10.0 \}$ \quad [Default: $1.0$] \newline
+
+Results showed that larger swarm size ($N$) and higher frequency (i.e. less frequent local search) minimizes overall runtime while the impact of other parameters is limited (based on contradictory values of other parameters from parallel ParamILS runs) for problems in search space of dimension 5. In this case, being able to programmatically specify conditional parameters (e.g. radius varying between $1$ and $N/2$ for each value of $N$) in ParamILS would be useful for covering larger configuration space and investigating whether this result generalizes to higher dimensions.
+
+\item \textbf{Two-Step Configuration:} In order to tackle the long running time for configuration, we can investigate the possibility of configuring the algorithm in two stages: (i) Vary ``high impact" parameters like $N$, radius, freq in stage $1$, (ii) Vary $c_1$, $c_2$, $\epsilon$, $t_{max}$ and $\lambda$ in stage $2$. 
+
+\item \textbf{Comparing PSO Variants:} Based on literature review, an empirical comparison (after automatic configuration) of PSO variants (local and global variants of standard PSO, local and global variants of MPSO, KBPSO, PSO for discrete settings, PSO for multi-objective optimization, etc.) and other evolutionary algorithms would yield novel and interesting insights.
+
+\end{enumerate}

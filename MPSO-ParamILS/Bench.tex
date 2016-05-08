@@ -1,0 +1,114 @@
+\section{Benchmark Problem Set}  
+
+Benchmarking allows us to empirically compare two or more algorithms (or algorithm configurations) to determine which one delivers best performance. In cases where a clear domination can be established, the best algorithm is always selected to run. However, such an algorithm typically does not exist for NP-hard problems or ``difficult" optimization problems where methods like conjugate gradient, hill climbing, etc. fail. In these cases, algorithm selectors, algorithm portfolios and ensemble techniques offer significant performance improvement. An important issue to consider when using benchmarks is whether the algorithms that perform comparatively better on the benchmark instances will similarly perform better on real-world problems. Constructing representative benchmark libraries that contain challenging inputs to differentiate state-of-the-art algorithms from competitors and scale to more difficult real-world problems is hard (Mersmann et al., 2015).\\
+
+We use benchmark input instances derived from the 2009 BBOB (Black Box Optimization Benchmark) problem set for training ParamILS and validating the resulting configuration. BBOB is a publicly available benchmark library that is widely used for quantifying and comparing performance of numerical optimization algorithms (Hansen et al., 2009). Nine noiseless single-objective functions were chosen from BBOB and implemented in MATLAB. Our benchmark set contains a representative set of unconstrained optimization problems including separable, non-separable, unimodal and multimodal real-valued functions.\\
+
+Table 1 (page 7) and Table 2 (page 8) list selected problems (7/9, excluding Ackley{\vtick}s function and Shifted Rastrigin{\vtick}s function without rotation) from our benchmark set. The mathematical definition of each problem specifies how the objective function $f(x)$ is transformed (using randomly generated matrices $M$), shifted or rotated. The location of the global minimum ($x^*$) is shifted to $o = (o_{1},o_{2},...,o_{D})$ where $x$ is the $D$ dimensional input vector. In experimental work, dimensionality was kept unchanged at $D = 5$ to keep running times in check and prevent excessive timeouts. We assume that performance of different configurations will scale to higher dimensions.\\
+
+The minimum value of the objective function is given by $f(x^*) = opt_{i}$. The components of $o$ are randomly chosen and must lie within the constrain interval $[x_{min}, x_{max}]$ listed in the third column. Three instances of each objective function were generated. One instance is used as the training instance for ParamILS and two instances are used for validation. The only exception is Ackley{\vtick}s function (not shown) for which the global minimum is $0$ at $x^* = (0,...,0)$. This function is only used for validation. Column 4 lists the error tolerance that serves as one of the termination criteria in Algorithm 3.1. If MPSO finds the optimum within the error tolerance, then the algorithm terminates successfully; otherwise it is timed out when cutoff is reached. The tolerance values were picked from published results where possible to maintain reproducibility and prevent successful termination at local minima. The last column illustrates a 2-D version of the objective function using a color scheme to indicate the magnitude of the gradient at any given point.\\
+
+\afterpage{
+\newgeometry{a4paper,left=0.3cm,right=0.2cm,bottom=1.75cm,top=0.2cm,nohead}
+\begin{landscape}
+\begin{table}[h!]
+\begin{tabular}{| p{3cm} | p{6cm} | m{2cm} | m{1.75cm} | p{3cm} | m{6cm} |}
+\hline
+Function Name & Definition & Constrain Interval & Error Tolerance & Properties & 3D Map \\ 
+\hline
+
+Shifted Sphere \newline Function & 
+$F(x)=\sum_{i=1}^{D}z_{i}^{2} + opt_{1}$ \newline $z = x - o, x^* = o, f(x^*)=opt_1$ &
+(-100,100) &
+$10^{-3}$ &
+Unimodal \newline Shifted \newline Separable &
+\includegraphics[scale=0.4]{SphereS1.png}\\
+
+Shifted \newline Schwefel{\vtick}s \newline Function & 
+$F(x)=\sum_{i=1}^{D}(\sum_{j=1}^{i}z_{j})^{2} + opt_{2}$ \newline $z = x - o, x^* = o, f(x^*)=opt_2$ &
+(-100,100) &
+$10^{-2}$ &
+Unimodal \newline Shifted \newline Non-Separable &
+\includegraphics[scale=0.4]{SchwefelS1.png}\\
+
+Shifted Rotated \newline High \newline Conditioned \newline Elliptic Function & 
+$F(x)=\sum_{i=1}^{D}(10^6)^{\frac{i-1}{D-1}}z_{i}^{2} + opt_{3}$ \newline
+$z = (x - o)*M, x^* = o \newline f(x^*)=opt_3$ \newline
+$M$ is an orthogonal matrix&
+(-100,100) &
+100 &
+Unimodal \newline Shifted \newline Rotated \newline Non-Separable &
+\includegraphics[scale=0.4]{EllipticE1.png}\\
+
+Shifted \newline Rosenbrock{\vtick}s \newline Function & 
+$F(x)=\sum_{i=1}^{D-1}(100(z_{i}^{2}-z_{i+1})^{2} + (z_{i}-1)^{2}) + opt_{4}$ \newline
+$z = x - o + 1, x^* = o, f(x^*)=opt_4$&
+(-30,30) &
+1 &
+Multimodal \newline Shifted \newline Non-Separable \newline Optimum lies in \newline a narrow valley &
+\includegraphics[scale=0.4]{RosenbrockR1.png}\\
+
+\hline
+\end{tabular}
+\caption{Benchmark test functions used for training and validation}
+\label{tbl:Table 1}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabular}{| p{3cm} | p{6cm} | m{2cm} | m{1.75cm} | p{3cm} | m{6cm} |}
+\hline
+Function Name & Definition & Constrain Interval & Error Tolerance & Properties & 3D Map \\ 
+\hline
+
+Shifted Rotated \newline Griewank{\vtick}s \newline Function & 
+$F(x)=\sum_{i=1}^{D}\frac{z_{i}^{2}}{4000}$ \newline $-\prod_{i=1}^{D}cos(\frac{z_{i}}{\sqrt{i}}) + 1 + opt_{5}$ \newline
+$z = (x - o)*M, x^* = o$ \newline $f(x^*)=opt_5$ \newline
+$M$ is a linear transformation matrix, cond($M$) = 3 &
+(-600,600) &
+1 &
+Multimodal \newline Shifted \newline Rotated \newline Non-Separable &
+\includegraphics[scale=0.4]{GriewankG1.png}\\
+
+%Ackley’s Function & 
+%$F(x)=\sum_{i}^{D}i$ &
+%(-32,32) &
+%$10^{-3}$ &
+%Multimodal \newline Separable &
+%\includegraphics[scale=0.4]{Ackley.png}\\
+
+%Shifted \newline Rastrigin{\vtick}s \newline Function & 
+%$F(x)=\sum_{i=1}^{D}(z_{i}^{2}-10cos(2{\pi}z_{i})+10) + opt_{6}$ \newline
+%$z = x - o, x^* = o, f(x^*)=opt_6$ &
+%(-5.12, 5.12) &
+%1 &
+%Multimodal \newline Shifted \newline Separable \newline Large number of \newline local optima&
+%\includegraphics[scale=0.4]{RastriginR1.png}\\
+
+Shifted Rotated \newline Rastrigin{\vtick}s \newline Function & 
+$F(x)=\sum_{i=1}^{D}(z_{i}^{2}-10cos(2{\pi}z_{i})+10) + opt_{7}$ \newline
+$z = (x - o)*M, x^* = o$ \newline $f(x^*)=opt_7$ \newline
+$M$ is a linear transformation matrix, cond($M$) = 2 &
+(-5,5) &
+1 &
+Multimodal \newline Shifted, Rotated \newline Non-Separable \newline Large number of \newline local optima&
+\includegraphics[scale=0.4]{RastriginS1.png}\\
+
+Shifted Rotated \newline Weierstrass \newline Function & 
+$F(x)=\sum_{i=1}^{D}$ \newline $(\sum_{k=0}^{kmax}[a^{k}cos(2{\pi}b^{k}(z_{i}+0.5))])$ \newline
+$-D\sum_{k=0}^{kmax}[a^kcos(2{\pi}b^k0.5)] + opt_{8}$ \newline
+$a=0.5, b=3, kmax=20$ \newline $z = (x - o)*M$ \newline $x^* = o, f(x^*)=opt_8$ \newline
+$M$ is a linear transformation matrix, cond($M$) = 5 &
+(-0.5,0.5) &
+1 &
+Multimodal \newline Shifted, Rotated \newline Non-Separable \newline Continuous but \newline differentiable \newline
+only on a set \newline of points&
+\includegraphics[scale=0.4]{WeierstrassW1.png}\\
+
+\hline
+\end{tabular}
+\caption{Benchmark test functions used for training and validation (Continued)}
+\label{tbl:Table 2}
+\end{table}
+\end{landscape}
+}
+\restoregeometry
