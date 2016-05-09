@@ -1,0 +1,399 @@
+% LaTeX presentation for CUMC 2013
+
+\documentclass{beamer}
+
+\usetheme{Rochester}
+\usecolortheme{dolphin}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\setbeamertemplate{navigation symbols}{}	% remove navigation symbols
+\setbeamertemplate{footline}[page number]	% add page numbers
+
+\begin{document}
+
+\title{A metaheuristic approach for solving the unconstrained binary quadratic programming problem}
+   
+\author[Bhaskar,Tawhid]{%
+  Dhananjay Bhaskar\inst{1} \and
+  Mohamed Tawhid (Supervisor)\inst{2}}
+
+\institute{
+  \inst{1}
+  Combined Major in Computer Science and Mathematics\\
+  University of British Columbia
+  \and
+  \inst{2}
+  Department of Mathematics and Statistics\\
+  Thompson Rivers University}
+  
+\date[CUMC 2013]{Canadian Undergraduate Mathematics Conference, 2013}
+
+\frame{\titlepage} 
+
+\frame{\frametitle{Outline}\tableofcontents} 
+
+
+\section{Binary Quadratic Programming} 
+
+\subsection{What is BQP?}
+\frame{\frametitle{What is BQP?} 
+Given:
+\begin{itemize}
+\item A symmetric n x n matrix, $Q = (q_{ij})$ 
+\item A binary vector of length n, $x$
+\end{itemize}
+\begin{block}{Binary Quadratic Programming Problem}
+maximize \\
+\begin{equation}
+f(x) = x^tQx = \sum\limits_{i=1}^n \sum\limits_{j=1}^n q_{ij}x_ix_j, \hspace{1cm} x_i \in  \{0,1\}  \forall  i
+\end{equation}
+\end{block}
+This problem is known as the unconstrained binary quadratic programming problem (BQP) \\ \vspace{0.1cm}
+Also called (unconstrained) quadratic bivalent programming problem and quadratic zero-one programming problem
+}
+
+\subsection{What makes this problem complex/interesting?}
+\frame{\frametitle{What makes this problem complex/interesting?}
+\begin{itemize}
+\item The unconstrained BQP problem belongs to the class of $NP$-hard discrete optimization problems.\\
+\item Given a BQP problem, determining whether it has a unique solution is $NP$-hard.\\
+\item BQP problem remains $NP$-hard even if the global optimum is known to be unique.\\ \vspace{0.2cm}
+\end{itemize}
+Exact algorithms are applicable only for instances of BQP with dimensions of several hundered variables and moderately sparse matrix Q.\\
+\vspace{0.2cm}
+For high-dimensional problems with dense matrices only approximate methods are available, which allow us to find near-optimal solutions 
+in a reasonable time. We are interested in these problems. 
+} 
+
+
+\subsection{Why do we want to solve this problem?}
+\frame{\frametitle{Why do we want to solve this problem?} 
+BQP has applications in various fields, for example: \\ \vspace{0.2cm}
+\begin{itemize}
+\item Computer-aided design
+\item Chemistry
+\item Traffic management
+\item Scheduling problems 
+\item Graph Theory
+\end{itemize}
+and many more ... 
+}
+
+\subsection{An example from graph theory}
+\frame{\frametitle{An example from graph theory} 
+We will formulate the maximum independent set problem (MIS) in a binary quadratic program.\\
+\begin{block}{Definitions}
+An \textbf{independent set} or stable set is a set of vertices in a graph, no two of which are adjacent.
+A \textbf{maximum independent set} is a largest independent set for a given graph.
+\end{block}
+\includegraphics[scale=0.5]{indsets}
+}
+
+\frame{\frametitle{Maximum Independent Set Problem} 
+Consider graph $G = (V,E)$.\\ \vspace{0.2cm}
+Construct a binary vector $x$ of size $|V|$ such that:\\
+$x_i$ = 1, if vertex $i$ is included in the independent set, 0 otherwise\\ \vspace{0.2cm}
+Then, MIS can be written in form of a linear program
+\begin{block}{$LP_{MIS}$}
+\begin{equation}
+\text{maximize }
+\sum\limits_{i=1}^n x_i
+\end{equation}
+subject to
+\begin{eqnarray}
+\text{Independence constraint: } x_i + x_j \le 1, \{i,j\} \in E \\
+x_i \in (0,1)
+\end{eqnarray}
+\end{block}
+}
+
+\frame{\frametitle{An example}
+Consider the undirected graph below. We have 3 independent sets on this graph: $C_1 = (2,4,5,7,9)$, $C_2 = (1,6,8)$ and $C_3 = (3)$.\\
+\begin{center}
+\includegraphics[scale=0.2]{neatograph}
+\end{center}
+Mathematically, we model the MIS linear program as follows:\\
+\includegraphics[scale=0.35]{MISlp}
+}
+
+\frame{\frametitle{Unconstrained BQP formulation}
+We remove the constraints by introducing a quadratic penalty in the objective function: \\
+\begin{block}{$UBQP_{MIS}$}
+\begin{equation}
+\text{maximize }
+\sum\limits_{i=1}^n x_i - \sum\limits_{\{i , j\} \in E} x_ix_j
+\end{equation}
+\end{block}
+Notice that $x_i^2 = x_i$ since $x$ is binary. \\
+$LP_{MIS}$ is thus replaced with an unconstrained BQP problem. 
+} 
+
+\subsection{Solving the BQP problem}
+\frame{\frametitle{Solving the BQP problem}
+Existing approaches for finding solutions to the BQP problem:\\ \vspace{0.2cm}
+\begin{itemize}
+\item Branch and Bound 
+\item Decomposition
+\item Semidefinite Programming
+\item Metaheuristic algorithms
+\end{itemize}
+}
+
+
+\section{Metaheuristics}
+
+\subsection{What are metaheuristic algorithms?}
+\frame{\frametitle{What are metaheuristic algorithms?}
+\textbf{Metaheuristics} are search strategies designed to find a good solution to "hard" optimization problems. They are often inspired
+from nature or physical processes. \\ \vspace{0.1cm}
+\begin{exampleblock}{General properties of metaheuristic algorithms}
+\begin{itemize}
+\item Implement some form of stochastic optimization
+\item Not problem specific - rely on searching large set of feasible solutions
+\item Approximate and usually non-deterministic
+\item More efficent than iterative algorithms for finding near-optimal solution(s)
+\end{itemize}
+\end{exampleblock}
+}
+
+\subsection{Popular metaheuristic algorithms}
+\frame{\frametitle{Popular metaheuristic algorithms}
+\begin{alertblock}{Single-state (single-solution) methods}
+\begin{itemize}
+\item Simulated Annealing (SA) 
+\item Tabu Search (TS)
+\end{itemize} 
+\end{alertblock}
+\begin{alertblock}{Population-based methods}
+\begin{itemize}
+\item Genetic and Evolutionary algorithms (GA, EA, ES, etc.)
+\item Ant Colony Optimization (ACO)
+\item Particle Swarm Optimization (PSO)
+\end{itemize} 
+\end{alertblock}
+A \textbf{hybrid algorithm} is a combination of 2 or more of above. A \textbf{memetic algorithm} is a hybrid with embedded local search.
+}
+
+\subsection{Genetic Algorithms}
+\frame{\frametitle{Genetic Algorithms}
+\begin{itemize}
+\item Population-based search algorithms based on the mechanics of natural genetics  
+\item Inspired from "survival of the fittest" concept from Darwinian theory
+\item Simulate the process of evolution predicated on the assumption that evolution is an optimizing phenomenon
+\item Developed by Prof. John Holland in 1975 and popularized by his student Prof. David Goldberg  
+\end{itemize} 
+}
+
+\frame{\frametitle{Robustness}
+Genetic Algorithms (GA) are more robust for finding near-optimum solutions for multi-modal functions compared to traditional optimization techniques like hill climbing, conjugate gradient, etc.\\  
+\includegraphics[scale=0.30]{rastrigin}
+\includegraphics[scale=0.30]{rosenbrock} \\
+Rastrigin function \hspace{3cm} Rosenbrock function\\
+Global min at $(x,y) = (0,0)$ \hspace{1cm}  Global min at $(x,y) = (1,1)$
+}
+
+\frame{\frametitle{Differences between GAs and iterative optimization}
+\begin{itemize}
+\item Canonical GA uses \textbf{coding of the parameter set}, instead of the parameters themselves. Usually binary representation is used. Real-coded GA uses real numbers as parameters.
+\item GAs search for a \textbf{population of points}, not a single point. The emphasis is on continous improvement and exploration rather than convergence. Therefore, GAs are slower than traditional iterative approaches.
+\item Objective function information is used to inform the search process. Derivative data is not needed.
+\item GAs use \textbf{stochastic transition rules}, i.e. they are non-deterministic.
+\end{itemize} 
+}
+
+\frame{\frametitle{Some terminology}
+\begin{itemize}
+\item A \textbf{population} of $2n$ to $4n$ candidate solutions is used, where $n$ is the number of variables in the objective function.
+\item Each candidate solution is encoded to a string of binary variables corresponding to \textbf{chromosomes} in genetics. The binary representation (\textbf{genotype}) of a variable is called a \textbf{gene} (section of a chromosome) and its real value (\textbf{phenotype}) is called an \textbf{allele}.
+\item The value of the objective function is called \textbf{fitness}. The string length of the candidate solutions can be adjusted to achieve any desired level of accuracy or a good approximation to the optimal fitness.   
+\end{itemize}
+}
+
+\frame{\frametitle{Basic Canonical Genetic Algorithm}
+\begin{multicols}{2}
+\begin{enumerate}
+\item Evaluation: The fitness values of the candidate solutions are evaluated.
+\item Selection: A new generation is produced, by selecting the fittest individuals from the population using stochastic principles.
+Roulette wheel selection and tournament selection are common approaches. 
+\end{enumerate}
+\columnbreak
+\includegraphics[scale=0.35]{basicga}
+\end{multicols}
+}
+
+\frame{\frametitle{Basic Canonical Genetic Algorithm}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Crossover: Combine parts of two or more parent solutions to create new, possibly better solutions (\textbf{offspring}).
+\end{enumerate}
+\begin{center}
+\includegraphics[scale=0.35]{crossover}
+\end{center}
+}
+
+\frame{\frametitle{Basic Canonical Genetic Algorithm}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Mutation: Candidate solutions are randomly modified according to mutation probability. Modifications are local in nature, i.e. one or more bits are flipped.
+\end{enumerate}
+\vspace{0.5cm}
+New generation: The offspring population created using selection, crossover, and mutation replaces the original parent population. In many implementations \textbf{elitest strategy} is employed, where the best candidate solution is not replaced within a generation.\\
+\vspace{0.2cm}
+Elitest strategy forms the basis of another metaheuristic algorithm: particle swarm optimization.
+}
+
+\frame{\frametitle{Encoding Examples}
+\begin{exampleblock}{Example 1}
+Parameter (Design) vector $X = (x_1, x_2, x_3, x_4)$. Given a candidate solution: $x_1=15, x_2=4, x_3=21, x_4=7$\\
+$X$ can be represented using 5 bits for each parameter: $X = (01111, 00100, 10101, 00111)$
+\end{exampleblock}
+\begin{exampleblock}{Example 2}
+Let $X = (x_1, x_2)$. Given a candidate solution: $x_1=4.87, x_2=5.10$\\
+Assuming we need 2 decimal digits of accuray, we can multiply the real value by 100 and encode in binary.
+$X$ can be represented using 9 bits ($2^9 = 511$) for each parameter: $X = (111100111, 111111111)$
+\end{exampleblock}
+}
+
+\subsection{An Illustrative Example}
+\frame{\frametitle{An Illustrative Example}
+\begin{alertblock}{Problem}
+\begin{equation}
+\text{maximize }
+Y = 800 - 62.83(2D + 0.91D^{-0.2}) \hspace{0.5cm} 0<D<6.3
+\end{equation}
+\end{alertblock}
+Let us assume we need accuracy upto 1 decimal place. We can multiply D by 10 and encode it using 6 bits.\\
+\vspace{0.3cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{\#} & \textbf{Population} & \textbf{Allele} & \textbf{Fitness} & \textbf{Relative Fitness} & \textbf{Count} \\
+\hline
+1 & 000011 & 0.3 & 689.6 & 0.41 & 2 \\
+\hline
+2 & 010100 & 2.0 & 498.9 & 0.29 & 1 \\
+\hline
+3 & 011110 & 3.0 & 377.1 & 0.22 & 1 \\
+\hline
+4 & 110010 & 5.0 & 130.3 & 0.07 & 0 \\
+\hline
+\end{tabular}
+\\ \vspace{0.2cm}
+Average fitness = 423.9
+}
+
+\frame{\frametitle{An Illustrative Example (Contd.)}
+\begin{tabular}{|c||c||c|c|c|c|}
+\hline
+\textbf{Mating Pool} & \textbf{Mate} & \textbf{Crossover} & \textbf{New Popl.} & \textbf{Allele} & \textbf{Fitness} \\
+\hline
+0000 11 & 4 & 4 & 000010 & 0.2 & 696.0 \\
+\hline
+000 011 & 3 & 3 & 000100 & 0.4 & 681.1 \\
+\hline
+010 100 & 2 & 3 & 010011 & 1.9 & 511.0 \\
+\hline
+0111 10 & 1 & 4 & 011111 & 3.1 & 364.9 \\
+\hline
+\end{tabular}
+\\ \vspace{0.2cm}
+Average fitness = 563.3\\ \vspace{0.3cm}
+\textbf{Note:}\\ \vspace{0.1cm}
+A minimization problem can be converted to corresponding maximization problem by transforming the objective function $f(x)$:\\
+\begin{center}
+$1/(1+f(x))$ or $max(f) - f(x)$ 
+\end{center}
+}
+
+\frame{\frametitle{Features of GA}
+\begin{itemize}
+\item Easy to implement, get started
+\item Involves lots of fine tuning for various applications
+\item Easy to parallelize
+\item Can be applied to a wide variety of optimization problems
+\end{itemize}
+}
+
+\section{Solving unconstained BQP problem using GA} 
+
+\subsection{Hybrid GA for BQP}
+\frame{\frametitle{Canonical GA algorithm for BQP}
+We want to maximize:\\ \vspace{0.3cm}
+$f(x) = x^tQx = \sum\limits_{i=1}^n \sum\limits_{j=1}^n q_{ij}x_ix_j, \hspace{1cm} x_i \in  \{0,1\}  \forall  i$\\ \vspace{0.3cm}
+
+We present a hybrid genetic algorithm incorporating simple local search to solve the BQP problem.\\ \vspace{0.2cm}
+While the canonical GA is able to find optimum/best solutions for small problem instances, the hybrid genetic local search (GLS) algorithm is required to find near optimum solutions for large instances. 
+}
+
+\frame{\frametitle{Genetic Local Search}
+\begin{block}{Algorithm GLS}
+\includegraphics[scale=0.4]{gls}
+\end{block}
+}
+
+\frame{\frametitle{Crossover and Local Search}
+\textbf{Crossover Operator :}\\ \vspace{0.2cm}
+\includegraphics[scale=0.45]{glscrossover}\\ \vspace{0.2cm}
+\textbf{Local Search :}\\ \vspace{0.2cm}
+A new solution with higher fitness in the neighbourhood of the current solution is searched. The neighbourhood of the current solution is defined by the set of all solutions with \textbf{hamming distance} of one, i.e. all solutions that can be reached by flipping a single bit.
+}
+
+\frame{\frametitle{Local Search}
+We search for a solution within hamming distance of one with the highest associated gain in fitness $g = f_{new} - f_{old}$. The gain $g_k$ of flipping bit $k$ in the current solution can be calculated in linear time using the formula:\\
+\begin{equation}
+g_k = q_{kk}(\bar{x_k} - x_k) + 2\sum\limits_{i=1,i \ne k}^n q_{ik}x_{i}(\bar{x_k} - x_k), \text{ where } \bar{x_k} = 1-x_k
+\end{equation}  
+\includegraphics[scale=0.4]{localsearch}
+}
+
+\subsection{OR-Library}
+\frame{\frametitle{OR-Library}
+OR-Library is a collection of test data sets for a variety of Operations Research (OR) problems originally described in J. E. Beasley, "OR-Library: distributing test problems by electronic mail", Journal of the Operational Research Society 41(11) (1990) pp1069-1072.
+\\ \vspace{0.2cm}
+We applied the GLS algorithm to large unconstrained BQP problems of size 500, 1000 and 2500 taken from OR-Library. The average number of generations (gen), fitness of best solution found (best) and the average fitness of the final solution over 30 trials (avg) were recorded.
+}
+
+\subsection{Results}
+\frame{\frametitle{Results}
+\begin{center}
+\includegraphics[scale=0.5]{results1}
+\end{center}
+}
+
+\frame{\frametitle{Results}
+\begin{center}
+\includegraphics[scale=0.5]{results2}
+\end{center}
+}
+
+\frame{\frametitle{Results}
+\begin{center}
+\includegraphics[scale=0.5]{results3}
+\end{center}
+\vspace{0.1cm}
+We were able to find the optimal solution for 14 out of 30 problems.\\
+For 4 problems, other metaheuristic algorithms like simulated annealing and tabu search yeild better results.  
+}
+
+\subsection{Current Work}
+\frame{\frametitle{Current Work}
+I am working on the following this summer:
+\begin{itemize}
+\item Solve the unconstrained BQP problem using other metaheuristic algorithms and compare results.
+\item Develop novel hybrid algorithms for solving this problem.
+\item Solve the constrained BQP problem.
+\item Look at potential new applications.
+\end{itemize}
+}
+
+\frame{\frametitle{Further reading}
+\begin{itemize}
+\item Douiri, S. M. and Elbernoussi S. An unconstrained binary quadratic programming for the maximum independent set problem.
+\item Katayama, K., Tani, M. and Narihisa, H. Solving Large Binary Quadratic Programming Problems by Effective Genetic Local Search Algorithm.
+\item Merz, P. and Freisleben, B. Genetic Algorithms for Binary Quadratic Programming.
+\item Sastry, K., Goldberg, D. and Kendall, G. Genetic Algorithms.
+\item Shylo, V. P. and Shylo O. V. Solving unconstrained binary quadratic programming problem by global equilibrium search.
+\end{itemize}
+}
+
+\end{document}

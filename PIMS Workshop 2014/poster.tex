@@ -1,0 +1,387 @@
+\documentclass[a0paper,landscape,final]{baposter}
+
+\usepackage{times}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{pgfbaselayers}
+\usepackage{enumitem}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usepackage{helvet}
+\usepackage{palatino}
+
+\selectcolormodel{cmyk}
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Some math symbols used in the text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Vector}[1]{\Matrix{#1}}
+\newcommand*{\SET}[1]  {\ensuremath{\mathcal{#1}}}
+\newcommand*{\MAT}[1]  {\ensuremath{\mathbf{#1}}}
+\newcommand*{\VEC}[1]  {\ensuremath{\bm{#1}}}
+\newcommand*{\CONST}[1]{\ensuremath{\mathit{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Multicol Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\columnsep}{0.7em}
+\setlength{\columnseprule}{0mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Save space in lists. Use this after the opening of the list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Beginning of Poster
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster Starts}
+
+\background{
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw (current page.north west)+(-2em,-0em) node[anchor=north west]
+			{\hspace{-2em}\includegraphics[height=1.1\textheight {silhouettes_background}};
+	\end{tikzpicture}
+}
+
+\definecolor{silver}{cmyk}{0,0,0,0.3}
+\definecolor{yellow}{cmyk}{0,0,0.9,0.0}
+\definecolor{reddishyellow}{cmyk}{0,0.22,1.0,0.0}
+\definecolor{black}{cmyk}{0,0,0.0,1.0}
+\definecolor{darkYellow}{cmyk}{0,0,1.0,0.5}
+\definecolor{darkSilver}{cmyk}{0,0,0,0.1}
+\definecolor{lightyellow}{cmyk}{0,0,0.3,0.0}
+\definecolor{lighteryellow}{cmyk}{0,0,0.1,0.0}
+\definecolor{lighteryellow}{cmyk}{0,0,0.1,0.0}
+\definecolor{lightestyellow}{cmyk}{0,0,0.05,0.0}
+\definecolor{lightblue}{cmyk}{0.83,0.24,0,0.12}
+\definecolor{darkblue}{cmyk}{1.0,0.90,0.13,0.61}
+
+% Draw a video
+\newlength{\FSZ}
+\newcommand{\drawvideo}[3]{
+	\noindent\pgfmathsetlength{\FSZ}{\linewidth/#2}
+   	\begin{tikzpicture}[outer sep=0pt,inner sep=0pt,x=\FSZ,y=\FSZ]
+   	\draw[color=lightblue!50!black] (0,0) node[outer sep=0pt,inner sep=0pt,text width=\linewidth,minimum height=0](video){\noindent#3};
+   	\path[fill=lightblue!50!black,line width=0pt](video.north west)rectangle([yshift=\FSZ]video.north east) 
+    \foreach \x in {1,2,...,#2} {
+      {[rounded corners=0.6] ($(video.north west)+(-0.7,0.8)+(\x,0)$) rectangle +(0.4,-0.6)}
+    };
+   \path [fill=lightblue!50!black,line width=0pt]([yshift=-1\FSZ]video.south west)rectangle(video.south east) 
+    \foreach \x in {1,2,...,#2} {
+      {[rounded corners=0.6] ($(video.south west)+(-0.7,-0.2)+(\x,0)$) rectangle +(0.4,-0.6)}
+    };
+   \end{tikzpicture}
+}
+
+
+\begin{poster}{
+  % Show grid to help with alignment
+  grid=false,
+  % Column spacing
+  colspacing=1em,
+  % Color style
+  bgColorOne=white,
+  bgColorTwo=white,
+  borderColor=lightblue,
+  headerColorOne=darkblue,
+  headerColorTwo=lightblue,
+  headerFontColor=white,
+  boxColorOne=white,
+  boxColorTwo=lightblue,
+  % Format of textbox
+  textborder=roundedleft,
+  % Format of text header
+  eyecatcher=false,
+  headerborder=closed,
+  headerheight=0.1\textheight,
+  headershape=roundedright,
+  headershade=shadelr,
+  headerfont=\Large\bf\textsc,
+  boxshade=plain,
+  background=plain,
+  linewidth=2pt
+  }
+  % Eye Catcher
+  {}
+  % Title
+  {\bf\textsc{Using CHASTE (Oxford) to Explore Tissue Dynamics}}
+  % Authors
+  {\textsc{Dhananjay Bhaskar, Leah Keshet\hspace{2em}Department of Mathematics\hspace{2em}University of British Columbia}\vspace{0.2em}}
+  % University logo
+  {
+  {\begin{minipage}{16em}
+	\hfill
+	\includegraphics[height=5em]{ChasteLogo}\hspace*{15pt}
+	\includegraphics[height=5em]{pimslogo}\hspace*{15pt}
+	\includegraphics[height=5em]{ubclogo}
+  \end{minipage}}
+  }
+
+  \tikzstyle{light shaded}=[top color=baposterBGtwo!30!white,bottom color=baposterBGone!30!white,shading=axis,shading angle=30]
+
+  % Width of left inset image
+  \newlength{\leftimgwidth}
+  \setlength{\leftimgwidth}{0.78em+8.0em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Now define the boxes that make up the poster
+%%%---------------------------------------------------------------------------
+%%% Each box has a name and can be placed absolutely or relatively.
+%%% The only inconvenience is that you can only specify a relative position 
+%%% towards an already declared box. So if you have a box attached to the 
+%%% bottom, one to the top and a third one which should be in between, you 
+%%% have to specify the top and bottom boxes before you specify the middle 
+%%% box.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+   
+% A coloured circle useful as a bullet
+\newcommand{\colouredcircle}{
+      \tikz{
+      	\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); 
+      	\draw[draw=black,fill=lightblue,line width=0.03em] (0,0) circle(0.18em);
+      }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{CHASTE}{name=chasteintro,column=0,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\textbf{Cancer, Heart and Soft Tissue Environment}
+	\begin{itemize}[leftmargin=0.5cm,itemsep=2pt]
+	\item[\colouredcircle] Extensible, general purpose open-source simulation framework: \textcolor{darkblue}{www.cs.ox.ac.uk/chaste/}
+	\item[\colouredcircle] Applications in cardiac electrophysiology, systems biology and cell-based modeling
+	\item[\colouredcircle] Research focus on exploring 2D tissue growth, rearrangement, morphogenesis
+	\item[\colouredcircle] Useful for comparing distinct simulation paradigms
+	\end{itemize}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Developing Simulations}{name=simulation,column=0,below=chasteintro}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Multiscale models simulate processes on two or more biological scales:\\
+	\vspace{-1.2em}
+	\begin{center}
+		\includegraphics[scale=0.175]{scales_box}
+	\end{center}
+	\vspace{-1.4em}
+	\hfill {\scriptsize \textcolor{silver}{Credit:\thinspace{BEeSy, Grenoble, France}}}
+	\vspace{-1.6em}
+    \begin{multicols}{2}
+		\begin{enumerate}[leftmargin=0.5cm,itemsep=1.0pt]
+			\item \textbf{Subcellular:} mitosis, cell death, cell cycle models
+			\item \textbf{Cell:} inter - cellular forces, cell geometry
+			\item \textbf{Tissue:} growth factors, diffusion, domain boundaries 
+		\end{enumerate}
+	\columnbreak
+		\null \vfill
+		\includegraphics[scale=0.18]{chastesim}  
+		\vfill \null
+	\end{multicols}  
+	\vspace{-2.0em}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{References}{name=refs,column=0,below=simulation,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \smaller
+    \vspace{-0.4em}
+    \bibliographystyle{ieee}
+    \renewcommand{\section}[2]{\vskip 0.05em}
+    
+	\begin{thebibliography}{1}\itemsep=-0.01em
+	
+      \setlength{\baselineskip}{0.4em}
+      
+      \bibitem{fletcher:vertexdynamics}
+     	A.~Fletcher, J.~Osborne, et al. 
+		\newblock {I}mplementing {V}ertex {D}ynamics {M}odels of {C}ell {P}opulation in {B}iology within a {C}onsistent {C}omputational {F}ramework. 
+      	\newblock {\em Progress in Biophysics and Molecular Biology, 113:299-326, 2013}
+      	
+      \bibitem{vossbohme:cpm}
+	 	A.~Voss-B\"{o}hme.
+	 	\newblock {M}ulti-{S}cale {M}odeling in {M}orphogenesis: A {C}ritical {A}nalysis of the {C}ellular {P}otts {M}odel.
+	 	\newblock {\em PLoS ONE, 7(9): e42852, 2012}
+	 	
+	 \bibitem{chaste:opensourcelibrary}
+	 	G.~Mirams, C.~Arthurs, et al.
+	 	\newblock {C}haste: An {O}pen {S}ource C++ {L}ibrary for {C}omputational {P}hysiology and {B}iology.
+	 	\newblock {\em PLoS Computational Biology, 9(3): e1002970, 2013}
+	 	
+	 \bibitem{pathmanathan:discretetissuemodel}
+	  	P.~Pathmanathan, J.~Cooper, et al.
+ 		\newblock A {C}omputational {S}tudy of {D}iscrete {M}echanical {T}issue {M}odels.
+ 		\newblock {\em Physical Biology, 6(3), 2009}
+      
+      \bibitem{nagai:nagaihondamodel}
+      	T.~Nagai and H.~Honda.
+		\newblock A {D}ynamic {C}ell {M}odel for the {F}ormation of {E}pithelial {T}issues.
+		\newblock {\em Philosophical Magazine, 81:699-719}
+
+	\end{thebibliography}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{On-Lattice Models}{name=onlattice,column=1,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\textbf{Cellular Automata:}\\
+	\begin{minipage}{0.7\linewidth}
+		\begin{itemize}[leftmargin=0.5cm]\compresslist
+		\item[\colouredcircle] Fixed lattice, cells divide into neighbouring lattice sites
+		\item[\colouredcircle] Simple implementation, computationally inexpensive
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.2\linewidth}
+		\includegraphics[scale=0.30]{automata}  
+	\end{minipage} 
+	
+	\textbf{Cellular Potts Model:}\\
+	\begin{minipage}{0.7\linewidth}
+		\vspace{0.3cm}
+		\begin{itemize}[leftmargin=0.5cm]\compresslist
+		\item[\colouredcircle] Cells are composed of collection of lattice sites
+		\item[\colouredcircle] Cell shape can deform (non-viscous)
+		\item[\colouredcircle] Sites are added or removed in Monte - Carlo updates to minimize free energy function:
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.2\linewidth}
+		\includegraphics[scale=0.15]{potts}  
+	\end{minipage}
+	\begin{displaymath}
+	\smaller
+	H = \sum_{\text{cells:}w}\lambda[A_{w} - A_{\text{target}}]^2 + \sum_{\text{interfaces:$\{x,y\}$}}J(x,y) + H_{0}
+	\end{displaymath}
+	\small
+	$A_{w}$ : area of cell $w$,
+	$J$ : cell-cell adhesion energy
+}
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Off-Lattice Models}{name=offlatice,column=1,below=onlattice,span=1,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\textbf{Cell Centre Model:}\\
+	\begin{minipage}{0.7\linewidth}
+		\vspace{0.3cm}
+		\begin{itemize}[leftmargin=0.5cm]\compresslist
+		\item[\colouredcircle] Cells are points in space
+		\item[\colouredcircle] Forces between centres modelled as overdamped springs:\\
+		$\smaller \gamma \dfrac{dr_{i}}{dt} = \sum_{j} F_{ij} \dfrac{r_{i} - r_{j}}{\|r_{i} - r_{j}\|}$\\
+		\item[\colouredcircle] No direct control over cell size and cell - cell adhesion
+		\item[\colouredcircle] Cell connectivity:\\
+			\smaller
+			\begin{itemize}[leftmargin=0.3cm]\compresslist
+			\vspace{-0.4cm}
+			\item Overlapping Spheres Model
+			\item Voronoi Tessellation
+			\end{itemize}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.2\linewidth}
+		\includegraphics[scale=0.15]{cellcentre}  
+	\end{minipage}
+	
+	\vspace{0.3cm}
+	
+	\textbf{Vertex Dynamics Model:}\\
+	\begin{minipage}{0.7\linewidth}
+		\vspace{0.3cm}
+		\begin{itemize}[leftmargin=0.5cm]\compresslist
+		\item[\colouredcircle] Cells represented as polygons whose vertices are free to move
+		\item[\colouredcircle] Good model for epithelia that exhibit regular shape
+		\item[\colouredcircle] Modelling force on each vertex:
+			\smaller
+			\begin{itemize}[leftmargin=0.3cm]\compresslist
+			\item Explicit: Weliky \& Oster (1990)
+			\item Potential gradient: Nagai \& Honda (2001)
+			\end{itemize}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.2\linewidth}
+		\includegraphics[scale=0.15]{vertexdynamics}  
+	\end{minipage}  
+	\vspace{-0.2cm}
+	\begin{eqnarray*}
+	\smaller
+	\gamma\dfrac{dr_{i}}{dt} = - \nabla_{i} U &=& -\nabla_{i}\sum_{\text{cells:}w}(\lambda(A_{w} - A_{\text{target}})^2 \\[-0.08cm]
+	&+& \beta(C_{w} - C_{\text{target}})^2 + U_{\text{adhesion}})
+	\end{eqnarray*}
+}
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Tissue Dynamics}{name=results,column=2,span=2,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{0.2cm}
+
+	A comparison of cell centre and vertex dynamics models with stochastic, area dependent cell division. We observe contact inhibition due to pressure exerted by neighbouring cells in a confined domain (non-dividing cells depicted by blue labelling):\\
+   
+   \drawvideo{5}{40}{
+      	\includegraphics[width=0.18\linewidth]{contactin1}
+        \includegraphics[width=0.18\linewidth]{contactin2}
+        \includegraphics[width=0.18\linewidth]{contactin3}
+        \includegraphics[width=0.18\linewidth]{contactin4}
+        \includegraphics[width=0.18\linewidth]{contactin5}
+        
+        \includegraphics[width=0.18\linewidth]{vertexin1}
+        \includegraphics[width=0.18\linewidth]{vertexin2}
+        \includegraphics[width=0.18\linewidth]{vertexin3}
+        \includegraphics[width=0.18\linewidth]{vertexin4}
+        \includegraphics[width=0.18\linewidth]{vertexin5}
+  }
+  \\[-0.6cm]
+   
+  Progeny of an uninhibited stem cell (turquoise) dominate the monolayer in the absence of a mechanism to arrest cell division at high density:\\
+   
+   \drawvideo{5}{40}{
+      	\includegraphics[width=0.18\linewidth]{monoclonal1}
+        \includegraphics[width=0.18\linewidth]{monoclonal2}
+        \includegraphics[width=0.18\linewidth]{monoclonal3}
+        \includegraphics[width=0.18\linewidth]{monoclonal4}
+        \includegraphics[width=0.18\linewidth]{monoclonal5}
+  }
+  \\[-0.6cm]
+  
+  Differential cell adhesion drives cell sorting by controlling cell-cell contact formation. In the following simulation based on vertex dynamics model, labelled cells (in blue) tend to clump together to minimize adhesion energy $(U_{\text{adhesion}})$ of the system:\\
+  
+  \drawvideo{5}{40}{
+      	\includegraphics[width=0.18\linewidth]{vertexad1}
+        \includegraphics[width=0.18\linewidth]{vertexad2}
+        \includegraphics[width=0.18\linewidth]{vertexad3}
+        \includegraphics[width=0.18\linewidth]{vertexad4}
+        \includegraphics[width=0.18\linewidth]{vertexad5}
+  }	
+}
+        %\includegraphics[width=0.18\linewidth]{potts1}
+        %\includegraphics[width=0.18\linewidth]{potts2}
+        %\includegraphics[width=0.18\linewidth]{potts3}
+        %\includegraphics[width=0.18\linewidth]{potts4}
+        %\includegraphics[width=0.18\linewidth]{potts5}
+  
+\end{poster}
+
+\end{document}

@@ -1,0 +1,488 @@
+% LaTeX presentation for CUMC 2014
+% Author: Dhananjay Bhaskar <dbhaskar92@gmail.com>
+
+\documentclass{beamer}
+
+\usetheme{Rochester}
+\usecolortheme{dolphin}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{amsfonts} 
+
+\usepackage{media9}
+\newcommand{\includemovie}[3]{
+	\includemedia[
+		width=#1,height=#2,
+		activate=pagevisible,
+		deactivate=pageclose,
+		addresource=#3,
+		flashvars={
+			src=#3 			% same path as in addresource!
+			&autoPlay=false % if = true, automatically starts playback after activation
+			&loop=false 	% if loop=true, media is played in a loop
+			&controlBarAutoHideTimeout=1 	% time span before auto-hide
+		}
+	]{}{StrobeMediaPlayback.swf}
+}
+
+\setbeamertemplate{navigation symbols}{}	% remove navigation symbols
+\setbeamertemplate{footline}[page number]	% add page numbers
+
+\begin{document}
+
+\title{Mathematical Models of Epithelial Monolayer}
+   
+\author[Bhaskar,Keshet]{%
+  Dhananjay Bhaskar\inst{1} \and
+  Dr. Leah Keshet (Supervisor)\inst{2}}
+
+\institute{
+  \inst{1}%
+  Combined Major in Computer Science and Mathematics\\
+  University of British Columbia
+  \and
+  \inst{2}%
+  Department of Mathematics\\
+  University of British Columbia}
+  
+\date[CUMC 2014]{Canadian Undergraduate Mathematics Conference\\
+	Carleton University, Ottawa, 2014}
+
+\frame{\titlepage} 
+
+\frame{\frametitle{Outline}\tableofcontents} 
+
+
+\section{Multiscale Modeling and CHASTE} 
+
+\subsection{Biological Background and Motivation}
+
+\frame{\frametitle{Biological Background and Motivation}
+\begin{minipage}{0.5\linewidth}  
+\begin{itemize}
+\item \textbf{Epithelium}: layers of cells that line hollow organs and glands in animal tissue\\
+\item Epithelial cells are arranged in single or multiple layers, depending on the organ and location\\
+\item We are interested in modeling \textbf{epithelial monolayers} to simulate biological processes like cell migration, monoclonal conversion, wound healing, etc.
+\end{itemize}
+\end{minipage}
+\hspace{5mm}
+\begin{minipage}{0.4\linewidth}  
+	\begin{figure}[h!]
+  	\centering
+  	\includemovie{150pt}{120pt}{videos/migratinghumankidney.mp4}
+    \caption{Migrating human kidney epithelial cells}
+	\end{figure}
+\end{minipage}
+} 
+
+\frame{\frametitle{Multiscale Modeling in Biology}
+\begin{figure}[h!]
+  	\centering
+    \includegraphics[scale=0.5]{images/scales}
+    \caption{Multiple possible models at each scale}
+\end{figure}
+\begin{itemize}
+\item Processes on each biological scale depend on other scales\\
+\item Cells interact with each other and the environment to influence tissue level\\
+\item Models must incorporate features from multiple scales
+\end{itemize}
+}
+
+\subsection{Cancer, Heart and Soft Tissue Environment}
+
+\frame{\frametitle{Cancer, Heart and Soft Tissue Environment}
+\begin{minipage}{0.7\linewidth}   
+	\begin{itemize}
+	\item Extensible, general purpose simulation framework
+	\item Development team based in the Computational Biology Group at University of Oxford
+	\item Written in C++ using Agile methodology
+	\item Useful for solving ODE, PDE and linear systems arising from biological and physiological models
+	\item Research focus on cardiac electrophysiology, systems biology and cell-based modeling (soft tissue mechanics)
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+	\includegraphics[scale=0.4]{images/ChasteLogo}      
+\end{minipage}
+}
+
+
+\frame{\frametitle{CHASTE Simulation Structure}
+\begin{minipage}{0.5\linewidth}
+	\begin{itemize}
+	\item \textbf{Subcellular level:} cell division, cell death, cell cycle models \\ \vspace{.1cm}
+	\item \textbf{Cell level:} different representations of cell, inter-cellular forces \\ \vspace{.1cm}
+	\item \textbf{Tissue level:} external factors, reaction diffusion PDEs
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+	\includegraphics[scale=0.3]{images/chastesim}  
+\end{minipage}  
+}
+
+
+\section{Modeling Individual Cells}
+
+\frame{\frametitle{Modeling Individual Cells}
+\begin{exampleblock}{On-lattice models}
+Cells occupy discretized positions in a lattice (grid). Examples:
+	\begin{itemize}
+	\item Cellular Automata
+	\item Cellular Potts
+	\end{itemize}
+\end{exampleblock}
+
+\begin{exampleblock}{Off-lattice models}
+Cells can move freely in space in according to interactions with neighbouring cells. Examples:
+	\begin{itemize}
+	\item Cell centre (node-based) model
+	\item Vertex dynamics model
+	\end{itemize}
+\end{exampleblock}
+}
+
+\subsection{Cellular Automata}
+\frame{\frametitle{Cellular Automata}
+\begin{minipage}{0.7\linewidth}
+	\begin{itemize}
+	\item Fixed lattice, cells divide into neighbouring lattice sites\\ \vspace{0.2cm}
+	\item Simple implementation, computationally inexpensive\\ \vspace{0.2cm}
+	\item \textbf{Disadvantages:} 
+		\begin{itemize}
+		\item Cells have fixed size, discrete positions\\ \vspace{0.1cm}
+		\item Anistropic evolution depending on initial configuration
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+	\includegraphics[scale=0.5]{images/automata}  
+\end{minipage}  
+}
+
+\subsection{Cellular Potts Model}
+\frame{\frametitle{Cellular Potts Model}
+\begin{minipage}{0.7\linewidth}
+	\begin{itemize}
+	\item Cells are composed of a collection of lattice sites\\ \vspace{0.1cm}
+	\item Additional sites are included or removed to minimize an energy function\\ \vspace{0.1cm}
+	\item Monte Carlo simulations to update cells\\ \vspace{0.1cm}
+	\item Flexible representation of cell shape\\ \vspace{0.1cm}
+	\item \textbf{Disadvantages:} 
+		\begin{itemize}
+		\item Difficulty in capturing viscuous deformations\\ \vspace{0.1cm}
+		\item Additional constraints required to prevent cells sliding past each other
+		\end{itemize} 
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+	\includegraphics[scale=0.25]{images/potts}  
+\end{minipage}  
+}
+
+\frame{\frametitle{Cellular Potts Simulation - Demo}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/pottsbasedmonolayer.mp4}
+\end{figure}
+}
+
+\frame{\frametitle{CPM - Mathematical Notation}
+$S$ - set of lattice sites\\
+$W$ - set of cell indices, $W = \{0,1,...,n\} \quad n \in \mathbb{N}$\\
+Let $\tau : W \to \Lambda$ be a mapping of cell indices to cell type.\\
+CPM assigns value $\eta(x) \in W \quad \forall x \in S$\\ \vspace{0.1cm}
+\begin{center}
+	\includegraphics[scale=4.0]{images/cpm}  
+\end{center}
+Given a configuration $\eta$, a cell in CPM is set of all lattice sites with the same cell index.\\
+Cell $w := \{x \in S : \eta(x)=w\} \quad w \in W$ \textbackslash $\{0\}$
+}
+
+\frame{\frametitle{CPM - Cell Volume and Surface Area}
+Cell with index $w$ has volume (area):\\
+\begin{equation}
+V_{w}(\eta) = \sum_{x \in S} \delta(\eta(x),w)
+\end{equation}
+Surface area (perimeter) of cell with index $w$:\\
+\begin{equation}
+S_{w}(\eta) = 1/2 \sum_{\text{interfaces$\{x,y\}$}} \delta(\eta(x),w)
+\end{equation}
+Cellular Potts simulation is a Markov chain over the set of possible configurations $\eta$ where transition probabilities
+are specified with the help of a hamiltonian (energy).
+}
+
+\frame{\frametitle{Typical Structure of CPM Hamiltonian}
+\begin{equation}
+H = H_{V} + H_{I} + H_{0}
+\end{equation}
+
+Volume constrain term:
+\begin{equation}
+H_{V}(\eta) = \sum_{w \in W} \lambda_{\tau(w)} [V_{w}(\eta) - v_{\tau(w)}]^2
+\end{equation}
+
+Surface interaction/adhesion term:
+\begin{equation}
+H_{I}(\eta) = \sum_{\text{interfaces$\{x,y\}$}} J(\tau(\eta(x)),\tau(\eta(y)))
+\end{equation}
+
+$J : \Lambda \times \Lambda \to \mathbb{R}$ is a symmetric matrix that specifies cell-cell adhesion between all cell types and the medium
+}
+
+\frame{\frametitle{Cellular Potts Simulation}
+\begin{block}{Metropolis Algorithm}
+\begin{enumerate}
+\item Start with initial configuration $\eta$
+\item Pick a target site $x \in S$ and a neighbour $y$ of $x$ uniformly
+\item Calculate energy gain $\Delta H_{x}^{y} = H(\eta_{x}^{y}) - H(\eta)$
+\item If $\Delta H_{x}^{y} < h$, accept new configuration
+\item Otherwise, accept with probability:
+\begin{equation}
+P(\eta = \eta_{x}^{y}) = e^{-(\Delta H_{x}^{y} - h)/T}
+\end{equation}
+\end{enumerate}
+\end{block}
+}
+
+\subsection{Cell Centre Model}
+\frame{\frametitle{Cell Centre Model}
+\begin{minipage}{0.7\linewidth}
+	\begin{itemize}
+	\item Represent cells as points in space\\ \vspace{0.1cm}
+	\item Forces between centres modelled as overdamped springs:\\
+	$\gamma \dfrac{dr_{i}}{dt} = \sum_{j} F_{ij} \dfrac{r_{i} - r_{j}}{\|r_{i} - r_{j}\|}$\\
+	\item Cell connectivity:\\
+		\begin{itemize}
+		\item Overlapping Spheres Model (node-based)
+		\item Voronoi Tessellation (mesh-based)
+		\end{itemize}
+	\item Smooth motion\\ \vspace{0.1cm}
+	\item No direct control of cell size and cell-cell interactions
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+	\includegraphics[scale=0.25]{images/cellcentre}  
+\end{minipage}  
+}
+
+\frame{\frametitle{Node Based Model - Demo}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/nodebasedmonolayer.mp4}
+\end{figure}
+}
+
+\subsection{Vertex Dynamics Model}
+\frame{\frametitle{Vertex Dynamics Model}
+\begin{minipage}{0.7\linewidth}
+	\begin{itemize}
+	\item Cells represented as polygons whose vertices are free to move\\ \vspace{0.1cm}
+	\item Vertex motion is overdamped (ignoring inertia):\\
+	$\eta_{i} \dfrac{dr_{i}}{dt} = F_{i}(t)$\\
+	\item Modelling of force on vertex:
+		\begin{itemize}
+		\item Weliky and Oster (1990, explicit)
+		\item Nagai and Honda (2001, potential-based)
+		\end{itemize}
+	\item Control over cell size and cell-cell adhesion/interactions
+	\item Good model for epithelia that exhibit regular shape
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+	\includegraphics[scale=0.25]{images/vertexdynamics}  
+\end{minipage}  
+}
+
+\frame{\frametitle{Weliky and Oster Model}
+Let $m_{i}(t)$ be the number of elements containing vertex $i$ at time $t$, then the total force acting on the vertex, 
+$F_{i}(t)$ is given by
+
+\begin{equation}
+\mathbf{F_{i}} = \sum_{k=1}^{m_{i}} \mathbf{f_{k}} = \sum_{k=1}^{m_{i}} [\mathbf{p_{i}^{k}} + \mathbf{t_{il}^{k}} + \mathbf{t_{ir}^{k}}]
+\end{equation}
+\begin{center}
+\includegraphics[scale=0.25]{images/weliky}
+\end{center}
+
+Where cytocortical pressure $\mathbf{p_{i}^{k}} = \dfrac{\rho \mathbf{\hat{p_{i}^{k}}}}{A_{k}}$\\
+and membrane tension $\mathbf{t_{i}^{k}} = \kappa C_{k} \mathbf{\hat{t_{i}^{k}}}$
+}
+
+\frame{\frametitle{Nagai and Honda Model}
+Model potential taking into account the cell's limited ability to undergo deformations, volumetric changes, etc. due to adhesion to 
+other cells. The authors define free energy (work function) of the system and use it to derive force acting on each vertex.
+\begin{equation}
+U = U_{D} + U_{S} + U_{A} = \sum_{k=1}^{N} (U_{D}^{k} + U_{S}^{k} + U_{A}^{k}) 
+\end{equation}
+
+The deformation energy term $U_{D}^{k}$ ensures each cell attains its target volume:
+$U_{D}^{k} = \lambda (A_{k} - A_{0_{K}})^2$\\ \vspace{0.2cm}
+
+Assume cell $k$ has $n_{k}$ vertices $ \{(x_{i},y_{j})\}_{j=0}^{n_{k}-1}$, then\\
+$A_{k} = 1/2 |\sum_{j=0}^{n_{k}-1} (x_{j}y_{j+1} - x_{j+1}y_{j}) |$
+}
+
+\frame{\frametitle{Nagai and Honda Model}
+The membrane surface energy $U_{S}^{k}$ aims to conserve cell membrane length and drives each cell $k$ to a circular shape.\\ 
+\begin{center}
+$U_{S}^{k} = \beta (C_{k} - C_{0_{K}})^2$
+\end{center}
+The target perimeter $C_{0_{K}}$ is the circumference of a circular cell of area $A_{0_{K}}$: $C_{0_{K}} = 2 \sqrt{\pi A_{0_{K}}}$ \\
+\vspace{0.2cm}
+The cell-cell adhesion energy $U_{A}^{k}$ represents the free energy associated with bonds between each cell $k$ and its neighbours:\\
+\begin{center}
+$U_{A}^{k} = \sum_{j=0}^{n_{k}-1} \gamma_{k,j} d_{k,j}$
+\end{center}
+Where $\gamma_{k,j}$ is a positive constant dependent on the cell types in contact and $d_{k,j}$ is the distance between the $j^{th}$ vertex of cell $k$ and the next in an anticlockwise direction.
+}
+
+\frame{\frametitle{Nagai and Honda Model}
+The gradient of free energy is assumed to exert a force on each vertex of the monolayer:\\
+$F_{i} = - \nabla_{i} U = - \nabla_{i} \sum_{k \in \mathcal{N}_{i}} (U_{D}^{k} + U_{S}^{k} + U_{A}^{k})$\\ \vspace{0.2cm}
+
+\begin{block}{Numerical Implementation}
+\begin{enumerate}
+\item Update cell properties from any subcellular model
+\item Implement mesh restructuring operations
+\item Loop over all cells, calculate force $F_{i}$ for each vertex $i$
+\item Update the vertex positions simultaneously using Forward Euler scheme:
+\begin{equation}
+\mathbf{r_{i}}(t + \Delta t) = \mathbf{r_{i}}(t) + \dfrac{\Delta t}{\eta_{i}} \mathbf{F_{i}}(t)
+\end{equation}
+\end{enumerate}
+\end{block}
+}
+
+\frame{\frametitle{Vertex Dynamics Model - Demo}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/vertexbasedmonolayer.mp4}
+\end{figure}
+}
+
+\frame{\frametitle{Variations of Vertex Dynamics Model}
+\begin{itemize}
+\item Active cell migration:
+\begin{equation}
+\eta_{i} \dfrac{d\mathbf{r_{i}}}{dt} = \mathbf{F_{i}}(t) + \alpha \hat{e_{y}}
+\end{equation}
+\vspace{0.2cm}
+\item Random motion of vertices:
+\begin{equation}
+\eta_{i} \dfrac{d\mathbf{r_{i}}}{dt} = \mathbf{F_{i}} + \mathbf{F_{i}^{\text{random}}}
+\end{equation}
+\end{itemize}
+}
+
+
+%\section{Tissue and Sub-cellular Models} 
+
+%\subsection{Subcellular Processes - Cell Cycle Models}
+%\frame{\frametitle{Subcellular Processes - Cell Cycle Models}
+%\begin{itemize}
+%\item Subcellular processes determine how cells grow, divide and die\\
+%\vspace{0.2cm}
+%\item Simple rule-based models
+%	\begin{itemize}
+%	\item Deterministic Models: \textit{FixedDurationCellCycleModel}\\ \vspace{0.1cm}
+%	\item Stochastic Models: \textit{StochasticCellCycleModel}, \textit{StochasticAreaDependentCellCycleModel}
+%	\end{itemize}
+%\vspace{0.2cm}
+%\item Model cell cycle and other metabolic pathways
+%	\begin{itemize}
+%	\item System of non-linear ODEs\\ \vspace{0.1cm}
+%	\item Coupled to extracellular concentrations of nutrients, inhibitors, signalling proteins etc.\\ \vspace{0.1cm}
+%	\item Determines cell division, cell-cell adhesion, cell size/shape, etc.
+%	\end{itemize}
+%\end{itemize}
+%}
+
+\subsection{Modeling Tissue-Level Processes}
+\frame{\frametitle{Modeling Tissue-Level Processes}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+\item Geometric constraints (boundary conditions)\\ \vspace{0.2cm}
+\item Imposed gradients\\ \vspace{0.2cm}
+\item Vascular networks (obstructions)\\ \vspace{0.2cm}
+\item Field equations:
+	\begin{itemize}
+	\item Reaction-diffusion PDEs\\ \vspace{0.1cm}
+	\item Cells act as sinks/sources
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\hspace{0.2cm}
+\begin{minipage}{0.4\linewidth}
+	\begin{figure}[h!]
+  	\centering
+    \includegraphics[scale=0.2]{images/crypt}
+    \caption{Gradient of Wnt signalling factors across crypt axis}
+	\end{figure} 
+\end{minipage}  
+}
+
+\frame{\frametitle{Cell Killers and Tissue Boundary}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/vertexperiodicwithkiller.mp4}
+\end{figure}
+}
+
+
+\section{Exploring Tissue Dynamics}
+
+\subsection{Contact Inhibition}
+\frame{\frametitle{Contact Inhibition}
+\begin{minipage}[t]{0.5\linewidth}  
+\begin{flushleft}
+	\begin{figure}[h!]
+  		\centering
+  		\includemovie{150pt}{150pt}{videos/nodecontactinhibitbox.mp4}
+	\end{figure}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\begin{flushright}
+	\begin{figure}[h!]
+  	\centering
+  	\includemovie{150pt}{150pt}{videos/vertexcontactinhibitbox.mp4}
+\end{figure}
+\end{flushright}
+\end{minipage}
+}
+
+\subsection{Cell Sorting}
+\frame{\frametitle{Cell Sorting}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/vertexcellsorting.mp4}
+\end{figure}
+}
+
+\subsection{Monoclonal Conversion}
+\frame{\frametitle{Monoclonal Conversion}
+\begin{figure}[h!]
+  	\centering
+  	\includemovie{200pt}{200pt}{videos/nodemonoclonalconversion.mp4}
+\end{figure}
+}
+
+
+\frame{\frametitle{Current Work}
+I am working on the following this summer:\\ \vspace{0.2cm}
+\begin{itemize}
+\item Develop simulations of vertex-based models to demonstrate cell sorting, wound healing, cell migration, etc.
+\item Compare results with Cellular Potts Model and Overlapping Spheres Model
+\item Determine how changing various parameters in the model affects the simulation 
+\end{itemize}
+}
+
+\frame{\frametitle{Further Reading}
+\begin{itemize}
+\item Fletcher, A. G., Osborne, J. M., et al. "Implementing vertex dynamics models of cell population in biology within a consistent computational framework", Progress in Biophysics and Molecular Biology. 113:299-326. 2013.
+\item Nagai, T., and Honda, H. "A dynamic cell model for the formation of epithelial tissues", Philosophical Magazine Part B. 81:699-719
+\item Pathmanathan, P., et al. "A computational study of discrete mechanical tissue models", Physical Biology. Vol. 6. No. 3. 2009
+\item Voss-Bohme, A. "Multi-Scale Modeling in Morphogenesis: A Critical Analysis of the Cellular Potts Model, PLoS ONE. 7(9): e42852.
+\end{itemize}
+}
+
+\end{document}
