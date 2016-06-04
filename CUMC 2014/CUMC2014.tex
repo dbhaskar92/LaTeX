@@ -17,10 +17,10 @@
 		deactivate=pageclose,
 		addresource=#3,
 		flashvars={
-			src=#3 			% same path as in addresource!
-			&autoPlay=false % if = true, automatically starts playback after activation
-			&loop=false 	% if loop=true, media is played in a loop
-			&controlBarAutoHideTimeout=1 	% time span before auto-hide
+			src=#3			% same path as in addresource!
+			&autoPlay=false	% if = true, automatically starts playback after activation
+			&loop=false		% if loop=true, media is played in a loop
+			&controlBarAutoHideTimeout=1	% time span before auto-hide
 		}
 	]{}{StrobeMediaPlayback.swf}
 }
@@ -37,11 +37,11 @@
   Dr. Leah Keshet (Supervisor)\inst{2}}
 
 \institute{
-  \inst{1}%
+  \inst{1}
   Combined Major in Computer Science and Mathematics\\
   University of British Columbia
   \and
-  \inst{2}%
+  \inst{2}
   Department of Mathematics\\
   University of British Columbia}
   
@@ -50,8 +50,7 @@
 
 \frame{\titlepage} 
 
-\frame{\frametitle{Outline}\tableofcontents} 
-
+\frame{\frametitle{Outline}\tableofcontents}
 
 \section{Multiscale Modeling and CHASTE} 
 
@@ -68,18 +67,18 @@
 \hspace{5mm}
 \begin{minipage}{0.4\linewidth}  
 	\begin{figure}[h!]
-  	\centering
-  	\includemovie{150pt}{120pt}{videos/migratinghumankidney.mp4}
-    \caption{Migrating human kidney epithelial cells}
+	\centering
+	\includemovie{150pt}{120pt}{videos/migratinghumankidney.mp4}
+	\caption{Migrating human kidney epithelial cells}
 	\end{figure}
 \end{minipage}
 } 
 
 \frame{\frametitle{Multiscale Modeling in Biology}
 \begin{figure}[h!]
-  	\centering
-    \includegraphics[scale=0.5]{images/scales}
-    \caption{Multiple possible models at each scale}
+	\centering
+	\includegraphics[scale=0.5]{images/scales}
+	\caption{Multiple possible models at each scale}
 \end{figure}
 \begin{itemize}
 \item Processes on each biological scale depend on other scales\\
@@ -231,14 +230,14 @@ $J : \Lambda \times \Lambda \to \mathbb{R}$ is a symmetric matrix that specifies
 \frame{\frametitle{Cellular Potts Simulation}
 \begin{block}{Metropolis Algorithm}
 \begin{enumerate}
-\item Start with initial configuration $\eta$
-\item Pick a target site $x \in S$ and a neighbour $y$ of $x$ uniformly
-\item Calculate energy gain $\Delta H_{x}^{y} = H(\eta_{x}^{y}) - H(\eta)$
-\item If $\Delta H_{x}^{y} < h$, accept new configuration
-\item Otherwise, accept with probability:
-\begin{equation}
-P(\eta = \eta_{x}^{y}) = e^{-(\Delta H_{x}^{y} - h)/T}
-\end{equation}
+	\item Start with initial configuration $\eta$
+	\item Pick a target site $x \in S$ and a neighbour $y$ of $x$ uniformly
+	\item Calculate energy gain $\Delta H_{x}^{y} = H(\eta_{x}^{y}) - H(\eta)$
+	\item If $\Delta H_{x}^{y} < h$, accept new configuration
+	\item Otherwise, accept with probability:
+	\begin{equation}
+		P(\eta = \eta_{x}^{y}) = e^{-(\Delta H_{x}^{y} - h)/T}
+	\end{equation}
 \end{enumerate}
 \end{block}
 }
@@ -341,10 +340,10 @@ $F_{i} = - \nabla_{i} U = - \nabla_{i} \sum_{k \in \mathcal{N}_{i}} (U_{D}^{k} +
 
 \begin{block}{Numerical Implementation}
 \begin{enumerate}
-\item Update cell properties from any subcellular model
-\item Implement mesh restructuring operations
-\item Loop over all cells, calculate force $F_{i}$ for each vertex $i$
-\item Update the vertex positions simultaneously using Forward Euler scheme:
+	\item Update cell properties from any subcellular model
+	\item Implement mesh restructuring operations
+	\item Loop over all cells, calculate force $F_{i}$ for each vertex $i$
+	\item Update the vertex positions simultaneously using Forward Euler scheme:
 \begin{equation}
 \mathbf{r_{i}}(t + \Delta t) = \mathbf{r_{i}}(t) + \dfrac{\Delta t}{\eta_{i}} \mathbf{F_{i}}(t)
 \end{equation}
@@ -465,7 +464,6 @@ $F_{i} = - \nabla_{i} U = - \nabla_{i} \sum_{k \in \mathcal{N}_{i}} (U_{D}^{k} +
   	\includemovie{200pt}{200pt}{videos/nodemonoclonalconversion.mp4}
 \end{figure}
 }
-
 
 \frame{\frametitle{Current Work}
 I am working on the following this summer:\\ \vspace{0.2cm}
