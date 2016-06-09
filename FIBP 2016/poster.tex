@@ -1,0 +1,236 @@
+%
+% Poster for Frontiers in Biophysics Conference, 2016
+% 
+% Authors:
+%	Dhananjay Bhaskar and Darrick Lee
+%
+
+\documentclass[a0paper,portrait,twocolumn]{baposter}
+
+\usepackage{relsize}		% For \smaller
+\usepackage{url}			% For \url
+\usepackage{multicol}
+\usepackage{epstopdf}		% Included EPS files automatically converted to PDF to include with pdflatex
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+
+\newcommand{\clr}{\color{red}}
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{assets/}}	% Root directory of the pictures 
+\tracingstats=2				% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{headercol1}{RGB}{186,215,230}
+\definecolor{headercol2}{RGB}{80,80,80}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{186,215,230}
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\background{
+	\begin{tikzpicture}[remember picture,overlay]
+	\draw (current page.north west)+(-2em,2em) node[anchor=north west]
+	{\includegraphics[height=1.1\textheight]{background}};
+	\end{tikzpicture}
+}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{poster}{
+	grid=false,
+	%eyecatcher=false, 
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	boxColorOne=boxcolor,
+	headershape=roundedright,
+	headerfont=\Large\sf\bf,
+	textborder=rectangle,
+	background=user,
+	headerborder=open,
+	columns=5,
+	boxshade=plain
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Understanding Collective Cell Migration
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{0.3em}
+	\textbf{Dhananjay Bhaskar}$^{\small \textrm{a}}$, Tak Poon$^{\small \textrm{b}}$, \textbf{Darrick Lee}$^{\small \textrm{c}}$, Hildur Knutsdottir$^{\small \textrm{a}}$\\
+	\vspace{-0.1em}
+	\textbf{Supervisors:} Dr. Leah Edelstein-Keshet$^{\small \textrm{a}}$ and Dr. Calvin Roskelley$^{\small \textrm{b}}$\\	
+	\vspace{0.3em}
+	
+	{\scriptsize $^{\small \textrm{a}}$Department of Mathematics, University of British Columbia\\
+	$^{\small \textrm{b}}$Department of Cellular and Physiological Sciences, University of British Columbia\\ 
+	$^{\small \textrm{c}}$Department of Engineering Physics, University of British Columbia\\
+	}
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+\setlength\fboxrule{0pt}
+	\fbox{
+		\begin{minipage}{17em}
+			\includegraphics[width=50px]{assets/ubclogo.pdf}
+			\hspace{30pt}
+			\includegraphics[scale=0.3]{assets/fibp_logo_trans.png}
+		\end{minipage}
+	}
+}
+
+
+%% Motivation and Biology %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Motivation and Biology}{name=motivation,span=2,column=0,row=0}{
+During wound healing and cancer metastasis, cells are frequently observed to migrate in collective groups~\cite{chapnick_leader_2014}. There is evidence to suggest that cell migration is directed by emergent "leader" cells~\cite{yamaguchi_leader_2015}. To improve our understanding of this process, we posed the following questions: 
+\begin{itemize}[leftmargin=1em]\compresslist
+	\item What role does differential adhesion play in collective cell migration?
+	\item How do leader cells emerge?
+	\item Can we automatically identify leader cells by tracking cell morphology and motion?
+\end{itemize}
+Our on-going investigation is based on Cellular Potts Model~\cite{swat_chapter_2012} simulations and microscopic image analysis of wound-closure experiments using EpRas cell lines that express different adhesion proteins.
+}
+
+%% Cellular Potts Model %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Cellular Potts Model (CPM)}{name=cpm,span=2,column=0,below=motivation}{
+\begin{center}
+	\includegraphics[width=0.9\linewidth]{Simulation/CPMDiag.png}\\
+	\smaller
+	A CPM lattice containing two cells labelled in green and a cell labelled in red. Extracellular matrix (ECM) is shown in gray
+\end{center}
+\begin{itemize}[leftmargin=1em]\compresslist
+	\item Cells are composed of collection of lattice sites
+	\item Intercellular and cell-ECM adhesion energy $J$ is inversely proportional to adhesion strength
+	\item Sites are added or removed in Monte-Carlo updates to minimize free energy function:
+\end{itemize}
+\begin{displaymath}
+\smaller
+H = \sum_{\text{cells:}w}\lambda[A_{w} - A_{\text{target}}]^2 + \sum_{\text{faces:$\{i,j\}$}}J_{i,j} + H_{0}
+\end{displaymath}
+}
+
+%% Preliminary Simulation Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Preliminary Simulation Results}{name=sim,span=2,column=0,below=cpm,above=bottom}{
+\begin{center}
+	\includegraphics[width=0.9\linewidth]{Simulation/MCS.png}\\
+	\smaller
+	Simulation snapshots illustrating collective migration due to differential adhesion resulting in finger-like tissue morphology
+\end{center}
+\vspace{-0.6em}
+Results obtained by varying cell invasiveness and rate of growth are shown below. Duration of cell cycle is subject to contact inhibition. Increase in cell area is modulated by the proportion of cell boundary in contact with ECM.
+\vspace{-0.3em} 
+\begin{center}
+	\includegraphics[width=0.9\linewidth]{Simulation/ParamSweep.png}
+\end{center}
+}
+
+%% Wound Healing Assay %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Scratch Wound Healing Assay}{name=assay,span=3,column=2,row=0}{
+A wound healing assay with two EpRas cell lines labelled using mCherry (red) and GFP (green) that express different adhesion proteins (figures below). Our goal is to compare cell geometry to check for and determine the effects of differential adhesion. Using machine learning, we plan to automatically detect leader cells and determine their characteristics.
+\vspace{-0.6em}
+\begin{center}
+	\includegraphics[width=0.86\linewidth]{Biology/wassay_resize.png}
+\end{center}
+}
+
+%% Image Processing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Image Processing}{name=processing,span=3,column=2,below=assay}{
+Image processing using CellProfiler~\cite{carpenter_cellprofiler:_2006} segments cell boundaries and extracts morphological cell features. Below, we summarize how cell boundaries are found.
+\vspace{-0.6em}
+\begin{center}
+	\includegraphics[width=0.86\linewidth]{Experiment/ImageProcessing/imageProcessing.png}
+\end{center}
+}
+
+%% Classification and Tracking %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Classification and Tracking (Green Channel)}{name=classification,span=3,column=2,below=processing}{
+We illustrate unsupervised classification of cells in a 2-D feature space (area and perimeter) using the k-means clustering algorithm.
+\vspace{-0.5em}
+\begin{multicols}{2}
+\begin{center}
+	\includegraphics[width=\linewidth]{Experiment/CellIdentification/CellProfiler_Cells_plot_combined.png}
+	\smaller 
+	Median cell area and perimeter during wound closure (approx. 40 hours and 480 frames)
+\end{center}
+\columnbreak
+\begin{center}
+	\includegraphics[width=\linewidth]{Experiment/Classification/AllMyExptMyCellsGreen450_ClusterAP_new.png}
+	\smaller
+	Clustering result verified by superimposing cluster label assigned to each cell on microscopy image
+\end{center}
+\end{multicols}
+\vspace{-1.5em}
+\begin{multicols}{2}
+\begin{center}
+	\includegraphics[width=\linewidth]{Experiment/Tracking/Track_120.png}
+\end{center}
+\columnbreak
+Cells are sorted by horizontal position and tracked over time. Tracks of cells at the leading edge are shown in magenta. Measurements of cell area, perimeter, orientation, velocity, etc. over time are useful for planning experiments and calibrating CPM simulations. Cells are organized into groups at intervals (vertical slices) from leading edge. We measure average displacement, distance and velocity for each group using tracking data.
+\end{multicols}
+}
+
+%% References %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{References}{name=references,span=3,column=2,above=bottom,below=classification}{
+\smaller
+\vspace{-0.4em}
+\bibliographystyle{abbrv}
+\renewcommand{\section}[2]{\vskip 0.05em}
+
+\begin{thebibliography}{1}\itemsep=-0.01em
+\setlength{\baselineskip}{0.4em}
+
+\bibitem{carpenter_cellprofiler:_2006}
+A.~Carpenter et al.
+\newblock (2006)
+\newblock {\em Genome Biology 7.}
+
+\bibitem{chapnick_leader_2014}
+D.~Chapnick et al.
+\newblock (2014)
+\newblock {\em Molecular Biology of the Cell 25.}
+
+\bibitem{swat_chapter_2012}
+M.~Swat et al.
+\newblock (2012)
+\newblock {\em Methods in {Cell} {Biology}, Academic Press.}
+
+\bibitem{yamaguchi_leader_2015}
+N.~Yamaguchi et al.
+\newblock (2015)
+\newblock {\em Scientific Reports 5.}
+\end{thebibliography}
+}
+
+\end{poster}
+\end{document}
