@@ -8,6 +8,7 @@
 \textwidth=6.0in
 \itemsep=0in
 \parsep=0in
+\footskip=10pt
 
 \usepackage{textcomp}
 
@@ -36,15 +37,17 @@
       \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
       \setlength{\leftmargin}{0.0in}}}{\end{list}}
 
-\addtolength{\topmargin}{-0.6in}
+\addtolength{\topmargin}{-0.5in}
 \addtolength{\textheight}{1.0in}
-\setlength{\footskip}{20pt}
+
+%\setlength{\footskip}{25pt}			%% Dimension used as the baselineskip in the footer
+%\setlength{\skip\footins}{1cm}		%% Distance between the bottom of the text block and the top of the footer
 
 \begin{document}
 
 \pagestyle{plain}
 
-\vspace*{.1cm}
+\vspace*{.2cm}
  
 \name{\begin{Large}Dhananjay Bhaskar\end{Large}\vspace*{.1in}}
 
@@ -53,10 +56,12 @@
 \vspace*{.2cm}
 
 \section{\sc Personal}
+
+\renewcommand{\arraystretch}{1.1}
 \begin{tabular}{@{}p{1.4cm}p{6.7cm}p{2.1cm}p{4cm}}
-{\it Email:}& dbhaskar92@math.ubc.ca &  {\it Mobile:}& 236-999-2275  \\
+{\it Email:}& dbhaskar92@math.ubc.ca &  {\it Mobile:}& (+1) 236-999-2275  \\
 {\it Address:}& Box 166, 2205 Lower Mall & {\it Website:}& dhananjaybhaskar.com \\
-& Vancouver, BC V6T 1Z4 & & \\
+& Vancouver, BC V6T 1Z4 & {\it Citizenship:}& Indian\\
 \end{tabular}
 
 \vspace*{.2cm}
@@ -67,9 +72,11 @@
 \vspace*{.1cm}
 \item[]{\bf Mathematical Modeling} (Reaction{\textendash}Diffusion Systems, Pattern Formation, Electrophysiology)
 \vspace*{.1cm}
-\item[]{\bf Image Analysis \& Machine Learning} (Segmentation, Tracking, Recognition, Classification)
+\item[]{\bf Image Analysis} (Microscopy, Segmentation, Cell Tracking, Object Recognition, Classification)
 \vspace*{.1cm}
-\item[]{\bf Bio-inspired Computing} (Evolutionary, Mimetic and Hybrid Algorithms)
+\item[]{\bf Machine Learning} (Dimensionality Reduction, Clustering, Regression, Neural Networks)
+\vspace*{.1cm}
+\item[]{\bf Bio-inspired Computing} (Evolutionary, Mimetic and Hybrid Algorithms, Agent-based Models)
 \vspace*{.1cm}
 \item[]{\bf Experimental Algorithmics} (NP-hard Optimization, Algorithm Selection, Parameter Tuning) 
 \end{list4}
@@ -82,14 +89,15 @@
 \vspace*{-.2cm}
 \begin{list1}
 \item[] M.Sc. - Applied Mathematics (Specializing in Mathematical Biology)
-\vspace*{.05cm}
+\vspace*{.1cm}
 \item[] {\bf Supervisor:} Dr. Leah Edelstein{\textendash}Keshet
 \begin{list2}
 \vspace*{.1cm}
-\item Faculty of Science Graduate Award (\$1500, awarded in 2016)
-\item International Tuition Scholarship (\$3200 per year)
-\item Full Teaching Assistantship (\$11,000 per year)
-\item Research Assistantship (\$15,000 per year)
+\setlength\itemsep{0.25em}
+\item Faculty of Science Graduate Award (2016)
+\item International Tuition Scholarship (renewed each year)
+\item Full Teaching Assistantship (renewed each year)
+\item Research Assistantship (renewed each year)
 \begin{list3}
 \vspace*{.1cm}
 \item Completed 3-day intensive Instructional Skills Workshop (ISW) organized by Centre for Teaching, Learning and Technology
@@ -104,6 +112,7 @@
 \item[] B.Sc. - Combined Major in Computer Science and Mathematics (With Distinction)
 \begin{list2}
 \vspace*{.1cm}
+\setlength\itemsep{0.25em}
 \item Work Learn International Undergraduate Summer Research Award (2014)
 \item CS Volunteering Award (2013)
 \item Trek Excellence Scholarship (2010)
@@ -111,10 +120,145 @@
 \item President's Entrance Scholarship (2009)
 \begin{list3}
 \vspace*{.1cm}
+\setlength\itemsep{0.25em}
 \item Undergraduate Representative, CS Communications Committee (2012 - 2013)
 \item Community Events Organizer, CS Undergraduate Volunteering Committee (2009 - 2010)
 \end{list3}
 \end{list2}
+\end{list1}
+
+\vspace*{.4cm}
+
+\section{\sc Research Experience}
+
+{\bf Graduate Research Assistant}, UBC, Vancouver \hfill {\bf Sep 2015 - Present}\\
+\vspace*{-.2cm}
+\begin{list1}
+\item[] Institute of Applied Mathematics
+\vspace*{.2cm}
+\begin{list3}
+\setlength\itemsep{0.5em}
+\item Developed an automated pipeline to segment fluorescent and phase-contrast microscopy images, track cells over time and collect statistics to guide future experimental work
+\item Studied mutually inhibitory Rac{\textendash}Rho (small GTPases) bistable switch that regulates cell shape using cell-based simulation with coupled mechanical feedback
+\item Extracted features from segmented images to quantify cell shape, polarity, protrusiveness, etc.
+\item Classified cells based on morphology using machine learning techniques (hierarchical clustering, PCA, deep neural network classifier and ConvNet)
+\item Gathered empirical data to compare Potts model and Vertex model by simulating cell sorting on calibrated runs of each model
+\end{list3}
+\end{list1}
+
+\newpage
+\begin{flushright}
+CV - Dhananjay Bhaskar - Page 2/5
+\end{flushright}
+\vspace*{.2cm}
+
+{\bf Undergraduate Research Assistant}, UBC, Vancouver \hfill {\bf May 2014 - Sep 2015}\\
+\vspace*{-.2cm}
+\begin{list1}
+\item[] Department of Mathematics
+\vspace*{.2cm}
+\begin{list3}
+\setlength\itemsep{0.5em}
+\item Mathematical modeling of mechanical stress, contact inhibition, differential cell adhesion, etc. in Cellular Potts Model (CPM), Vertex Dynamics Model and Cell-Center Model
+\item Automated parameter sweep simulations of tissue invasion, tissue folding and wound healing using CompuCell3D
+\item Developed multiscale simulations of 2{\textendash}D sheets of epithelia and colonic crypts using the Cancer, Heart and Soft Tissue Environment (CHASTE) framework
+\item Studied collective cell migration in early Zebrafish development through mathematical and computational modeling of biochemical signaling in Posterior Lateral Line Primordium (PLLP)
+\end{list3}
+\end{list1}
+\vspace*{.2cm}
+
+{\bf Summer Research Assistant}, Thompson Rivers University, Kamloops \hfill {\bf May - Aug, 2013}\\
+\vspace*{-.2cm}
+\begin{list1}
+\item[] Department of Mathematics and Statistics
+\vspace*{.2cm}
+\begin{list3}
+\setlength\itemsep{0.5em}
+\item Assessed solution quality and runtime of Particle Swarm Optimization (PSO), Tabu Search (TS), Genetic Algorithms (GA), Simulated Annealing (SA) and Krill Herd (KH) for solving benchmark multi-modal optimization problems
+\item Implemented hybrid metaheuristic algorithms based on GA, PSO and stochastic local search in MATLAB for solving the unconstrained binary quadratic programming (UBQP) problem
+\item Obtained numerical results to compare mimetic PSO algorithms for solving binary and integer optimization problems taken from Operations Research Library (ORLIB)
+\end{list3}
+\end{list1}
+
+\vspace*{.4cm}
+
+\section{\sc Publications}
+
+{\renewcommand\leftmargini{0em}
+\begin{itemize}
+\item {\bf Morphology Based Cell Classification}, D. Bhaskar, D. Lee, P. Dean, L. Edelstein-Keshet, C. Roskelley {\bf[in prep]}
+\vspace*{.1cm}
+\item {\bf Polarization and Migration in the Zebrafish Posterior Lateral Line System}, H. Kn\'{u}tsd\'{o}ttir, C. Zmurchok, D. Bhaskar, E. Palsson, D. Dalle-Nogare, A. Chitnis, L. Edelstein-Keshet {\bf[submitted]}
+\end{itemize}
+}
+
+\vspace*{.4cm}
+
+\section{\sc Conference Presentations}
+
+{\renewcommand\leftmargini{0em}
+\begin{itemize}
+\item {\bf Modeling Latency Reversal in HIV-1 Infection}, 10th Annual q-bio Student Symposium and Conference, Vanderbilt University, Nashville, TN, 2016 {\bf[Talk]}
+\vspace*{.2cm}
+\item {\bf Understanding Collective Cell Migration}, Frontiers in Biophysics Conference, Simon Fraser University, Burnaby, BC, 2016 {\bf[Poster]}
+\vspace*{.2cm}
+\item {\bf Invasion Fronts and Tissue Dynamics}, Multidisciplinary Undergraduate Research Conference (MURC), University of British Columbia, Vancouver, BC, 2015 {\bf[Poster]}
+\vspace*{.2cm}
+\item {\bf Modeling Posterior Lateral Line Primordium in Zebrafish}, Frontiers in Biophysics Conference, University of British Columbia, Vancouver, BC, 2015 {\bf[Poster]}
+\vspace*{.2cm}
+\item {\bf Mathematical models of epithelial monolayer}, Canadian Undergraduate Mathematics Conference (CUMC), Carleton University, Ottawa, ON, 2014 {\bf[Talk]}
+\vspace*{.2cm}
+\item {\bf Using CHASTE (Oxford) to explore tissue dynamics}, Mathematics at the Frontier of Developmental Biology Workshop, Pacific Institute for Mathematical Sciences, Vancouver, BC, 2014 {\bf[Poster]}
+\vspace*{.1cm}
+\item {\bf A metaheuristic approach for solving the unconstrained binary quadratic programming problem}, Canadian Undergraduate Mathematics Conference (CUMC), Universit\'e de Montr\'eal, Montr\'eal, QC, 2013 {\bf[Talk]}
+\end{itemize}
+}
+
+\newpage
+\begin{flushright}
+CV - Dhananjay Bhaskar - Page 3/5
+\end{flushright}
+\vspace*{.2cm}
+
+\section{\sc Teaching Experience}
+
+{\bf  UBC}, Department of Mathematics and Department of Computer Science\\
+\vspace*{-.2cm}
+\begin{list1}
+\setlength\itemsep{0.25em}
+\item[] Graduate Teaching Assistant for:\\[-0.1cm]
+\item[] MATH 257/316 - Partial Differential Equations \hfill {\bf Fall 2016}
+\item[] CPSC 313 - Computer Hardware and Operating Systems \hfill {\bf Summer 2016}
+\item[] MATH 256 - Differential Equations \hfill {\bf Winter 2015}
+\item[] MATH 253 - Multivariable Calculus \hfill {\bf Fall 2015}
+\item[] MATH 307 - Applied Linear Algebra \hfill {\bf Fall 2015}\\
+\begin{list3}
+\vspace*{-.1cm}
+\setlength\itemsep{0.25em}
+\item Provided learning assistance and used Socratic method to help undergraduate students solve homework problems at the Math Learning Centre (MLC)
+\item Invigilated and marked exams, graded homework assignments, designed and taught tutorials
+\item Answered questions regarding use of MATLAB and Octave for scientific computation including interpolation, best fit, solution of linear systems, numerical differentiation and quadrature
+\end{list3}
+\end{list1}
+\vspace*{.1cm}
+
+{\bf  UBC}, Department of Computer Science\\
+\vspace*{-.2cm}
+\begin{list1}
+\setlength\itemsep{0.25em}
+\item[] Undergraduate Teaching Assistant for:\\[-0.1cm]
+\item[] CPSC 259 - Data Structures and Algorithms for Electrical Engineers\hfill{\bf Winter 2012, 2013}
+\item[] CPSC 260 - Data Structures and Algorithms for Computer Engineers\hfill{\bf Fall 2012}
+\item[] CPSC 260 - Object-Oriented Program Design (old offering)\hfill{\bf Summer 2011}
+\item[] CPSC 101 - Connecting with Computer Science\hfill{\bf Winter 2010, Summer 2011}
+\item[] CPSC 211 - Introduction to Software Development\hfill{\bf Fall 2010}\\
+\begin{list3}
+\vspace*{-.1cm}
+\setlength\itemsep{0.25em}
+\item Supervised labs, proctored exams, marked assignments and tutored students
+\item Designed labs and developed course material for CPSC 101
+\item Created a guide demonstrating how to compile and link C++ programs that use the MATLAB engine library on GNU/Linux for CPSC 259
+\end{list3}
 \end{list1}
 
 \vspace*{.4cm}
@@ -147,79 +291,22 @@
 
 \newpage
 \begin{flushright}
-CV - Dhananjay Bhaskar - Page 2
+CV - Dhananjay Bhaskar - Page 4/5
 \end{flushright}
 \vspace*{.2cm}
 
-\section{\sc Research Experience}
+\section{\sc Skills and Expertise}
 
-{\bf Graduate Research Assistant}, UBC, Vancouver \hfill {\bf Sep 2015 - Present}\\
-\vspace*{-.2cm}
-\begin{list1}
-\item[] Institute of Applied Mathematics
-\vspace*{.1cm}
-\begin{list3}
-\item Developed an automated pipeline to segment fluorescent and phase-contrast microscopy images, track cells over time and collect statistics to guide future experimental work
-\item Studied mutually inhibitory Rac{\textendash}Rho (small GTPases) bistable switch that regulates cell shape using cell-based simulation with coupled mechanical feedback
-\item Extracted features from segmented images to quantify cell shape, polarity, protrusiveness, etc.
-\item Classified cells based on morphology using machine learning techniques (hierarchical clustering, PCA, deep neural network classifier and ConvNet)
-\item Gathered empirical data to compare Potts model and Vertex model by simulating cell sorting on calibrated runs of each model
-\end{list3}
-\end{list1}
-\vspace*{.2cm}
-
-{\bf Undergraduate Research Assistant}, UBC, Vancouver \hfill {\bf May 2014 - Sep 2015}\\
-\vspace*{-.2cm}
-\begin{list1}
-\item[] Department of Mathematics
-\vspace*{.1cm}
-\begin{list3}
-\item Mathematical modeling of mechanical stress, contact inhibition, differential cell adhesion, etc. in Cellular Potts Model (CPM), Vertex Dynamics Model and Cell-Center Model
-\item Automated parameter sweep simulations of tissue invasion, tissue folding and wound healing using CompuCell3D
-\item Developed multiscale simulations of 2{\textendash}D sheets of epithelia and colonic crypts using the Cancer, Heart and Soft Tissue Environment (CHASTE) framework
-\item Studied collective cell migration in early Zebrafish development through mathematical and computational modeling of biochemical signaling in Posterior Lateral Line Primordium (PLLP)
-\end{list3}
-\end{list1}
-\vspace*{.2cm}
-
-{\bf Summer Research Assistant}, Thompson Rivers University, Kamloops \hfill {\bf May - Aug, 2013}\\
-\vspace*{-.2cm}
-\begin{list1}
-\item[] Department of Mathematics and Statistics
-\vspace*{.1cm}
-\begin{list3}
-\item Assessed solution quality and runtime of Particle Swarm Optimization (PSO), Tabu Search (TS), Genetic Algorithms (GA), Simulated Annealing (SA) and Krill Herd (KH) for solving benchmark multi-modal optimization problems
-\item Implemented hybrid metaheuristic algorithms based on GA, PSO and stochastic local search in MATLAB for solving the unconstrained binary quadratic programming (UBQP) problem
-\item Obtained numerical results to compare mimetic PSO algorithms for solving binary and integer optimization problems taken from Operations Research Library (ORLIB)
-\end{list3}
-\end{list1}
+\begin{tabular}{@{}p{4.5cm}p{0.1cm}p{10.5cm}}
+{\bf Programming Experience}&:& Java (4 yrs), Python (3 yrs), C/C++ (3 yrs) and Perl (2 yrs)\\[0.2cm]
+{\bf Numerical Computation}&:& MATLAB, XPPAUT, Octave, SciPy Toolkits and deal.II\\[0.2cm]
+{\bf Visualization}&:& ParaView, VTK, Mayavi, matplotlib and gnuplot\\[0.2cm]
+{\bf Graphical User Interface}&:& wxWidgets, GTK+, Qt framework\\[0.2cm]
+{\bf Web Development}&:& Proficiency in JavaScript, jQuery, CSS, PHP and mySQL\\[0.2cm]
+{\bf Version Control}&:& Git and SVN
+\end{tabular}
 
 \vspace*{.4cm}
-
-\section{\sc Conference Presentations}
-
-{\renewcommand\leftmargini{0em}
-\begin{itemize}
-\item {\bf Modeling Latency Reversal in HIV-1 Infection}, 10th Annual q-bio Student Symposium and Conference, Vanderbilt University, Nashville, TN, 2016
-\vspace*{.1cm}
-\item {\bf Understanding Collective Cell Migration}, Frontiers in Biophysics Conference, Simon Fraser University, Burnaby, BC, 2016
-\vspace*{.1cm}
-\item {\bf Invasion Fronts and Tissue Dynamics}, Multidisciplinary Undergraduate Research Conference (MURC), University of British Columbia, Vancouver, BC, 2015
-\vspace*{.1cm}
-\item {\bf Modeling Posterior Lateral Line Primordium in Zebrafish}, Frontiers in Biophysics Conference, University of British Columbia, Vancouver, BC, 2015
-\vspace*{.1cm}
-\item {\bf Mathematical models of epithelial monolayer}, Canadian Undergraduate Mathematics Conference (CUMC), Carleton University, Ottawa, ON, 2014
-\vspace*{.1cm}
-\item {\bf Using CHASTE (Oxford) to explore tissue dynamics}, Mathematics at the Frontier of Developmental Biology Workshop, Pacific Institute for Mathematical Sciences, Vancouver, BC, 2014
-\item {\bf A metaheuristic approach for solving the unconstrained binary quadratic programming problem}, Canadian Undergraduate Mathematics Conference (CUMC), Universit\'e de Montr\'eal, Montr\'eal, QC, 2013
-\end{itemize}
-}
-
-\newpage
-\begin{flushright}
-CV - Dhananjay Bhaskar - Page 3
-\end{flushright}
-\vspace*{.2cm}
 
 \section{\sc Industry Experience}
 
@@ -227,8 +314,9 @@ CV - Dhananjay Bhaskar - Page 3
 \vspace*{-.2cm}
 \begin{list1}
 \item[] Contract Research and Corporate Health Organization
-\vspace*{.1cm}
+\vspace*{.2cm}
 \begin{list3}
+\setlength\itemsep{0.5em}
 \item Generated risk assessment reports for diabetes, cardiovascular disease, nutrition and fitness from customer database using MySQL, PHP and jQuery 
 \item Developed user tracking system to monitor website usage and present aggregate information using AJAX, jQuery, HighCharts JS and PHP
 \item Designed and developed a HTML5 web application to create e-health modules
@@ -240,8 +328,9 @@ CV - Dhananjay Bhaskar - Page 3
 \vspace*{-.2cm}
 \begin{list1}
 \item[] National Laboratory for Particle and Nuclear Physics
-\vspace*{.1cm}
+\vspace*{.2cm}
 \begin{list3}
+\setlength\itemsep{0.5em}
 \item Set up a test environment for OpenStack cloud computing services by installing and configuring key components using two servers
 \item Wrote and packaged shell scripts to automate system administration of worker nodes
 \item Research and initial implementation of a server daemon that tracks external connections to the data center for intrusion detection
@@ -253,8 +342,9 @@ CV - Dhananjay Bhaskar - Page 3
 \vspace*{-.2cm}
 \begin{list1}
 \item[] National Laboratory for Particle and Nuclear Physics
-\vspace*{.1cm}
+\vspace*{.2cm}
 \begin{list3}
+\setlength\itemsep{0.5em}
 \item Developed and tested Perl scripts for parsing network logs and compute element logs to enhance security and ensure validity of grid certificates
 \item Designed web interface to monitor a 5.5 PB tape storage database
 \item Attended the High Energy Physics Unix Information Exchange (HEPiX) Fall 2011 Conference
@@ -263,107 +353,81 @@ CV - Dhananjay Bhaskar - Page 3
 
 \vspace*{.4cm}
 
-\section{\sc Teaching Experience}
+\section{\sc Relevant Course Projects}
 
-{\bf  UBC}, Department of Mathematics and Department of Computer Science\\
-\vspace*{-.2cm}
-\begin{list1}
-\item[] Graduate Teaching Assistant for:\\[-0.1cm]
-\item[] MATH 257/316 - Partial Differential Equations \hfill {\bf Fall 2016}
-\item[] CPSC 313 - Computer Hardware and Operating Systems \hfill {\bf Summer 2016}
-\item[] MATH 256 - Differential Equations \hfill {\bf Winter 2015}
-\item[] MATH 253 - Multivariable Calculus \hfill {\bf Fall 2015}
-\item[] MATH 307 - Applied Linear Algebra \hfill {\bf Fall 2015}\\
-\begin{list3}
-\vspace*{-.1cm}
-\item Provided learning assistance and used Socratic method to help undergraduate students solve homework problems at the Math Learning Centre (MLC)
-\item Invigilated and marked exams, graded homework assignments, designed and taught tutorials
-\item Answered questions regarding use of MATLAB and Octave for scientific computation including interpolation, best fit, solution of linear systems, numerical differentiation and quadrature
-\end{list3}
-\end{list1}
-\vspace*{.1cm}
+\begin{tabular}{@{}p{1.6cm}p{13.6cm}}
+&{\bf How do T-cells distinguish between self and foreign antigens?}\\
+MATH 563&Worked in a team of 4 people to evaluate the role of ligand-induced T-cell receptor polymerization and kinetic proof-reading for fast and specific discrimination of antigens. T-cells activate PI3K pathway if the number of bound and fully phosphorylated receptors exceeds a threshold. Used Gillespie simulations to determine the receiver operating characteristic (ROC) curve and to understand how cells adapt their immune response despite high environmental variability.\\[5pt]
 
-{\bf  UBC}, Department of Computer Science\\
-\vspace*{-.2cm}
-\begin{list1}
-\item[] Undergraduate Teaching Assistant for:\\[-0.1cm]
-\item[] CPSC 259 - Data Structures and Algorithms for Electrical Engineers\hfill{\bf Winter 2012, 2013}
-\item[] CPSC 260 - Data Structures and Algorithms for Computer Engineers\hfill{\bf Fall 2012}
-\item[] CPSC 260 - Object-Oriented Program Design (old offering)\hfill{\bf Summer 2011}
-\item[] CPSC 101 - Connecting with Computer Science\hfill{\bf Winter 2010, Summer 2011}
-\item[] CPSC 211 - Introduction to Software Development\hfill{\bf Fall 2010}\\
-\begin{list3}
-\vspace*{-.1cm}
-\item Supervised labs, proctored exams, marked assignments and tutored students
-\item Designed labs and developed course material for CPSC 101
-\item Created a guide demonstrating how to compile and link C++ programs that use the MATLAB engine library on GNU/Linux for CPSC 259
-\end{list3}
-\end{list1}
+&{\bf An Exploratory Study of Properties of Excitable Media}\\
+CPSC 530P&Performed numerical simulation and bifurcation analysis of Hodgkin-Huxley and FitzHugh-Nagumo models to study electrophysiological properties (excitability, refractoriness and automaticity) associated with excitable media (e.g. action potential in neurons, pacemaker cells in cardiac tissue, Belousov-Zhabotinsky reaction)\\
+\end{tabular}
 
 \newpage
 \begin{flushright}
-CV - Dhananjay Bhaskar - Page 4
+CV - Dhananjay Bhaskar - Page 5/5
 \end{flushright}
 \vspace*{.2cm}
 
-\section{\sc Publications}
+\begin{tabular}{@{}p{1.6cm}p{13.6cm}}
+&{\bf Design Optimization and Empirical Analysis of a Memetic PSO Algorithm}\\
+CPSC 536H&Automatically configured a memetic variant of Particle Swarm Optimization (PSO) algorithm using ParamILS to solve nonlinear, non-differentiable and multimodal optimization problems. Empirical results for solution quality and run-time were obtained by using benchmark instances based on the 2009 BBOB (Black Box Optimization Benchmark) problem set.\\[5pt]
 
-{\renewcommand\leftmargini{0em}
-\begin{itemize}
-
-\item {\bf Morphology Based Cell Classification}, D. Bhaskar, D. Lee, L. Edelstein-Keshet {\bf[in prep]}
-\vspace*{.1cm}
-\item {\bf Polarization and Migration in the Zebrafish Posterior Lateral Line System}, H. Kn\'{u}tsd\'{o}ttir, C. Zmurchok, D. Bhaskar, E. Palsson, D. Dalle-Nogare, A. Chitnis, L. Edelstein-Keshet {\bf[submitted]}
-\end{itemize}
-}
+&{\bf Dynamics of 2{\textendash}patch Predator{\textendash}Prey Rosenzweig{\textendash}MacArthur Model}\\
+MATH 562&Derived conditions for existence of limit cycle in predator-prey models with different Holling functional responses. Investigated phase-locking, synchrony and anti-synchrony in two weakly coupled oscillators, where each oscillator represents a limit cycle in the predator-prey system and the weak coupling results from migration between the two systems.
+\end{tabular}
 
 \vspace*{.4cm}
 
-\section{\sc Extracurricular and Voluntary Work}
+\section{\sc Leadership and Voluntary Work}
 
-{\bf Mentor}, Research Experience Program (REX)\\
-\vspace*{-.3cm}
+{\bf Mentor (Sept 2015 - Present)}, Research Experience Program (REX)\\
+\vspace*{-.2cm}
 \begin{list3}
+\setlength\itemsep{0.3em}
 \item Proposed multidisciplinary programming and literature review projects to increase undergraduate involvement in research
-\item Responsible for mentoring 5 second and third year students with diverse academic backgrounds
-\item Helped students develop technical writing and professional presentation skills
+\item Responsible for mentoring 3 students (out of 25 applicants) with diverse academic background
+\item Projects include development for GUI for user-assisted image segmentation, implementation of cluster validity indices, generation of synthetic microscopy images and computation of image moments invariant with respect to translation, rotation and scaling
+\item Mentees will develop technical writing and professional presentation skills
+\end{list3}
+\vspace*{.05cm}
+
+{\bf Mentor}, NSERC Summer USRA Recipients\\
+\vspace*{-.2cm}
+\begin{list3}
+\setlength\itemsep{0.3em}
+\item Proposed NSERC projects on behalf of Keshet research group in 2015 and 2016
+\item Supervised Darrick Lee (4\textsuperscript{th} year, Engineering Physics major) and Eviatar Bach (4\textsuperscript{th} year, Computer Science and Physics major) for 16 weeks of full-time research work
+\item Students worked on programming projects involving development of multiscale simulations, automated parameter sweeps, feature extraction and cell classification (using K-Means, PCA, deep and convolutional neural networks)   
+\item Provided training on version control, project management, batch processing, modular software design, data parsing and visualization
 \end{list3}
 \vspace*{.05cm}
 
 {\bf Activity Facilitator}, UBC CS TechTrek and GIRLsmarts Outreach Programs\\
-\vspace*{-.3cm}
+\vspace*{-.2cm}
 \begin{list3}
+\setlength\itemsep{0.3em}
 \item Member of the `HTML and the Internet' team responsible for creating and organizing workshops to teach HTML to grade 6 schoolchildren
 \item Introduced programming to students from grades 8{\textendash}12 using Kodu, Scratch and Greenfoot visual programming languages
 \end{list3}
 \vspace*{.05cm}
 
 {\bf Ambassador}, UBC Mental Health Network\\
-\vspace*{-.3cm}
+\vspace*{-.2cm}
 \begin{list3}
+\setlength\itemsep{0.3em}
 \item Completed QPR Gatekeeper Training for Suicide Prevention
 \item Publicized network events and participated in fund-raising campaigns to raise awareness
 \end{list3}
 \vspace*{.05cm}
 
-{\bf Senior Student Mentor}, UBC CS Tri-Mentoring Program\\
-\vspace*{-.3cm}
+{\bf Senior Student Mentor}, UBC CS Tri{\textendash}Mentoring Program\\
+\vspace*{-.2cm}
 \begin{list3}
+\setlength\itemsep{0.3em}
 \item Provided advice to junior student regarding course planning, student life and opportunities for extracurricular activities
 \item Explored career options, developed networking and communications skills with an industry mentor
 \end{list3}
-\vspace*{.05cm}
-
-{\bf Student Assistant}, UBC Access and Diversity\\
-\vspace*{-.3cm}
-\begin{list3}
-\item Paid note-taker position to help a disabled student 
-\item Provided accurate and detailed notes for MATH 223 (Honors Linear Algebra course)
-\end{list3}
-
-\vspace*{.5cm}
-
-\noindent\makebox[\textwidth]{\includegraphics[scale=0.4]{flourish.jpg}}
 
 \end{resume}
 \end{document}
