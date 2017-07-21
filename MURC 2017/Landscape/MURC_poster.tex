@@ -1,0 +1,250 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage[orientation=landscape,size=a0,scale=1.4]{beamerposter}
+
+\usetheme{I6pd2}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,latexsym}
+\usepackage{caption}
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+%\boldmath
+
+\usepackage{booktabs}
+
+\graphicspath{{figures/}}
+
+\usecaptiontemplate{\small\structure{\insertcaptionname~\insertcaptionnumber: }\insertcaption}
+
+\title{\huge A Machine Learning Approach to Cell Classification}
+
+\author{MoHan Zhang$^{a}$, Cindy Tan$^{b}$ and Dhananjay Bhaskar$^{b}$\\
+\vspace*{0.2em}
+\textbf{Supervisors}: Dr. Leah Edelstein-Keshet$^{b}$, and Dr. Calvin Roskelley$^{c}$}
+
+\institute{\footnotesize 
+$^{a}$Department of Mathematics, University of British Columbia \\
+\vspace*{0.5em}
+$^{b}$Faculty of Applied Science, University of British Columbia \\
+\vspace*{0.5em}
+$^{c}$Department of Cellular and Physiological Sciences, University of British Columbia
+}
+
+\newcommand{\leftfoot}{Source Code: https://github.com/dbhaskar92/Research-Scripts}
+\newcommand{\rightfoot}{Contact: dbhaskar92@math.ubc.ca}
+
+\begin{document}
+
+\addtobeamertemplate{block end}{}{\vspace*{2ex}}
+
+% The whole poster is enclosed in one beamer frame
+\begin{frame}[t] 
+
+% The whole poster consists of two major columns, each of which can be subdivided further 
+% with another \begin{columns} block - the [t] argument aligns each column's content to the top
+
+\begin{columns}[t]
+
+% Empty spacer column
+\begin{column}{.01\textwidth}\end{column}
+
+% The first column
+\begin{column}{.32\textwidth} 
+
+
+%----------------------------------------------------------------------
+\begin{block}{Introduction}
+The precise regulatory mechanism that governs cell shape, size and polarity is not well understood. To facilitate a systematic investigation of cell morphology, we have developed tools to identify cells from live imaging data, quantify cell geometry and automatically classify cells using unsupervised machine learning. This poster illustrates our methodology.
+\end{block}
+%----------------------------------------------------------------------
+
+      
+%----------------------------------------------------------------------      
+\begin{block}{Step 1: Image Processing}
+
+We obtained 149 correct segmentations from 20 \textit{in-vitro} pancreatic cancer images acquired by the Roskelley lab:
+\vspace{0.1em}
+
+\begin{figure}
+\includegraphics[width=0.70\linewidth]{ImgProcess1Sml.png}\\
+\includegraphics[width=0.70\linewidth]{ImgProcess2Sml_Cropped.png}
+\end{figure}
+
+\vspace{0.1em}
+Out of 149 segmented cells, four distinct morphologies were identified, namely circular, elliptical, elongated and cells with one or more protrusions.\\
+\vspace{0.5em}
+To validate our methodology, 63 cells were manually selected for feature extraction (Step 2); with 15, 16, 20 and 12 cells exhibiting circular, elliptical, elongated and protrusive morphology respectively.
+
+\end{block}
+%----------------------------------------------------------------------
+
+\end{column}
+
+% Empty spacer column
+\begin{column}{.01\textwidth}\end{column} 
+
+\begin{column}{.33\textwidth} 
+
+%----------------------------------------------------------------------
+\begin{block}{Step 2: Feature Extraction}
+
+Consider an arbitrary geometry $f(\theta)=0$ parametrized by $M$ features, $\theta = (\theta_1,...,\theta_M)^T$.
+To fit this geometry to a set of boundary points $(x_i,y_i)_{i=1}^{N}$, we solve the following
+optimization problem:
+
+$$\argmin_{\theta}\sum_{i=1}^{N}r_{i}^{2}(\theta)$$
+
+where $r_{i}$ is the orthogonal distance between boundary point $(x_i,y_i)$  and shape $f(\theta)=0$.\\
+
+\vspace{0.5em}
+
+\begin{figure}
+\captionsetup{labelformat=empty}
+\includegraphics[height=0.2\linewidth]{MIAPaCa_40_CID7_1_transparent.png}
+\hskip2em
+\includegraphics[height=0.2\linewidth]{MIAPaCa_40_CID7_2_transparent.png}
+\hskip2em
+\includegraphics[height=0.2\linewidth]{MIAPaCa_40_CID7_4_transparent.png}
+\end{figure}
+
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{Step 3: Dimensionality Reduction}
+
+Linear combination of correlated features (Principal Component Analysis) project high dimensional feature vectors to 2-D space for clustering:
+\vspace{0.5em}
+
+\begin{figure}
+\includegraphics[width=0.44\linewidth]{pca_fig1}
+\hspace{0.5cm}
+\includegraphics[width=0.44\linewidth]{pca_fig3}
+\end{figure}
+
+\end{block}
+%---------------------------------------------------------------------- 
+
+
+%----------------------------------------------------------------------
+\begin{block}{Step 4: Classification}
+
+Silhouette score computed using k-means determines number of clusters:
+\vspace{0.5em}
+
+\begin{figure}
+\includegraphics[width=0.44\linewidth]{silhouette_fig1.png}
+\hspace{0.5cm}
+\includegraphics[width=0.44\linewidth]{silhouette_fig2.png}
+\end{figure}
+
+\end{block}
+%----------------------------------------------------------------------
+
+\end{column}
+
+% Empty spacer column
+\begin{column}{.01\textwidth}\end{column} 
+
+\begin{column}{.31\textwidth} 
+
+%----------------------------------------------------------------------
+\begin{block}{Step 5: Validation}
+
+\vspace{0.5em}
+
+\begin{columns}
+
+% The first subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig1.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Black cluster labels correspond to elliptical morphology}
+\end{figure}
+\end{column}
+
+% The second subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig2.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Green cluster labels correspond to elongated morphology}
+\end{figure}
+\end{column}
+
+% End of the subdivision
+\end{columns}
+
+\vspace{0.5em}
+
+\begin{columns}
+
+% The first subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig3.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Yellow cluster labels correspond to protrusive morphology}
+\end{figure}
+\end{column}
+
+% The second subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig4.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Blue cluster labels correspond to circular morphology}
+\end{figure}
+\end{column}
+
+% End of the subdivision
+\end{columns}
+
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{Future Work}
+\begin{itemize}
+\item Compute additional boundary features and quantify cell shape symmetry 
+\item Develop new methods to identify clusters in higher dimensions 
+\item Incorporate motion-based features from time-lapse microscopy
+\item Identify cells that morph during time-lapse microscopy
+\end{itemize}
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{References}
+1. Amin et al., 2015. \textit{Medical Signals and Sensors} 5, 49-58.\\
+2. Rousseeuw, 1987. \textit{Computational and Applied Math} 20, 53-65.\\
+3. Sommer and Gerlich, 2013. \textit{Cell Science} 126, 5529-5539.\\
+4. Sun and Luo, 2009. \textit{Microscopy} 233, 326-330.
+\end{block}
+%----------------------------------------------------------------------
+
+
+% End of the second column
+\end{column} 
+
+% Empty spacer column
+\begin{column}{.01\textwidth}\end{column} 
+
+% End of all the columns in the poster
+\end{columns} 
+
+% End of the enclosing frame
+\end{frame}
+
+\end{document}

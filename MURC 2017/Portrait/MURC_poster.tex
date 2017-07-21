@@ -1,0 +1,229 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage[orientation=portrait,size=a0,scale=1.4]{beamerposter}
+
+\usetheme{I6pd2}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,latexsym}
+\usepackage{caption}
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+%\boldmath
+
+\usepackage{booktabs}
+
+\graphicspath{{figures/}}
+
+\usecaptiontemplate{\small\structure{\insertcaptionname~\insertcaptionnumber: }\insertcaption}
+
+\title{\huge A Machine Learning Approach to Cell Classification}
+
+\author{MoHan Zhang$^{a}$, Cindy Tan$^{b}$ and Dhananjay Bhaskar$^{b}$\\
+\vspace*{0.2em}
+\textbf{Supervisors}: Dr. Leah Edelstein-Keshet$^{b}$, and Dr. Calvin Roskelley$^{c}$}
+
+\institute{\footnotesize 
+$^{a}$Department of Mathematics, University of British Columbia \\
+\vspace*{0.5em}
+$^{b}$Faculty of Applied Science, University of British Columbia \\
+\vspace*{0.5em}
+$^{c}$Department of Cellular and Physiological Sciences, University of British Columbia
+}
+
+\newcommand{\leftfoot}{Source code: https://github.com/dbhaskar92/Research-Scripts}
+\newcommand{\rightfoot}{For bibliography please contact: dbhaskar92@math.ubc.ca}
+
+\begin{document}
+
+\addtobeamertemplate{block end}{}{\vspace*{2ex}}
+
+% The whole poster is enclosed in one beamer frame
+\begin{frame}[t] 
+
+% The whole poster consists of two major columns, each of which can be subdivided further 
+% with another \begin{columns} block - the [t] argument aligns each column's content to the top
+
+\begin{columns}[t]
+
+% Empty spacer column
+\begin{column}{.02\textwidth}
+\end{column}
+
+% The first column
+\begin{column}{.465\textwidth} 
+
+
+%----------------------------------------------------------------------
+\begin{block}{Introduction}
+The precise regulatory mechanism that governs cell shape, size and polarity is not well understood. To facilitate a systematic investigation of cell morphology, we have developed tools to identify cells from live imaging data, quantify cell geometry and automatically classify cells using unsupervised machine learning. This poster illustrates our methodology.
+\end{block}
+%----------------------------------------------------------------------
+
+      
+%----------------------------------------------------------------------      
+\begin{block}{Step 1: Image Processing}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{ImgProcess1Sml.png}\\
+\includegraphics[width=0.95\linewidth]{ImgProcess2Sml_Cropped.png}
+\end{figure}
+
+We obtained 149 correct segmentations from 20 images. 63 cells exhibiting circular, elliptical, elongated and protrusive morphology were manually selected for feature extraction.
+
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{Step 2: Feature Extraction}
+
+Consider an arbitrary geometry $f(\theta)=0$ parametrized by $\theta = (\theta_1,...,\theta_M)^T$.\\
+To fit this geometry to a set of boundary points $(x_i,y_i)_{i=1}^{N}$ (assuming $N > M$), we solve the following
+optimization problem:
+
+$$\argmin_{\theta}\sum_{i=1}^{N}r_{i}^{2}(\theta)$$
+
+where $r_{i}$ is the orthogonal distance between boundary point $(x_i,y_i)$  and shape $f(\theta)=0$.\\
+
+\vspace{1em}
+
+\begin{figure}
+\captionsetup{labelformat=empty}
+\includegraphics[height=0.27\linewidth]{MIAPaCa_40_CID7_1_transparent.png}
+\includegraphics[height=0.27\linewidth]{MIAPaCa_40_CID7_2_transparent.png}
+\includegraphics[height=0.27\linewidth]{MIAPaCa_40_CID7_4_transparent.png}
+\end{figure}
+
+\end{block}
+%----------------------------------------------------------------------
+
+% End of the first column
+\end{column} 
+
+% Empty spacer column
+\begin{column}{.03\textwidth}\end{column} 
+
+% The second column 
+\begin{column}{.465\textwidth} 
+
+%----------------------------------------------------------------------
+\begin{block}{Step 3: Principal Component Analysis (PCA)}
+
+We exploit correlation between features to project high dimensional feature vector to two dimensional space where points can be easily clustered:
+
+\begin{figure}
+\includegraphics[width=0.48\linewidth]{pca_fig1}
+\hspace{0.5cm}
+\includegraphics[width=0.48\linewidth]{pca_fig3}
+\end{figure}
+
+\end{block}
+%---------------------------------------------------------------------- 
+
+
+%----------------------------------------------------------------------
+\begin{block}{Step 4: Cluster Identification}
+
+Silhouette score analysis identified four clusters using K-Means algorithm:
+\vspace{1em}
+
+\begin{figure}
+\includegraphics[width=0.48\linewidth]{silhouette_fig1.png}
+\hspace{0.5cm}
+\includegraphics[width=0.48\linewidth]{silhouette_fig2.png}
+\end{figure}
+
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{Step 5: Validation}
+
+We observe that cells are correctly classified by morphology:
+\vspace{0.5em}
+
+\begin{columns}
+
+% The first subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig1.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Left: Elliptical cells corresponding to black cluster labels}
+\end{figure}
+\end{column}
+
+% The second subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig2.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Right: Elongated cells corresponding to green cluster labels}
+\end{figure}
+\end{column}
+
+% End of the subdivision
+\end{columns}
+
+\vspace{0.5em}
+
+\begin{columns}
+
+% The first subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig3.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Left: Protrusive cells corresponding to yellow cluster labels}
+\end{figure}
+\end{column}
+
+% The second subdivided column within the first main column
+\begin{column}{.48\textwidth}
+\centering
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{cluster_fig4.png}
+\captionsetup{justification=raggedright,singlelinecheck=false,labelformat=empty}
+\caption{Right: Circular cells corresponding to blue cluster labels}
+\end{figure}
+\end{column}
+
+% End of the subdivision
+\end{columns}
+
+\end{block}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\begin{block}{Future Work}
+\begin{itemize}
+\item Compute additional boundary features and quantify cell shape symmetry 
+\item Implement new methods to identify clusters in higher dimensions 
+\item Incorporate motion-based features from time-lapse microscopy
+\end{itemize}
+\end{block}
+%----------------------------------------------------------------------
+
+
+% End of the second column
+\end{column} 
+
+% Empty spacer column
+\begin{column}{.015\textwidth}
+\end{column} 
+
+% End of all the columns in the poster
+\end{columns} 
+
+% End of the enclosing frame
+\end{frame}
+
+\end{document}
