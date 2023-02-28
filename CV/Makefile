@@ -1,6 +1,7 @@
-ALL: Resume_DB.pdf 
+ALL: Curriculum_Vitae_DB.pdf 
 
 %.pdf: %.tex Makefile
+	pdflatex $<
 	pdflatex $<
 	
 clean:
