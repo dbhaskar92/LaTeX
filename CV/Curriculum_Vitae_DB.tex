@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{etaremune}
+\usepackage{soul}
 
 \oddsidemargin -.5in
 \evensidemargin -.5in
@@ -66,8 +67,7 @@
 
 \vspace*{.05cm}
 
-%\section{\sc Research Interests} Mathematical \& Computational Biology, Topological Data Analysis, Manifold Learning, Geometric Deep Learning, Dynamical Systems, Agent-Based Modeling 
-%\vspace*{.05cm}
+\section{\sc Summary} My research centers on \ul{developing machine learning methods} to extract actionable insights from \ul{biomedical data}. I focus on integrating \ul{geometric and topological priors}, \ul{signal processing} techniques, and \ul{mathematical models} within machine learning frameworks to explore complex biological systems. By addressing the challenges posed by noisy and high-dimensional data, my work uncovers the low-dimensional latent structures where biological processes unfold. This research advances our understanding of drug mechanisms, cellular development, disease progression, and brain function through the lens of \textbf{topological data analysis}, \textbf{mathematical modeling}, and \textbf{geometric deep learning}.
 
 \section{\sc Appointments}
 
@@ -126,7 +126,7 @@
 \section{\sc Honors and Awards}
 \begin{list2}
 \setlength\itemsep{0.25em}
-%\item The Eric and Wendy Schmidt AI in Human Health Fellowship \hfill {\bf 2024}
+\item The Eric and Wendy Schmidt AI in Human Health Fellowship \hfill {\bf 2024}
 \item Kavli Institute for Neuroscience Postdoctoral Fellowship \hfill {\bf 2024}
 \item Outstanding Contribution Award, Yale Postdoctoral Association \hfill {\bf 2023}
 \item DAAD AINeT Fellowship for Generative Models in Machine Learning \hfill {\bf 2023}
@@ -140,137 +140,166 @@
 \item International Undergraduate Summer Research Award, UBC \hfill {\bf 2014}
 \end{list2}
 
-\section{\sc Publications}
+\newpage
+\begin{flushright}
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 2/8
+\end{flushright}
+\vspace*{.15cm}
+
+\section{\sc Publications\\ \textit{{\small ($\star$ indicates \\ co-first authors)}}}
 {
 \renewcommand\leftmargini{0em}
-\begin{etaremune}[start=19]
+\begin{etaremune}[start=20]
+
 \item{\bf Dissecting glial scar formation by spatial point pattern and topological data analysis},
 Manrique-Castano, D., \underline{Bhaskar, D.}, \& ElAli, A. 
 \href{https://doi.org/10.1038/s41598-024-69426-z}{\textit{Scientific Reports 14 (1), 19035}}, 2024.
+
 \item{\bf Inferring dynamic regulatory interaction graphs from time series data with perturbations},
 \underline{Bhaskar, D.}, Magruder, S., Morales, M., De Brouwer, E., Venkat, A., Wenkel, F., Noonan, J., Wolf, G., Ivanova, N., \& Krishnaswamy, S.
 \href{https://proceedings.mlr.press/v231/bhaskar24a}{\textit{Proceedings of the Second Learning on Graphs Conference}, PMLR 231:22:1-22:21}, 2024.
+
 \item{\bf Learnable filters for geometric scattering modules},
 Tong, A., Wenkel, F., \underline{Bhaskar, D.}, Macdonald, K., Grady, J., Perlmutter, M., Krishnaswamy, S., \& Wolf, G.
 \href{https://doi.org/10.1109/TSP.2024.3378001}{\textit{IEEE Transactions on Signal Processing} pp. 1-15}, 2024.
+
+\item{\bf Wire before you walk},
+Asmara, T., \underline{Bhaskar, D.}, Adelstein, I., Krishnaswamy, S., \& Perlmutter, M.
+\href{https://ieeexplore.ieee.org/abstract/document/10477089}{\textit{57th Asilomar Conference on Signals, Systems, and Computers}, pp. 714-716}, 2023.
+
+\item{\bf A flow artist for high-dimensional cellular data},
+Macdonald, K.$^\star$, \underline{Bhaskar, D.}$^\star$, Thampakkul, G., Nguyen, N., Zhang, J., Perlmutter, M., Adelstein, I., \& Krishnaswamy S.
+\href{https://doi.org/10.1109/MLSP55844.2023.10285942}{\textit{Proceedings of the IEEE 33\textsuperscript{rd} International Workshop on Machine Learning for Signal Processing (MLSP)}, Rome, Italy, pp. 1-6, 2023.}
+
+\item{\bf Topological data analysis of spatial patterning in heterogeneous cell populations: clustering and sorting with varying cell-cell adhesion},
+\underline{Bhaskar, D.}, Zhang, W., Volkening, A., Sandstede, B., \& Wong I.
+\href{https://www.nature.com/articles/s41540-023-00302-8}{\textit{npj Systems Biology and Applications} 9 (1), 43}, 2023.
+\vspace*{.1cm}
+
+\item{\bf Multiscale geometric and topological analyses for characterizing and predicting immune responses from single cell data},
+Venkat, A., \underline{Bhaskar, D.}, \& Krishnaswamy, S.
+\href{https://doi.org/10.1016/j.it.2023.05.003}{\textit{Trends in Immunology} 44, 551-563}, 2023.
+\vspace*{.1cm}
+
+\item{\bf Cell cycle controls long-range calcium signaling in the regenerating epidermis}, 
+Moore, J.$^\star$, \underline{Bhaskar, D.}$^\star$, Gao, F.$^\star$, Matte-Martone, C., Du, S., Lathrop, E., Ganesan, S., Shao, L., Norris, R., Sanz, N., Annusver, K., Kasper, M., Cox, A., Hendry, C., Rieck, B., Krishnaswamy, S., \& Greco, V.
+\href{https://doi.org/10.1083/jcb.202302095}{\textit{Journal of Cell Biology} 222 (7), e202302095}, 2023. \hfill \textit{(Featured on Cover)}
+\vspace*{.1cm}
+
+\item{\bf Diffusion curvature for estimating local curvature in high dimensional data},
+\underline{Bhaskar, D.}, MacDonald, K., Fasina, O., Thomas, D., Rieck, B., Adelstein, I., \& Krishnaswamy S.
+\href{https://proceedings.neurips.cc/paper_files/paper/2022/hash/88438dc62fc5c8777e2b5f1b4f6d37a2-Abstract-Conference.html}{\textit{Advances in Neural Information Processing Systems} 35, 21738-21749}, 2022.
+\vspace*{.1cm}
+
+\item{\bf Transformer-based protein generation with regularized latent space optimization}, 
+Castro E., Godavarthi A., Rubinfien J., Givechian K., \underline{Bhaskar, D.}, \& Krishnaswamy, S.
+\href{https://www.nature.com/articles/s42256-022-00532-1}{\textit{Nature Machine Intelligence} 4, 840-851}, 2022.
+\vspace*{.1cm}
+
+\item{\bf Molecular graph generation via geometric scattering},
+\underline{Bhaskar, D.}, Grady, J., Castro, E., Perlmutter, M., \& Krishnaswamy, S.
+\href{https://doi.org/10.1109/MLSP55214.2022.9943379}{\textit{Proceedings of the IEEE 32\textsuperscript{nd} International Workshop on Machine Learning for Signal Processing (MLSP)}, Xi'an, China, pp. 1-6}, 2022.
+\vspace*{.1cm}
+
+\item{\bf Current trends in artificial intelligence in reproductive endocrinology},
+\underline{Bhaskar, D.}, Chang, T., \& Wang S.
+\href{https://doi.org/10.1097/GCO.0000000000000796}{\textit{Current Opinion in Obstetrics and Gynecology}, 34 (4), 159-163}, 2022.
+\vspace*{.1cm}
+
+\item{\bf The need for speed: Migratory cells in tight spaces boost their molecular clock},
+\underline{Bhaskar, D.}, Hruska, A., \& Wong, I.
+\href{https://doi.org/10.1016/j.cels.2022.06.002}{\textit{Cell Systems}, 13 (7), 509-511}, 2022.
+\vspace*{.1cm}
+
+\item{\bf Topological data analysis of collective and individual epithelial cells using persistent homology of loops}, 
+\underline{Bhaskar, D.}, Zhang, W., \& Wong, I. 
+\href{https://doi.org/10.1039/D1SM00072A}{\textit{Soft Matter} 17, 4653-4664}, 2021.
+\vspace*{.1cm}
+
+\item{\bf Analyzing collective motion with machine learning and topology}, 
+\underline{Bhaskar, D.}, Manhart, A., Milzman, J., Nardini, J., Storey, K., Topaz, C., \& Ziegelmeier, L. 
+\href{https://aip.scitation.org/doi/10.1063/1.5125493}{\textit{Chaos} 29, 123125}, 2019.
+\vspace*{.1cm}
+
+\item{\bf Motility-limited aggregation of mammary epithelial cells into fractal-like clusters}, 
+Leggett, S., Neronha, Z., \underline{Bhaskar, D.}, Sim, J., Perdikari, T., \& Wong, I. 
+\href{https://www.pnas.org/content/116/35/17298.short}{\textit{PNAS} 116 (35), 17298-17306}, 2019.
+
+\item{\bf Breast cancer cells transition from mesenchymal to amoeboid migration in tunable 3D silk-collagen hydrogels},
+Khoo, A., Valentin, T., Leggett, S., \underline{Bhaskar, D.}, Bye, E., Benmelech, S., Ip, B., \& Wong, I. 
+\href{https://pubs.acs.org/doi/abs/10.1021/acsbiomaterials.9b00519}{\textit{ACS Biomaterials Science \& Engineering} 5 (9), 4341-4354}, 2019.
+\vspace*{.1cm}
+
 \end{etaremune}
-} 
+}
 
 \newpage
 \begin{flushright}
-\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 2/7
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 3/8
 \end{flushright}
 \vspace*{.15cm}
 
 \section{\sc Publications\\\textit{(Cont'd)}}
 {
 \renewcommand\leftmargini{0em}
-\begin{etaremune}[start=16]
-\item{\bf A flow artist for high-dimensional cellular data},
-Macdonald, K.$^\star$, \underline{Bhaskar, D.}$^\star$, Thampakkul, G., Nguyen, N., Zhang, J., Perlmutter, M., Adelstein, I., \& Krishnaswamy S.
-\href{https://doi.org/10.1109/MLSP55844.2023.10285942}{\textit{Proceedings of the IEEE 33\textsuperscript{rd} International Workshop on Machine Learning for Signal Processing (MLSP)}, Rome, Italy, pp. 1-6, 2023.}
-\item{\bf Topological data analysis of spatial patterning in heterogeneous cell populations: clustering and sorting with varying cell-cell adhesion},
-\underline{Bhaskar, D.}, Zhang, W., Volkening, A., Sandstede, B., \& Wong I.
-\href{https://www.nature.com/articles/s41540-023-00302-8}{\textit{npj Systems Biology and Applications} 9 (1), 43}, 2023.
-\vspace*{.1cm}
-\item{\bf Multiscale geometric and topological analyses for characterizing and predicting immune responses from single cell data},
-Venkat, A., \underline{Bhaskar, D.}, \& Krishnaswamy, S.
-\href{https://doi.org/10.1016/j.it.2023.05.003}{\textit{Trends in Immunology} 44, 551-563}, 2023.
-\vspace*{.1cm}
-\item{\bf Cell cycle controls long-range calcium signaling in the regenerating epidermis$^\dagger$}, 
-Moore, J.$^\star$, \underline{Bhaskar, D.}$^\star$, Gao, F.$^\star$, Matte-Martone, C., Du, S., Lathrop, E., Ganesan, S., Shao, L., Norris, R., Sanz, N., Annusver, K., Kasper, M., Cox, A., Hendry, C., Rieck, B., Krishnaswamy, S., \& Greco, V.
-\href{https://doi.org/10.1083/jcb.202302095}{\textit{J Cell Biol} 222 (7), e202302095}, 2023.
-\vspace*{.1cm}
-\item{\bf Diffusion curvature for estimating local curvature in high dimensional data},
-\underline{Bhaskar, D.}, MacDonald, K., Fasina, O., Thomas, D., Rieck, B., Adelstein, I., \& Krishnaswamy S.
-\href{https://proceedings.neurips.cc/paper_files/paper/2022/hash/88438dc62fc5c8777e2b5f1b4f6d37a2-Abstract-Conference.html}{\textit{Advances in Neural Information Processing Systems} 35, 21738-21749}, 2022.
-\vspace*{.1cm}
-\item{\bf Transformer-based protein generation with regularized latent space optimization}, 
-Castro E., Godavarthi A., Rubinfien J., Givechian K., \underline{Bhaskar, D.}, \& Krishnaswamy, S.
-\href{https://www.nature.com/articles/s42256-022-00532-1}{\textit{Nature Machine Intelligence} 4, 840-851}, 2022.
-\vspace*{.1cm}
-\item{\bf Molecular graph generation via geometric scattering},
-\underline{Bhaskar, D.}, Grady, J., Castro, E., Perlmutter, M., \& Krishnaswamy, S.
-\href{https://doi.org/10.1109/MLSP55214.2022.9943379}{\textit{Proceedings of the IEEE 32\textsuperscript{nd} International Workshop on Machine Learning for Signal Processing (MLSP)}, Xi'an, China, pp. 1-6}, 2022.
-\vspace*{.1cm}
-\item{\bf Current trends in artificial intelligence in reproductive endocrinology},
-\underline{Bhaskar, D.}, Chang, T., \& Wang S.
-\href{https://doi.org/10.1097/GCO.0000000000000796}{\textit{Current Opinion in Obstetrics and Gynecology}, 34 (4), 159-163}, 2022.
-\vspace*{.1cm}
-\item{\bf The need for speed: Migratory cells in tight spaces boost their molecular clock},
-\underline{Bhaskar, D.}, Hruska, A., \& Wong, I.
-\href{https://doi.org/10.1016/j.cels.2022.06.002}{\textit{Cell Systems}, 13 (7), 509-511}, 2022.
-\vspace*{.1cm}
-\item{\bf Topological data analysis of collective and individual epithelial cells using persistent homology of loops}, 
-\underline{Bhaskar, D.}, Zhang, W., \& Wong, I. 
-\href{https://doi.org/10.1039/D1SM00072A}{\textit{Soft Matter} 17, 4653-4664}, 2021.
-\vspace*{.1cm}
-\item{\bf Analyzing collective motion with machine learning and topology}, 
-\underline{Bhaskar, D.}, Manhart, A., Milzman, J., Nardini, J., Storey, K., Topaz, C., \& Ziegelmeier, L. 
-\href{https://aip.scitation.org/doi/10.1063/1.5125493}{\textit{Chaos} 29, 123125}, 2019.
-\vspace*{.1cm}
-\item{\bf Motility-limited aggregation of mammary epithelial cells into fractal-like clusters}, 
-Leggett, S., Neronha, Z., \underline{Bhaskar, D.}, Sim, J., Perdikari, T., \& Wong, I. 
-\href{https://www.pnas.org/content/116/35/17298.short}{\textit{PNAS} 116 (35), 17298-17306}, 2019.
-%\vspace*{.05cm}
-\item{\bf Breast cancer cells transition from mesenchymal to amoeboid migration in tunable 3D silk-collagen hydrogels},
-Khoo, A., Valentin, T., Leggett, S., \underline{Bhaskar, D.}, Bye, E., Benmelech, S., Ip, B., \& Wong, I. 
-\href{https://pubs.acs.org/doi/abs/10.1021/acsbiomaterials.9b00519}{\textit{ACS Biomaterials Science \& Engineering} 5 (9), 4341-4354}, 2019.
-\vspace*{.1cm}
+\begin{etaremune}[start=3]
 \item{\bf 3D printed self-adhesive PEGDA-PAA hydrogels as modular components for soft actuators and microfluidics}, 
 Valentin, T., DuBois, E., Machnicki, C., \underline{Bhaskar, D.}, Cui, F., Wong, I. 
 \href{https://pubs.rsc.org/ko/content/articlehtml/2019/py/c9py00211a}{\textit{Polymer Chemistry} 10 (16), 2015-2028}, 2019.
 \vspace*{.1cm}
+
 \item{\bf Coupling mechanical tension and GTPase signaling to generate cell and tissue dynamics}, 
 Zmurchock, C., \underline{Bhaskar, D.}, \& Edelstein-Keshet, L. 
 \href{https://iopscience.iop.org/article/10.1088/1478-3975/aab1c0/meta}{\textit{Physical Biology}, 15 (4), 046004}, 2018.
 \vspace*{.1cm}
+
 \item{\bf Polarization and migration in the zebrafish posterior lateral line system}, 
 Kn\'{u}tsd\'{o}ttir, H., Zmurchok, C., \underline{Bhaskar, D.}, Palsson, E., Dalle Nogare, D., Chitnis, A. B., \& Edelstein-Keshet, L. 
 \href{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005451&rev=2}{\textit{PLoS Computational Biology}, 13 (4), e1005451}, 2017.
-\item[] $\star$ co-first authors, $\dagger$ featured on cover
+
 \end{etaremune}
 }
 
-\vspace*{.15cm}
+%\vspace*{.15cm}
 
-% In preparation
-%\item{\bf Analysis of collective dynamics in 3-D breast cancer organoids using persistent homology}, \underline{Bhaskar, D.}, Han, Y., Guo, M., Crawford, L., \& Wong, I. [In Preparation]
-%\vspace*{.1cm}
-%\item{\bf An interpretable data-driven approach to embryo selection \& assessment for IVF}, \underline{Bhaskar, D.}, Zou, S., Sakkas, D., Alvero, R., \& Wang, S. [In Preparation]
-%\vspace*{.1cm}
-
-\newpage
-\begin{flushright}
-\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 3/7
-\end{flushright}
-\vspace*{.02cm}
-
-
-\section{\sc Preprints}
+\section{\sc Preprints\\ \textit{{\small ($\star$ indicates \\ co-first authors)}}}
 {
 \renewcommand\leftmargini{0em}
 \renewcommand{\labelenumi}{P\theenumi}
-\begin{etaremune}[start=6]
+\begin{etaremune}[start=8]
+\item{\bf ProtSCAPE: Mapping the landscape of protein conformation in molecular dynamics},
+Viswanath, S.$^\star$, \underline{Bhaskar, D.}$^\star$, Johnson, D., Castro, E., Grady, J., Grigas, A., Perlmutter, M., O'Hern, C., \& Krishnaswamy, S.
+\href{https://arxiv.org/abs/2410.20317v1}{\textit{arXiv}:2410.20317}
+\textit{(accepted as a short paper at the 5\textsuperscript{th} Molecular Machine Learning (MoML) Conference, 2024)}
+\vspace*{.1cm}
+\item{\bf Latent representation learning for multimodal brain activity translation}
+Afrasiyabi, A., \underline{Bhaskar, D.}, Busch, E., Caplette, L., Singh, R., Lajoie, G., Turk-Browne, N., \& Krishnaswamy, S.
+\href{https://arxiv.org/abs/2409.18462}{\textit{arXiv}:2409.18462}
+\textit{(submitted to ICASSP 2025)}
+\vspace*{.1cm}
+\item{\bf Looking through the mind's eye via multimodal encoder-decoder networks}
+Afrasiyabi, A., Busch, E., Singh, R., \underline{Bhaskar, D.}, Caplette, L., Turk-Browne, N., \& Krishnaswamy, S.
+\href{https://arxiv.org/abs/2410.00047}{\textit{arXiv}:2410.00047} 
+\textit{(accepted as a short paper at the Yale Center for Collaborative Arts and Media (CCAM) ``Machine as Medium" Symposium, 2023)}
+\vspace*{.1cm}
 \item{\bf NeuroSCAN: Exploring neurodevelopment via spatiotemporal collation of anatomical networks},
 Koonce, N., Emerson, E., \underline{Bhaskar, D.}, Kuchroo, M., Moyle, M., Arroyo-Morales, P., Martínez, N., Krishnaswamy, S., Mohler, W., \& Colón-Ramos, D.
 \href{https://doi.org/10.1101/2024.08.27.609993}{\textit{bioRxiv}:10.1101/2024.08.27.609993}
+\textit{(submitted to eLife)}
 %\vspace*{.1cm}
-\item{\bf ProtSCAPE: Mapping the landscape of protein conformation in molecular dynamics},
-Viswanath, S., \underline{Bhaskar, D.}, Johnson, D., Castro, E., Grady, J., Grigas, A., Perlmutter, M., O'Hern, C., \& Krishnaswamy, S.
-\href{https://arxiv.org/abs/2309.09924}{\textit{arXiv}:2309.09924}
-\vspace*{.1cm}
 \item{\bf Generative modeling of biological shapes and images using a probabilistic $\alpha$-shape sampler},
 Winn-Nu\~{n}ez, E., Witt, H., \underline{Bhaskar, D.}, Huang, R., Reichner, J., Wong, I., \& Crawford, L.
 \href{https://doi.org/10.1101/2024.01.09.574919}{\textit{bioRxiv}:10.1101/2024.01.09.574919}
+\textit{(submitted to PLOS Computational Biology)}
 \vspace*{.1cm}
 \item{\bf Learning graph geometry and topology using dynamical systems based message-passing},
 \underline{Bhaskar, D.}, Zhang, Y., Xu, C., Sun, X., Fasina, O., Wolf, G., Nickel, M., Perlmutter, M., \& Krishnaswamy, S. 
 \href{https://arxiv.org/abs/2309.09924}{\textit{arXiv}:2309.09924}
+\textit{(submitted to AISTATS 2025)}
 \vspace*{.1cm}
-\item{\bf Capturing spatiotemporal signaling patterns in cellular data with geometric scattering trajectory homology},
-\underline{Bhaskar, D.}, Moore, J., Gao, F., Rieck, B., Khasawneh, F., Munch, E., Greco, V., \& Krishnaswamy S.
-\href{https://doi.org/10.1101/2023.03.22.533807}{\textit{bioRxiv}:10.1101/2023.03.22.533807}
+\item{\bf Neuro-GSTH: A Geometric Scattering and Persistent Homology Framework for Uncovering Spatiotemporal Signatures in Neural Activity},
+\underline{Bhaskar, D.}, Moore, J., Zhang, Y., Gao, F., Rieck, B., Wolf, G., Pushkarskaya, H., Khasawneh, F., Munch, E., Greco, V., Pittenger, C., \& Krishnaswamy S.
+\href{https://www.biorxiv.org/content/10.1101/2023.03.22.533807v2}{\textit{bioRxiv}:10.1101/2023.03.22.533807}
 \vspace*{.1cm}
 \item{\bf A methodology for morphological feature extraction and unsupervised cell classification},
 \underline{Bhaskar, D.}, Lee, D., Kn\'{u}tsd\'{o}ttir, H., Tan, C., Zhang, M., Dean, P., Roskelley, C., \& Edelstein-Keshet L.
@@ -286,9 +315,6 @@ Winn-Nu\~{n}ez, E., Witt, H., \underline{Bhaskar, D.}, Huang, R., Reichner, J., 
 % \item{\bf Learnable geometric scattering on biomedical knowledge graphs for indication expansion},
 % \underline{Bhaskar, D.}, Chan, G., Liu, A., Amodio, M., Patassini, S., Lawless, N., Jensen, J., Alanis-Lobato, G., Picart-Armada, S. \& Krishnaswamy S.
 % \vspace*{.1cm}
-% \item{\bf NeuroSCAN: Exploring neurodevelopment via spatiotemporal collation of anatomical networks},
-% Koonce, N., Emerson, S., \underline{Bhaskar, D.}, Moyle, M., Arroyo-Morales, P., Martínez, N., Krishnaswamy, S., Mohler, W. \& Col\'{o}n-Ramos, D.
-% \vspace*{.1cm}
 % \item{\bf Bridging sequence and structure: A joint embedding framework for predicting viral evolution and immune escape},
 % Schweinfurth, L., \underline{Bhaskar, D.}, Castro, E., Mostefai, F., Scicluna, M., Ni, S., Wolf, G., Hussin, J., Iwasaki, A. \& Krishnaswamy S.
 % \vspace*{.1cm}
@@ -300,142 +326,188 @@ Winn-Nu\~{n}ez, E., Witt, H., \underline{Bhaskar, D.}, Huang, R., Reichner, J., 
 % \end{etaremune}
 % }
 
+\section{\sc Research\\ Support}
 
-\section{\sc Invited Talks}
-{\renewcommand\leftmargini{0em}
-\begin{itemize}
-\setlength\itemsep{0.3em}
-\item[] Data Science Seminar, Utah State University, Logan, UT \hfill {\bf \small Sep 2024}
-\item[] The Mila Biology + AI Reading Group \textit{[Online]} \hfill {\bf \small Aug 2024}
-\item[] Session on ``Physics of Cell-Fate Decisions", APS March Meeting, Minneapolis, MN \hfill {\bf \small Mar 2024} 
-\item[] AMS Special Session on ``Applied Topology: Theory, Algorithms, and Applications",\\Joint Mathematics Meetings (JMM), Seattle, WA \hfill {\bf \small Jan 2024} 
-\item[] ICERM Workshop on ``Computational Tools for Single-Cell Omics", Providence, RI \hfill {\bf \small Dec 2023} 
-\item[] Dioscuri Centre in Topological Data Analysis, Polish Academy of Sciences \textit{[Online]} \hfill {\bf \small Dec 2023}
-\item[] Systems Medicine Seminar, University of Florida \textit{[Online]} \hfill {\bf \small Nov 2023}
-\item[] Computational Health Center Seminar, Helmholtz Munich, Germany \hfill {\bf \small Sep 2023}
-\item[] Minisymposium on ``Data-driven, Modeling and Topological Techniques in Cell and \\Developmental Biology", SMB Annual Meeting, Ohio State University \hfill {\bf \small Jul 2023}
-\item[] Learning Learning Seminar, UMass Amherst \hfill {\bf \small May 2023}
-\item[] AMS Special Session on Modeling Collective Behavior in Biology,\\Joint Mathematics Meetings (JMM), Boston, MA \hfill {\bf \small Jan 2023}
-\item[] Pint of Postdoc, Yale Postdoc Association, New Haven, CT \hfill {\bf \small Apr 2022}
-\item[] Applied Topology Seminar, AATRN \textit{[Online]} \hfill {\bf \small Mar 2022}
-\item[] Joint UBC and U. Utah MathBio Seminar \textit{[Online]} \hfill {\bf \small Sep 2021}
-\item[] Topological Data Analysis Seminar, Michigan State University \textit{[Online]} \hfill {\bf \small Aug 2021}
-\item[] Minisymposium on ``Data-driven modeling across scales - from cytoskeleton to bacterial\\ 
-swarms to multicellular motility to angiogenesis", SMB Annual Meeting \textit{[Online]} \hfill {\bf \small Jun 2021}
-\item[] Applied Topology Seminar, Mathematical Institute, University of Oxford \hfill {\bf \small May 2021}
-\item[] Thinking Out Loud, Samuel M. Nabrit Black Graduate Student Association, \\ Brown University \hfill {\bf \small Nov 2019}
-\item[] BIRS Workshop on ``Bridging Cellular and Tissue Dynamics from Normal Development\\ 
-to Cancer: Mathematical, Computational, and Experimental Approaches", Banff, AB \hfill {\bf \small Jun 2019} 
-\end{itemize}
-}
+\noindent
+\begin{minipage}[t]{0.35\textwidth}
+    \raggedright \textbf{AMS-Simons Travel Grant}
+\end{minipage}%
+\begin{minipage}[t]{0.35\textwidth}
+    \centering \textit{Extramural Collaboration Grant}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft Decision Pending
+\end{minipage}
+\\[.2em]
+Simons Foundation \hfill \$5,000\\[.2em]
+``Cellular Choreography on Curved Spaces: Using Geometry and Topology to Understand Cell Migration and Interaction in Complex Environments"\\[.2em]
+\ul{Role:} PI {\small (grant writing and editing; research design; preliminary work; planning and coordination)}
+
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedright \textbf{Kavli Postdoctoral Fellowship}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \centering \textit{Fellowship}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft 9/1/2024 -- 8/31/2025
+\end{minipage}
+\\[.2em]
+Kavli Institute for Neuroscience, Yale University \hfill \$70,000\\[.2em]
+``Data-driven approaches for deciphering the organizational and neuroenergetic principles underpinning information processing in the \textit{C. elegans} neural circuitry"\\[.2em]
+\ul{Role:} PI/Fellow {\small (grant writing and editing; research design; preliminary work; budget; mentorship plan)}
+
+% \noindent
+% \begin{minipage}[t]{0.4\textwidth}
+%     \raggedright \textbf{2403317}
+% \end{minipage}%
+% \begin{minipage}[t]{0.3\textwidth}
+%     \centering Rex (PI)
+% \end{minipage}%
+% \begin{minipage}[t]{0.3\textwidth}
+%     \raggedleft 8/15/2024 -- 7/31/2028
+% \end{minipage}
+% \\[.2em]
+% NSF -- IIS \hfill \$799,941\\[.2em]
+% ``Contextualized and Multimodal Foundation Models for Graph Data in Scientific Discovery"\\[.2em]
+% \ul{Role:} Collaborator {\small (contributed to Intellectual Merit, Broader Impacts, and Preliminary Work)}
 
 \newpage
 \begin{flushright}
 \textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 4/7
 \end{flushright}
 \vspace*{.02cm}
-% \item {\bf Geometric & Topological Machine Learning Across Biological Scales}, Applied Mathematics and Computation Seminar, UMass Amherst
-% \item {\bf Understanding pattern formation in heterogeneous co-cultures using agent-based modeling and topological machine learning}, JMM, Boston, Jan 4-7, 2023
-% \item {\bf Understanding biological pattern formation using `hole-y math'}, Pint of Postdoc, Yale Postdoc Association, New Haven, CT, Apr 28, 2022
-% \item {\bf Data-Driven Modeling & TDA of Self-Organized Multicellular Architectures}, Applied Topology Seminar, AATRN [Virtual], Mar 2, 2022
-% \item {\bf Topological Data Analysis of Collective Behavior}, Joint UBC and U. Utah MathBio Seminar, Sep 29, 2021 [Virtual]
-% \item {\bf Modeling & TDA of Adhesion-Mediated Pattern Formation in Cancer & Developmental Biology}, MSU TDA Seminar, Aug 2, 2021 [Virtual]
-% \item {\bf Discrete Agent Modeling and Topological Data Analysis of Self-Organized Multicellular Architectures}, Society for Mathematical Biology Annual Meeting, Jun 13-17, 2021 [Virtual]
-% \item {\bf Investigating Collective Behaviour and Phase Transitions in Active Matter using TDA}, Applied Topology Seminar, Mathematical Institute, University of Oxford, May 7, 2021 [Virtual]
-% \item {\bf When Machines Make (Bad) Decisions}, Thinking Out Loud, Samuel M. Nabrit Black Graduate Student Association, Brown University, Nov 7, 2019
-% \item {\bf A Novel Approach to Investigate Transitions in Tumor Tissue Architecture using Computational Topology}, BIRS Workshop on Bridging Cellular and Tissue Dynamics from Normal Development to Cancer: Mathematical, Computational, and Experimental Approaches, Banff, AB, Jun 16-21, 2019 [Lightning Talk]
+
+\section{\sc Research\\ Support\\\textit{(Cont'd)}}
+
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedright \textbf{2327211}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \centering \textit{Extramural Grant}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft 9/1/2023 -- 8/31/2026
+\end{minipage}
+\\[.2em]
+NSF -- DMS \hfill \$498,229\\[.2em]
+``Multiscale Data Geometric Networks for Learning Representations and Dynamics of Biological Systems"\\[.2em]
+\ul{Role:} Trainee {\small (wrote sections of the grant, incl. Intellectual Merit, Previous Work, and Aims)}
+
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedright \textbf{5R01GM130847-05}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \centering Extramural Grant
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft 5/1/2023 -- 4/30/2025
+\end{minipage}
+\\[.2em]
+NIH -- NIGMS \hfill \$404,931 \\[.2em]
+``Deciphering Genetic and Epigenetic Regulatory Logic of Germ Layer Differentiation with Manifold Learning"\\[.2em]
+\ul{Role:} Trainee {\small (wrote sections of the grant, incl. Research Strategy, Approach, Aims 1 -- 3)}
+
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedright \textbf{Yale - gCBDS Fellowship}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \centering \textit{Sponsored Research Project}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft 9/1/2021 -- 8/31/2024
+\end{minipage}
+\\[.2em]
+\textbf{Boehringer Ingelheim} \hfill \$184,400 \\[.2em]
+``Explainable machine learning models for indication expansion"\\[.2em]
+\ul{Role:} PI/Fellow {\small (grant writing and editing; research design; planning and coordination)}
+
+\noindent
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedright \textbf{Data Science Grant}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \centering \textit{Internal Grant}
+\end{minipage}%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft 1/1/2020 -- 12/31/2020
+\end{minipage}
+\\[.2em]
+Brown University - Data Science Initiative \hfill \$25,000 \\[.2em]
+``Topological Data Analysis of Dynamic Tumor Architectures"\\[.2em]
+\ul{Role:} Co-PI {\small(grant writing and editing; research design; preliminary work; planning and coordination)}
 
 
-\section{\sc Contributed Talks}
-{\renewcommand\leftmargini{0em}
-\begin{itemize}
-\setlength\itemsep{0.3em}
-\item[] 22\textsuperscript{nd} International Conference on Artificial Intelligence in Medicine, Salt Lake City, UT \hfill {\bf \small Jul 2024}
-\item[] SIAM Conference on the Life Sciences (LS24), Portland, OR \hfill {\bf \small Jun 2024}
-\item[] Yale AI in Medicine Symposium, New Haven, CT \hfill {\bf \small Feb 2024}
-\item[] Biomedical Engineering Society (BMES) Annual Meeting, Seattle, WA \hfill {\bf \small Oct 2023}
-\item[] 2\textsuperscript{nd} Symposium on Applications of Mathematical Sciences (MathSEE), Karlsruhe \\ Institute of Technology \hfill {\bf \small Sep 2023}
-\item[] 3\textsuperscript{rd} Graduate Student Conference: Geometry and Topology meet Data Analysis and \\Machine Learning (GTDAML), Northeastern University \hfill {\bf \small Jun 2023}
-\item[] 42\textsuperscript{nd} Department of Genetics Annual Retreat, Yale School of Medicine, Westbrook, CT \hfill {\bf \small Aug 2022}
-\item[] The 39\textsuperscript{th} Annual (Online) Workshop in Geometric Topology \textit{[Online]} \hfill {\bf \small Jun 2022}
-\item[] AMS Contributed Paper Session on ``Algebraic Topology and Knot Theory", \\Joint Mathematics Meetings (JMM), Seattle, WA \textit{[Online]} \hfill {\bf \small Jan 2022}
-\item[] 2\textsuperscript{nd} Workshop on Topological Methods in Data Analysis, Heidelberg University \textit{[Online]} \hfill {\bf \small Oct 2021}
-\item[] 83\textsuperscript{rd} New England Complex Fluids Meeting, UMass Amherst \hfill {\bf \small Jun 2020}
-\item[] Continua Research Society Colloquium, Brown University \hfill {\bf \small Apr 2019}
-\item[] 10\textsuperscript{th} Annual q-bio Conference, Vanderbilt University \hfill {\bf \small Jul 2016}
-\item[] Canadian Undergraduate Mathematics Conference, Carleton University \hfill {\bf \small Jul 2014}
-\item[] Canadian Undergraduate Mathematics Conference, Universit\'e de Montr\'eal \hfill {\bf \small Jul 2013}
-\end{itemize}
-}
+\section{\sc Teaching and Mentorship}
 
-% \item {\bf Adversarial Knowledge Embedding for Indication Expansion}, 42\textsuperscript{nd} Department of Genetics Annual Retreat, Yale School of Medicine, Westbrook, CT, Aug 31 - Sep 1, 2022
-% \item {\bf Data-Driven Modeling and TDA of Self Organized Multicellular Architectures}, The 39\textsuperscript{th} Annual (Online) Workshop in Geometric Topology, Virtual, Jun 6-8, 2022
-% \item {\bf Grappling with $10^{60}$: A representation-first approach for drug discovery and lead optimization}, 5\textsuperscript{th} Annual Postdoc Symposium, Yale University, New Haven, CT, May 19, 2022
-% \item {\bf TDA of Dynamical Phase Transitions in Cancer & Developmental Biology}, 2\textsuperscript{nd} Workshop on Topological Methods in Data Analysis, Heidelberg University, Oct 4-6, 2021 [Lightning Talk, Virtual]
-% \item {\bf Using Topological Data Analysis to Quantify Pattern Formation in Active Matter}, 83rd New England Complex Fluids (NECF) Meeting, UMass Amherst, Amherst, MA, Jun 5, 2020 [Lightning Talk, Virtual]
-% \item {\bf A Novel Approach to Investigate Transitions in Tumor Tissue Architecture using Computational Topology}, Continua Research Society (CRS) Colloquium, Brown University Providence, RI, Apr 26, 2019
-% \item {\bf Modeling Latency Reversal in HIV-1 Infection}, 10\textsuperscript{th} Annual q-bio Conference, Vanderbilt University, Nashville, TN, Jul 27-30, 2016
-% \item {\bf Mathematical Models of Epithelial Monolayer}, Canadian Undergraduate Mathematics Conference (CUMC), Carleton University, Ottawa, ON, Jul 2-5, 2014
-% \item {\bf A Metaheuristic Approach for Solving the Unconstrained Binary Quadratic Programming Problem}, Canadian Undergraduate Mathematics Conference (CUMC), Universit\'e de Montr\'eal, Montr\'eal, QC, Jul 10-14, 2013
+% \textbf{Summary:} Summary goes here.
 
-\section{\sc Teaching}
-
-\textbf{Guest Lectures:}
+\textbf{Guest Lectures}
 \vspace*{.2cm}
 
 \begin{list1}
 \setlength\itemsep{0.25em}
-\item[] {\bf AMTH 232b / MATH 232b} - Advanced Linear Algebra with Applications \hfill Yale, Spring '24
-\item[] {\bf PHAR 528} - Principles of Signal Transduction \hfill Yale, Spring '24
-\item[] {\bf MATH 322a} - Geometric and Topological Methods in Machine Learning \hfill Yale, Fall '22
-\item[] {\bf CEMA 0919} - An Introduction to Applied Mathematics \hfill Summer@Brown '19
+\item[] {\bf AMTH 232b / MATH 232b} - \textit{Advanced Linear Algebra with Applications} \hfill {\bf \small Yale, Spring '24}
+\item[] {\bf PHAR 528} - \textit{Principles of Signal Transduction} \hfill {\bf \small Yale, Spring '24}
+\item[] {\bf MATH 322a} - \textit{Geometric and Topological Methods in Machine Learning} \hfill {\bf \small Yale, Fall '22}
+\item[] {\bf CEMA 0919} - \textit{An Introduction to Applied Mathematics} \hfill {\bf \small Summer@Brown '19}
 \end{list1} 
 
 % \item {\bf MATH/AMTH 322a}, Geometric and Topological Methods in Machine Learning, Yale University, Fall 2022
 % \item {\bf CEMA 0919}, An Introduction to Applied Mathematics: An Interdisciplinary Approach, Brown Pre-College Programs, Jun 24-29, 2019
 
-\textbf{Graduate/Undergraduate Teaching Assistant:}
+\textbf{Graduate/Undergraduate Teaching Assistant}
 \vspace*{.2cm}
 
 \begin{list1}
 \setlength\itemsep{0.25em}
-\item[] {\bf DATA 1010} - Probability, Statistics \& Machine Learning \hfill Brown University, Fall '19
-\item[] {\bf ENGN 2912B} - Scientific Programming in C++ \hfill Brown University, Fall '18
-\item[] {\bf CPSC 313} - Computer Hardware \& Operating Systems \hfill UBC, Summer '16 \& '17
-\item[] {\bf MATH 257/316} - Partial Differential Equations \hfill UBC, Fall '16
-\item[] {\bf MATH 256} - Differential Equations \hfill UBC, Spring '16
-\item[] {\bf MATH 253} - Multivariable Calculus \hfill UBC, Fall '15
-\item[] {\bf MATH 307} - Applied Linear Algebra \hfill UBC, Fall '15
-\item[] {\bf CPSC 259} - Data Structures \& Algorithms for Electrical Engineers \hfill UBC, Spring '13 \& '14
-\item[] {\bf CPSC 260} - Data Structures \& Algorithms for Computer Engineers \hfill UBC, Fall '12
-\item[] {\bf CPSC 260} - Object-Oriented Program Design (old syllabus) \hfill UBC, Summer '11
-\item[] {\bf CPSC 101} - Connecting with Computer Science \hfill UBC, Spring '11, Summer '11
-\item[] {\bf CPSC 211} - Introduction to Software Development (old syllabus) \hfill UBC, Fall '10
+\item[] {\bf DATA 1010} - \textit{Probability, Statistics \& Machine Learning} \hfill {\bf \small Brown University, Fall '19}
+\item[] {\bf ENGN 2912B} - \textit{Scientific Programming in C++} \hfill {\bf \small Brown University, Fall '18}
+\item[] {\bf CPSC 313} - \textit{Computer Hardware \& Operating Systems} \hfill {\bf \small UBC, Summer '16 \& '17}
+\item[] {\bf MATH 257/316} - \textit{Partial Differential Equations} \hfill {\bf \small UBC, Fall '16}
+\item[] {\bf MATH 256} - \textit{Differential Equations} \hfill {\bf \small UBC, Spring '16}
+\item[] {\bf MATH 253} - \textit{Multivariable Calculus} \hfill {\bf \small UBC, Fall '15}
+\item[] {\bf MATH 307} - \textit{Applied Linear Algebra} \hfill {\bf \small UBC, Fall '15}
+\item[] {\bf CPSC 259} - \textit{Data Structures \& Algorithms for Electrical Engineers} \hfill {\bf \small UBC, Spring '13 \& '14}
+\item[] {\bf CPSC 260} - \textit{Data Structures \& Algorithms for Computer Engineers} \hfill {\bf \small UBC, Fall '12}
+\item[] {\bf CPSC 260} - \textit{Object-Oriented Program Design (deprecated)} \hfill {\bf \small UBC, Summer '11}
+\item[] {\bf CPSC 101} - \textit{Connecting with Computer Science} \hfill {\bf \small UBC, Spring '11, Summer '11}
+\item[] {\bf CPSC 211} - \textit{Introduction to Software Development (deprecated)} \hfill {\bf \small UBC, Fall '10}
 \end{list1}
 
-\textbf{Pedagogical Training:}
+\textbf{Pedagogical Training}
 \vspace*{.2cm}
 
 \begin{list1}
 \setlength\itemsep{0.25em}
-%\item[] {\bf Certificate of College Teaching Preparation}, Yale Poorvu Center \hfill 2024
-\item[] {\bf Inclusive Leadership Training}, Yale Office of Diversity and Inclusion \hfill 2023
-\item[] {\bf Teaching Consultant Program}, Brown Sheridan Center \hfill 2020
-\item[] {\bf Course Design Seminar}, Brown Sheridan Center \hfill 2020
-\item[] {\bf Reflective Teaching Seminar}, Brown Sheridan Center \hfill 2019
-\item[] {\bf Instructional Skills Workshop}, UBC Center for Teaching, Learning and Technology \hfill 2016
+\item[] {\bf Certificate of College Teaching Preparation}, Yale Poorvu Center \hfill \textit{currently enrolled}
+% \item[] \hspace{.3cm} Workshops:
+% \begin{list2}
+% \setlength\itemsep{0.15em}
+% \setlength{\itemindent}{.7cm}
+% \item Teaching First-Generation Low-Income Students
+% \item Teaching International Students
+% \item Antiracist Pedagogy
+% \item Participation and Equity
+% \end{list2}
+\item[] {\bf Inclusive Leadership Training}, Yale Office of Diversity and Inclusion \hfill {\bf \small 2023}
+\item[] {\bf Teaching Consultant Program}, Brown Sheridan Center \hfill {\bf \small 2020}
+\item[] {\bf Course Design Seminar}, Brown Sheridan Center \hfill {\bf \small 2020}
+\item[] {\bf Reflective Teaching Seminar}, Brown Sheridan Center \hfill {\bf \small 2019}
+\item[] {\bf Instructional Skills Workshop}, UBC Center for Teaching, Learning and Technology \hfill {\bf \small 2016}
 \end{list1} 
 
 \newpage
 \begin{flushright}
-\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 5/7
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 5/8
 \end{flushright}
 \vspace*{.1cm}
 
-%\section{\sc Grants}
-
-
-\section{\sc Mentorship}
+\section{\sc Teaching and Mentorship\\\textit{(Cont'd)}}
 
 \textbf{Senior Projects}, Yale University
 
@@ -448,7 +520,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 %Lena Ansari, BS 24' (Computer Science)
 
 \vspace{-.4cm}
-\textbf{Summer Undergraduate Math Research at Yale}
+\textbf{Summer Undergraduate Math Research at Yale} (REU Program)
 
 \vspace{-.3cm}
 \textit{Geometric Manifold Learning} (8 students)\hfill {\bf \small Summer 2024}\\
@@ -522,7 +594,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
     \begin{minipage}[t]{0.9\textwidth}
         Tej Stead, Sc.B.'23, Brown University\\
         Topic: \textit{Data-driven Modeling of Collective Motion on Curved Surfaces in 3D}\\
-        \textit{BrownConnect Collaborative SPRINT Award}\\
+        \underline{BrownConnect Collaborative SPRINT Award}\\
         \textit{Currently:} Software Engineer, Amazon Web Services
     \end{minipage}
 \end{tabular}%
@@ -538,7 +610,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
     \begin{minipage}[t]{0.9\textwidth}
         Subhanik Purkayasta, Sc.B.'21, Brown University\\
         Topic: \textit{Data-driven Modeling of Collective Motion on Curved Surfaces in 3D}\\
-        \textit{Brown University Undergraduate Teaching and Research Award}\\
+        \underline{Brown University Undergraduate Teaching and Research Award}\\
         \textit{Currently:} M.D. Student, Weill Cornell Medical Center
     \end{minipage}
 \end{tabular}%
@@ -554,7 +626,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
     \begin{minipage}[t]{0.9\textwidth}
         Zachary J. Neronha, Sc.B.'19, Brown University\\
         Topic: \textit{Profiling EMT in 3D Microenvironments using TDA}\\
-        \textit{Outstanding Senior in Biomedical Engineering; Domenico A. Ionata ’26 Award}\\
+        \underline{Outstanding Senior in Biomedical Engineering; Domenico A. Ionata ’26 Award}\\
         \textit{Currently:} M.D. Student, Washington University in St. Louis
     \end{minipage}
 \end{tabular}%
@@ -734,15 +806,94 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 
 \newpage
 \begin{flushright}
-\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 6/7
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 6/8
+\end{flushright}
+%\vspace*{.1cm}
+
+\section{\sc Invited Talks}
+{\renewcommand\leftmargini{0em}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item[] Minisymposium on ``Geometric and Topological Methods in Data Science and Machine\\ Learning," SIAM Conference on Mathematics of Data Science (MDS), Atlanta, GA \hfill {\bf \small Oct 2024}
+\item[] Data Science Seminar, Utah State University, Logan, UT \hfill {\bf \small Sep 2024}
+\item[] The Mila Biology + AI Reading Group \textit{[Online]} \hfill {\bf \small Aug 2024}
+\item[] Session on ``Physics of Cell-Fate Decisions", APS March Meeting, Minneapolis, MN \hfill {\bf \small Mar 2024} 
+\item[] AMS Special Session on ``Applied Topology: Theory, Algorithms, and Applications",\\Joint Mathematics Meetings (JMM), Seattle, WA \hfill {\bf \small Jan 2024} 
+\item[] ICERM Workshop on ``Computational Tools for Single-Cell Omics," Providence, RI \hfill {\bf \small Dec 2023} 
+\item[] Dioscuri Centre in Topological Data Analysis, Polish Academy of Sciences \textit{[Online]} \hfill {\bf \small Dec 2023}
+\item[] Systems Medicine Seminar, University of Florida \textit{[Online]} \hfill {\bf \small Nov 2023}
+\item[] Computational Health Center Seminar, Helmholtz Munich, Germany \hfill {\bf \small Sep 2023}
+\item[] Minisymposium on ``Data-driven, Modeling and Topological Techniques in Cell and \\Developmental Biology", SMB Annual Meeting, Ohio State University \hfill {\bf \small Jul 2023}
+\item[] Learning Learning Seminar, UMass Amherst \hfill {\bf \small May 2023}
+\item[] AMS Special Session on Modeling Collective Behavior in Biology,\\Joint Mathematics Meetings (JMM), Boston, MA \hfill {\bf \small Jan 2023}
+\item[] Pint of Postdoc, Yale Postdoc Association, New Haven, CT \hfill {\bf \small Apr 2022}
+\item[] Applied Topology Seminar, AATRN \textit{[Online]} \hfill {\bf \small Mar 2022}
+\item[] Joint UBC and U. Utah MathBio Seminar \textit{[Online]} \hfill {\bf \small Sep 2021}
+\item[] Topological Data Analysis Seminar, Michigan State University \textit{[Online]} \hfill {\bf \small Aug 2021}
+\item[] Minisymposium on ``Data-driven modeling across scales - from cytoskeleton to bacterial\\ 
+swarms to multicellular motility to angiogenesis", SMB Annual Meeting \textit{[Online]} \hfill {\bf \small Jun 2021}
+\item[] Applied Topology Seminar, Mathematical Institute, University of Oxford \hfill {\bf \small May 2021}
+\item[] Thinking Out Loud, Samuel M. Nabrit Black Graduate Student Association, \\ Brown University \hfill {\bf \small Nov 2019}
+\item[] BIRS Workshop on ``Bridging Cellular and Tissue Dynamics from Normal Development\\ 
+to Cancer: Mathematical, Computational, and Experimental Approaches", Banff, AB \hfill {\bf \small Jun 2019} 
+\end{itemize}
+}
+
+% \item {\bf Geometric & Topological Machine Learning Across Biological Scales}, Applied Mathematics and Computation Seminar, UMass Amherst
+% \item {\bf Understanding pattern formation in heterogeneous co-cultures using agent-based modeling and topological machine learning}, JMM, Boston, Jan 4-7, 2023
+% \item {\bf Understanding biological pattern formation using `hole-y math'}, Pint of Postdoc, Yale Postdoc Association, New Haven, CT, Apr 28, 2022
+% \item {\bf Data-Driven Modeling & TDA of Self-Organized Multicellular Architectures}, Applied Topology Seminar, AATRN [Virtual], Mar 2, 2022
+% \item {\bf Topological Data Analysis of Collective Behavior}, Joint UBC and U. Utah MathBio Seminar, Sep 29, 2021 [Virtual]
+% \item {\bf Modeling & TDA of Adhesion-Mediated Pattern Formation in Cancer & Developmental Biology}, MSU TDA Seminar, Aug 2, 2021 [Virtual]
+% \item {\bf Discrete Agent Modeling and Topological Data Analysis of Self-Organized Multicellular Architectures}, Society for Mathematical Biology Annual Meeting, Jun 13-17, 2021 [Virtual]
+% \item {\bf Investigating Collective Behaviour and Phase Transitions in Active Matter using TDA}, Applied Topology Seminar, Mathematical Institute, University of Oxford, May 7, 2021 [Virtual]
+% \item {\bf When Machines Make (Bad) Decisions}, Thinking Out Loud, Samuel M. Nabrit Black Graduate Student Association, Brown University, Nov 7, 2019
+% \item {\bf A Novel Approach to Investigate Transitions in Tumor Tissue Architecture using Computational Topology}, BIRS Workshop on Bridging Cellular and Tissue Dynamics from Normal Development to Cancer: Mathematical, Computational, and Experimental Approaches, Banff, AB, Jun 16-21, 2019 [Lightning Talk]
+
+\section{\sc Contributed Talks}
+{\renewcommand\leftmargini{0em}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item[] 22\textsuperscript{nd} International Conference on Artificial Intelligence in Medicine, Salt Lake City, UT \hfill {\bf \small Jul 2024}
+\item[] SIAM Conference on the Life Sciences (LS24), Portland, OR \hfill {\bf \small Jun 2024}
+\item[] Yale AI in Medicine Symposium, New Haven, CT \hfill {\bf \small Feb 2024}
+\item[] Biomedical Engineering Society (BMES) Annual Meeting, Seattle, WA \hfill {\bf \small Oct 2023}
+\item[] 2\textsuperscript{nd} Symposium on Applications of Mathematical Sciences (MathSEE), Karlsruhe \\ Institute of Technology \hfill {\bf \small Sep 2023}
+\item[] 3\textsuperscript{rd} Graduate Student Conference: Geometry and Topology meet Data Analysis and \\Machine Learning (GTDAML), Northeastern University \hfill {\bf \small Jun 2023}
+\item[] 42\textsuperscript{nd} Department of Genetics Annual Retreat, Yale School of Medicine, Westbrook, CT \hfill {\bf \small Aug 2022}
+\item[] The 39\textsuperscript{th} Annual (Online) Workshop in Geometric Topology \textit{[Online]} \hfill {\bf \small Jun 2022}
+\item[] AMS Contributed Paper Session on ``Algebraic Topology and Knot Theory", \\Joint Mathematics Meetings (JMM), Seattle, WA \textit{[Online]} \hfill {\bf \small Jan 2022}
+\item[] 2\textsuperscript{nd} Workshop on Topological Methods in Data Analysis, Heidelberg University \textit{[Online]} \hfill {\bf \small Oct 2021}
+\item[] 83\textsuperscript{rd} New England Complex Fluids Meeting, UMass Amherst \hfill {\bf \small Jun 2020}
+\item[] Continua Research Society Colloquium, Brown University \hfill {\bf \small Apr 2019}
+\item[] 10\textsuperscript{th} Annual q-bio Conference, Vanderbilt University \hfill {\bf \small Jul 2016}
+\item[] Canadian Undergraduate Mathematics Conference, Carleton University \hfill {\bf \small Jul 2014}
+\item[] Canadian Undergraduate Mathematics Conference, Universit\'e de Montr\'eal \hfill {\bf \small Jul 2013}
+\end{itemize}
+}
+
+% \item {\bf Adversarial Knowledge Embedding for Indication Expansion}, 42\textsuperscript{nd} Department of Genetics Annual Retreat, Yale School of Medicine, Westbrook, CT, Aug 31 - Sep 1, 2022
+% \item {\bf Data-Driven Modeling and TDA of Self Organized Multicellular Architectures}, The 39\textsuperscript{th} Annual (Online) Workshop in Geometric Topology, Virtual, Jun 6-8, 2022
+% \item {\bf Grappling with $10^{60}$: A representation-first approach for drug discovery and lead optimization}, 5\textsuperscript{th} Annual Postdoc Symposium, Yale University, New Haven, CT, May 19, 2022
+% \item {\bf TDA of Dynamical Phase Transitions in Cancer & Developmental Biology}, 2\textsuperscript{nd} Workshop on Topological Methods in Data Analysis, Heidelberg University, Oct 4-6, 2021 [Lightning Talk, Virtual]
+% \item {\bf Using Topological Data Analysis to Quantify Pattern Formation in Active Matter}, 83rd New England Complex Fluids (NECF) Meeting, UMass Amherst, Amherst, MA, Jun 5, 2020 [Lightning Talk, Virtual]
+% \item {\bf A Novel Approach to Investigate Transitions in Tumor Tissue Architecture using Computational Topology}, Continua Research Society (CRS) Colloquium, Brown University Providence, RI, Apr 26, 2019
+% \item {\bf Modeling Latency Reversal in HIV-1 Infection}, 10\textsuperscript{th} Annual q-bio Conference, Vanderbilt University, Nashville, TN, Jul 27-30, 2016
+% \item {\bf Mathematical Models of Epithelial Monolayer}, Canadian Undergraduate Mathematics Conference (CUMC), Carleton University, Ottawa, ON, Jul 2-5, 2014
+% \item {\bf A Metaheuristic Approach for Solving the Unconstrained Binary Quadratic Programming Problem}, Canadian Undergraduate Mathematics Conference (CUMC), Universit\'e de Montr\'eal, Montr\'eal, QC, Jul 10-14, 2013
+
+\newpage
+\begin{flushright}
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 7/8
 \end{flushright}
 
 \section{\sc Poster Presentations}
 {\renewcommand\leftmargini{0em}
 \begin{itemize}
 \setlength\itemsep{0.3em}
-\item[] Biomedical Engineering Society Annual Meeting, Baltimore, MD \hfill {\bf \small  Oct 2024}
+\item[] Biomedical Engineering Society Annual Meeting, Baltimore, MD \hfill {\bf \small Oct 2024}
 \item[] SIAM Conference on Mathematics of Data Science, Atlanta, GA \hfill {\bf \small Oct 2024}
+\item[] 7\textsuperscript{th} Montreal AI and Neuroscience Conference, Montreal, QC \hfill {\bf \small Oct 2024}
 \item[] {\small 24\textsuperscript{th} Annual Meeting of the Federation of Clinical Immunology Societies, San Francisco, CA} \hfill {\bf \small Jun 2024}
 \item[] 7\textsuperscript{th} Graph Signal Processing Workshop, Delft, The Netherlands \hfill {\bf \small Jun 2024}
 \item[] Mid-Atlantic Topology Conference, Northeastern University, Boston, MA \hfill {\bf \small Mar 2024}
@@ -751,7 +902,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \item[] 6\textsuperscript{th} Montreal AI and Neuroscience Conference, Montreal, QC \hfill {\bf \small  Dec 2022}
 \item[] 17\textsuperscript{th} Machine Learning in Computational Biology Conference \textit{[Online]} \hfill {\bf \small  Nov 2022}
 \item[] Conference on the Mathematical Theory of Deep Neural Networks, UC San Diego \hfill {\bf \small  Nov 2022}
-\item[] Biomedical Engineering Society (BMES) Annual Meeting, San Antonio, TX \hfill {\bf \small  Oct 2022}
+\item[] Biomedical Engineering Society Annual Meeting, San Antonio, TX \hfill {\bf \small  Oct 2022}
 \item[] 21\textsuperscript{st} European Conference on Computational Biology (ECCB), Sitges, Spain \hfill {\bf \small  Sep 2022}
 \item[] Bridging Applied and Quantitative Topology Workshop, AATRN \textit{[Online]} \hfill {\bf \small  May 2022}
 \item[] Workshop on Geometrical and Topological Representation Learning, ICLR \textit{[Online]} \hfill {\bf \small  Apr 2022} 
@@ -759,7 +910,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \item[] ELLIS Machine Learning for Molecule Discovery Workshop, NeurIPS \textit{[Online]} \hfill {\bf \small  Dec 2021}
 \item[] Applied Algebraic Topology Research Network (AATRN) Poster Session \textit{[Online]} \hfill {\bf \small  Oct 2021}
 \item[] American Society for Reproductive Medicine Scientific Congress \& Expo \textit{[Online]} \hfill {\bf \small  Oct 2020}
-\item[] Society for Mathematical Biology Annual Meeting\textsuperscript{\textdagger} \textit{[Online]} \hfill {\bf \small  Aug 2020}
+\item[] Society for Mathematical Biology Annual Meeting \textit{[Online]} \hfill {\bf \small  Aug 2020}\\ {\small \textit{(Received Best Poster Award - Mathematical Oncology Category)}}
 \item[] New England Computer Vision Conference, Brown University \hfill {\bf \small  Dec 2019}
 \item[] Biomedical Engineering Society Annual Meeting, Philadelphia, PA \hfill {\bf \small  Oct 2019}
 \item[] Frontiers in Biophysics Conference, UBC \hfill {\bf \small  Jun 2017}
@@ -767,7 +918,6 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \item[] Multidisciplinary Undergraduate Research Conference, UBC \hfill {\bf \small Mar 2015}
 \item[] Frontiers in Biophysics Conference, UBC \hfill {\bf \small Mar 2015}
 \item[] Mathematics at the Frontier of Developmental Biology Workshop, PIMS/UBC \hfill {\bf \small Jul 2014}
-\item[] {\small $\dagger$ Best Poster Award (Mathematical Oncology Category)}
 % \item {\bf An Encoder-Decoder Framework for Cross-Modal Translation of Neuroimaging Data}, 6\textsuperscript{th} Montreal AI and Neuroscience (MAIN) Conference, Montreal, QC, Dec 12-13, 2022
 % \item {\bf A Flow Artist for High Dimensional Cellular Data}, 17\textsuperscript{th} Machine Learning in Computational Biology (MLCB) Conference, Nov 21-22, 2022 [Virtual]
 % \item {\bf Diffusion Curvature for High Dimensional Data Analysis}, Conference on the Mathematical Theory of Deep Neural Networks (DeepMath), San Diego, CA, Nov 17-18, 2022
@@ -799,8 +949,8 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \setlength\itemsep{0.5em}
 \item[] \textit{Journals:} \hspace*{1.42em} Nature Communications Materials, Cell Systems, PLOS Computational Biology, \\ 
 \hspace*{4.7em} npj Systems Biology and Applications, Bulletin of Mathematical Biology, Entropy,\\
-\hspace*{4.7em} Biomedical Signal Processing and Control, Chaos, Mathematical Bioscience
-\item[] \textit{Conferences:} \hspace*{0.1em} RSGDREAM (RECOMB/ISCB), SampTA, NeurIPS, MLCB, ICLR, \\
+\hspace*{4.7em} Biomedical Signal Processing and Control, Chaos, Mathematical Biosciences
+\item[] \textit{Conferences:} \hspace*{0.1em} RSGDREAM (RECOMB/ISCB), SampTA, NeurIPS, MLCB, ICLR, AISTATS, \\
 \hspace*{5.0em} Learning on Graphs (LoG)
 \item[] \textit{NeurIPS Workshops:} LMRL, AI4Mat, NeuroAI
 \end{list2}
@@ -851,7 +1001,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 
 \newpage
 \begin{flushright}
-\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 7/7
+\textit{Curriculum Vitae} - Dhananjay Bhaskar - Page 8/8
 \end{flushright}
 
 \section{\sc Service and Leadership\\\textit{(Cont'd)}}
@@ -945,7 +1095,7 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \vspace*{.2cm}
 \begin{list2}
 \itemindent=-13pt
-\setlength\itemsep{0.5em}
+\setlength\itemsep{0.4em}
 \item[] Golden Key International Honour Society \hfill {\bf \small since 2010}
 \item[] Society for Mathematical Biology (SMB) \hfill {\bf \small since 2017}
 \item[] Sigma Xi, The Scientific Research Honor Society \hfill {\bf \small since 2018}
@@ -961,10 +1111,13 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \begin{list1}
 \itemindent=-13pt
 \setlength\itemsep{0.75em}
+\item[] EWM-EMS Summer School: Stability in Topological Data Analysis, \hfill {\bf \small Jun 30 - Jul 4, 2025} \\
+\hspace*{-1.5em} Institut Mittag-Leffler, Djursholm, Sweden 
 \item[] ICERM Workshop on Topology and Geometry in Neuroscience \hfill {\bf \small Oct 16 - 20, 2023}
 \item[] Virtual Hands-on Workshop on Computational Biophysics, National Center \hfill {\bf \small Jul 5 - 8, 2022} \\ 
 \hspace*{-1.5em} for Multiscale Modeling of Biological Systems (MMBioS) \textit{[Online]} 
-\item[] ICERM Workshop on Geometric and Topological Methods in Data Science \hfill {\bf \small Dec 16 - 17, 2021}
+\item[] ICERM Workshop on Geometric and Topological Methods in Data Science \hfill {\bf \small Dec 16 - 17, 2021}\\
+\hspace*{-1.8em} \textit{(Among top 12\% of applicants accepted into the program)}
 \item[] OxML.2020 Machine Learning Summer School\textsuperscript{$\dagger$}, Oxford University \textit{[Online]} \hfill {\bf \small Aug 17 - 25, 2020}
 \item[] Petascale Computing Institute \textit{[Online]} \hfill {\bf \small Aug 19 - 23, 2019}
 \item[] AMS Mathematic Research Communities Program on Modeling in \hfill {\bf \small Jun 17 - 23, 2018} \\
@@ -976,7 +1129,6 @@ CPSC 490: \textit{Temporal Manifold Learning in Mental Arithmetic Task Classific
 \hspace*{-1.5em} John Innes Centre, Norwich, UK 
 \item[] Joint CAMBAM-MBI-NIMBioS Summer School on Nonlinear Dynamics \hfill {\bf \small Jun 1 - 12, 2015} \\ 
 \hspace*{-1.5em} in Biological Systems, McGill University 
-\item[] {\small $\dagger$ Among top 12\% applicants accepted into the program}
 \end{list1}
 
 \vspace*{.2cm}
